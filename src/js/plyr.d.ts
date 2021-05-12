@@ -264,6 +264,8 @@ declare namespace Plyr {
     seeked: PlyrEvent;
     ratechange: PlyrEvent;
     ended: PlyrEvent;
+    entertrim: PlyrEvent;
+    exitTrim: PlyrEvent;
     enterfullscreen: PlyrEvent;
     exitfullscreen: PlyrEvent;
     captionsenabled: PlyrEvent;
