@@ -27,6 +27,7 @@ class Editor {
     };
     this.duration = 0;
     this.numOfTimestamps = 5;
+    this.imageBuffer = 0.05;
     this.elements = {
       container: {},
     };
@@ -101,7 +102,6 @@ class Editor {
     this.createVideoTimeline();
     this.createSeekHandle();
     this.player.listeners.editor();
-    triggerEvent.call(this.player, this.player.media, 'editorloaded');
   }
 
   createContainer(container) {
@@ -197,7 +197,7 @@ class Editor {
     // Create minus icon
     container.controls.zoomContainer.zoomOut = controls.createButton.call(
       this.player,
-      'zoomOut',
+      'zoom-out',
       'plyr__controls__item',
     );
     container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomOut);
@@ -217,7 +217,11 @@ class Editor {
     container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoom);
 
     // Create plus icon
-    container.controls.zoomContainer.zoomIn = controls.createButton.call(this.player, 'zoomIn', 'plyr__controls__item');
+    container.controls.zoomContainer.zoomIn = controls.createButton.call(
+      this.player,
+      'zoom-in',
+      'plyr__controls__item',
+    );
     container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomIn);
   }
 
@@ -335,7 +339,12 @@ class Editor {
       }
 
       // If preview thumbnails is enabled append an image to the previewThumb
-      if (this.previewThumbnailsReady && time >= this.visibleWindow.start && time <= this.visibleWindow.end) {
+      // Use an image margin to handle seeking and loading of images
+      if (
+        this.previewThumbnailsReady &&
+        time >= this.visibleWindow.start - this.visibleWindow.start * this.imageBuffer &&
+        time <= this.visibleWindow.end + this.visibleWindow.end * this.imageBuffer
+      ) {
         // Append the image to the container
         previewThumbnails.showImageAtCurrentTime(time, previewThumb);
       }
@@ -381,15 +390,10 @@ class Editor {
     this.setSeekPosition();
   }
 
-  setZoom(event) {
-    const { timeline } = this.elements.container;
+  setZoomByEvent(event) {
     const { maxZoom } = this.config;
-    // Zoom on seek handle position
-    const clientRect = timeline.getBoundingClientRect();
-    const xPos = timeline.seekHandle.getBoundingClientRect().left;
-    const percentage = (100 / clientRect.width) * (xPos - clientRect.left);
 
-    if (!(event.type === 'wheel' || event.type === 'input' || event.type === 'click')) {
+    if (!(event.type === 'wheel' || event.type === 'input' || event.type === 'click' || event.type === 'keydown')) {
       return;
     }
 
@@ -407,21 +411,66 @@ class Editor {
     } else if (event.type === 'input') {
       const { value } = event.target;
       this.zoom.scale = value;
-    } else if (event.type === 'click') {
-      if (event.target === this.elements.container.controls.zoomContainer.zoomIn) {
+    } else if (event.type === 'click' || event.type === 'keydown') {
+      if (event.target === this.elements.container.controls.zoomContainer.zoomIn || event.keyCode === 187) {
         this.zoom.scale += 1;
       } else {
         this.zoom.scale -= 1;
       }
     }
 
-    // Limit zoom to be between 1 and max times zoom
-    this.zoom.scale = clamp(this.zoom.scale, 1, maxZoom);
+    this.setZoom();
+  }
 
+  setZoom(scale = this.zoom.scale, centerTimeline = false) {
+    if (!this.active) return;
+
+    const { maxZoom } = this.config;
+    const { container } = this.elements;
+    const { timeline } = this.elements.container;
+    const containerRect = container.getBoundingClientRect();
+    const clientRect = timeline.getBoundingClientRect();
+    const xPos = timeline.seekHandle.getBoundingClientRect().left;
+    const percentage = (100 / clientRect.width) * (xPos - clientRect.left);
+
+    // Limit zoom to be between 1 and max times zoom
+    this.zoom.scale = clamp(scale, 1, maxZoom);
     // Apply zoom scale
     timeline.style.width = `${this.zoom.scale * 100}%`;
     // Position the element based on the mouse position
-    timeline.style.left = `${(-(this.zoom.scale * 100 - 100) * percentage) / 100}%`;
+    if (centerTimeline) {
+      const updatedClientRect = timeline.getBoundingClientRect();
+      const updatedXPos = timeline.seekHandle.getBoundingClientRect().left;
+      const timelinePos = (100 / updatedClientRect.width) * (updatedXPos - updatedClientRect.left) * this.zoom.scale;
+      const centerOffset = ((containerRect.width / updatedClientRect.width) * 100 * this.zoom.scale) / 2;
+      timeline.style.left = `${clamp(-(timelinePos - centerOffset), (this.zoom.scale * 100 - 100) * -1, 0)}%`;
+    } else {
+      timeline.style.left = `${(-(this.zoom.scale * 100 - 100) * percentage) / 100}%`;
+    }
+
+    // Update slider
+    if (is.element(this.elements.container.controls.zoomContainer)) {
+      controls.setRange.call(this.player, this.elements.container.controls.zoomContainer.zoom, this.zoom.scale);
+    }
+
+    // Update timeline images
+    this.setVideoTimelimeContent();
+  }
+
+  setZoomWindow(lowerBound, upperBound) {
+    if (!this.active || !lowerBound || !upperBound) return;
+
+    const { maxZoom } = this.config;
+    const { timeline } = this.elements.container;
+    const scale = this.player.duration / (upperBound - lowerBound);
+
+    // Limit zoom to be between 1 and max times zoom
+    this.zoom.scale = clamp(scale, 1, maxZoom);
+    // Apply zoom scale
+    timeline.style.width = `${this.zoom.scale * 100}%`;
+    // Position the element based on the lower and upper bound values
+    const percentage = (lowerBound / this.player.duration) * (this.zoom.scale * 100);
+    timeline.style.left = `${clamp(-percentage, (this.zoom.scale * 100 - 100) * -1, 0)}%`;
 
     // Update slider
     if (is.element(this.elements.container.controls.zoomContainer)) {
@@ -594,11 +643,12 @@ class Editor {
     // If the duration changes after loading the editor, the corresponding timestamps need to be updated
     // If the duration of the video or previewthumbnails has loaded, update
     this.player.on('loadeddata loadedmetadata', () => {
-      if (this.player.media.duration) this.loaded = true;
+      if (this.player.media.duration > 0) this.loaded = true;
       if (this.loaded && this.shown) {
         this.showEditor();
         this.updateTimestamps();
         this.setVideoTimelimeContent();
+        triggerEvent.call(this.player, this.player.media, 'editorloaded');
       }
     });
 
@@ -628,10 +678,31 @@ class Editor {
     }
   }
 
+  // Load config after changing of source
+  loadConfig(config, duration) {
+    if (!config) return;
+
+    if (config.editor.shown) {
+      this.enter();
+    }
+
+    if (config.editor.zoom.scale > 1) {
+      this.player.on('editorloaded', () => {
+        this.setZoom((config.editor.zoom.scale / duration) * this.player.duration, true);
+      });
+    }
+  }
+
   destroy() {
     // Remove the elements with listeners on
-    if (this.elements.container && !is.empty(this.elements.container)) {
-      replaceElement(this.elements.original, this.elements.container);
+    if (this.loaded) {
+      if (is.element(this.elements.original)) {
+        replaceElement(this.elements.original, this.elements.container);
+      }
+
+      // Remove reference to buttons
+      this.player.elements.buttons.zoomOut = null;
+      this.player.elements.buttons.zoomIn = null;
 
       this.loaded = false;
     }

@@ -31,7 +31,7 @@ import is from './utils/is';
 import loadSprite from './utils/load-sprite';
 import { extend } from './utils/objects';
 import { getPercentage, replaceAll, toCamelCase, toTitleCase } from './utils/strings';
-import { matchTime, formatTime, getHours } from './utils/time';
+import { formatTime, getHours, videoToMatchTime } from './utils/time';
 
 // TODO: Don't export a massive object - break down and create class
 const controls = {
@@ -552,9 +552,16 @@ const controls = {
             this.speed = parseFloat(value);
             break;
 
+          case 'angle':
+            this.angle = value;
+            break;
+
           default:
             break;
         }
+
+        // Angle menu is not a nested menu so don't need to return to home panel
+        if (type === 'angle') return;
 
         controls.showMenuPanel.call(this, 'home', is.keyboardEvent(event));
       },
@@ -577,8 +584,9 @@ const controls = {
     // Always display hours if duration is over an hour
     const forceHours = getHours(this.duration) > 0;
 
-    if (this.config.matchTime && this.config.syncPoints) {
-      return matchTime(time, this.config.syncPoints);
+    // Display match time
+    if (this.config.matchTime && this.config.syncPoints && this.config.syncPoints.length) {
+      return videoToMatchTime(this.mediaFragment.getMediaTime(time), this.config.syncPoints);
     }
 
     return formatTime(time, forceHours, inverted);
@@ -833,12 +841,12 @@ const controls = {
 
   // Hide/show a tab
   toggleMenuButton(setting, toggle) {
-    toggleHidden(this.elements.settings.buttons[setting], !toggle);
+    toggleHidden(this.elements.menu.settings.buttons[setting], !toggle);
   },
 
   // Update the selected setting
   updateSetting(setting, container, input) {
-    const pane = this.elements.settings.panels[setting];
+    const pane = this.elements.menu.settings.panels[setting];
     let value = null;
     let list = container;
 
@@ -876,7 +884,7 @@ const controls = {
     }
 
     // Update the label
-    const label = this.elements.settings.buttons[setting].querySelector(`.${this.config.classNames.menu.value}`);
+    const label = this.elements.menu.settings.buttons[setting].querySelector(`.${this.config.classNames.menu.value}`);
     label.innerHTML = controls.getLabel.call(this, setting, value);
 
     // Find the radio option and check it
@@ -917,12 +925,12 @@ const controls = {
   // Set the quality menu
   setQualityMenu(options) {
     // Menu required
-    if (!is.element(this.elements.settings.panels.quality)) {
+    if (!is.element(this.elements.menu.settings.panels.quality)) {
       return;
     }
 
     const type = 'quality';
-    const list = this.elements.settings.panels.quality.querySelector('[role="menu"]');
+    const list = this.elements.menu.settings.panels.quality.querySelector('[role="menu"]');
 
     // Set options if passed and filter based on uniqueness and config
     if (is.array(options)) {
@@ -977,16 +985,16 @@ const controls = {
   // Set the looping options
   /* setLoopMenu() {
         // Menu required
-        if (!is.element(this.elements.settings.panels.loop)) {
+        if (!is.element(this.elements.menu.settings.panels.loop)) {
             return;
         }
 
         const options = ['start', 'end', 'all', 'reset'];
-        const list = this.elements.settings.panels.loop.querySelector('[role="menu"]');
+        const list = this.elements.menu.settings.panels.loop.querySelector('[role="menu"]');
 
         // Show the pane and tab
-        toggleHidden(this.elements.settings.buttons.loop, false);
-        toggleHidden(this.elements.settings.panels.loop, false);
+        toggleHidden(this.elements.menu.settings.buttons.loop, false);
+        toggleHidden(this.elements.menu.settings.panels.loop, false);
 
         // Toggle the pane and tab
         const toggle = !is.empty(this.loop.options);
@@ -1024,13 +1032,13 @@ const controls = {
   // Set a list of available captions languages
   setCaptionsMenu() {
     // Menu required
-    if (!is.element(this.elements.settings.panels.captions)) {
+    if (!is.element(this.elements.menu.settings.panels.captions)) {
       return;
     }
 
     // TODO: Captions or language? Currently it's mixed
     const type = 'captions';
-    const list = this.elements.settings.panels.captions.querySelector('[role="menu"]');
+    const list = this.elements.menu.settings.panels.captions.querySelector('[role="menu"]');
     const tracks = captions.getTracks.call(this);
     const toggle = Boolean(tracks.length);
 
@@ -1076,12 +1084,12 @@ const controls = {
   // Set a list of available captions languages
   setSpeedMenu() {
     // Menu required
-    if (!is.element(this.elements.settings.panels.speed)) {
+    if (!is.element(this.elements.menu.settings.panels.speed)) {
       return;
     }
 
     const type = 'speed';
-    const list = this.elements.settings.panels.speed.querySelector('[role="menu"]');
+    const list = this.elements.menu.settings.panels.speed.querySelector('[role="menu"]');
 
     // Filter out invalid speeds
     this.options.speed = this.options.speed.filter(o => o >= this.minimumSpeed && o <= this.maximumSpeed);
@@ -1116,22 +1124,22 @@ const controls = {
 
   // Check if we need to hide/show the settings menu
   checkMenu() {
-    const { buttons } = this.elements.settings;
+    const { buttons } = this.elements.menu.settings;
     const visible = !is.empty(buttons) && Object.values(buttons).some(button => !button.hidden);
 
-    toggleHidden(this.elements.settings.menu, !visible);
+    toggleHidden(this.elements.menu.settings.menu, !visible);
   },
 
   // Focus the first menu item in a given (or visible) menu
   focusFirstMenuItem(pane, tabFocus = false) {
-    if (this.elements.settings.popup.hidden) {
+    if (this.elements.menu.settings.popup.hidden) {
       return;
     }
 
     let target = pane;
 
     if (!is.element(target)) {
-      target = Object.values(this.elements.settings.panels).find(p => !p.hidden);
+      target = Object.values(this.elements.menu.settings.panels).find(p => !p.hidden);
     }
 
     const firstItem = target.querySelector('[role^="menuitem"]');
@@ -1140,9 +1148,9 @@ const controls = {
   },
 
   // Show/hide menu
-  toggleMenu(input) {
-    const { popup } = this.elements.settings;
-    const button = this.elements.buttons.settings;
+  toggleMenu(input, menuElement, buttonElement) {
+    const { popup } = menuElement;
+    const button = buttonElement;
 
     // Menu and button are required
     if (!is.element(popup) || !is.element(button)) {
@@ -1466,7 +1474,7 @@ const controls = {
 
         home.appendChild(menu);
         inner.appendChild(home);
-        this.elements.settings.panels.home = home;
+        this.elements.menu.settings.panels.home = home;
 
         // Build the menu items
         this.config.settings.forEach(type => {
@@ -1575,16 +1583,16 @@ const controls = {
 
           inner.appendChild(pane);
 
-          this.elements.settings.buttons[type] = menuItem;
-          this.elements.settings.panels[type] = pane;
+          this.elements.menu.settings.buttons[type] = menuItem;
+          this.elements.menu.settings.panels[type] = pane;
         });
 
         popup.appendChild(inner);
         wrapper.appendChild(popup);
         container.appendChild(wrapper);
 
-        this.elements.settings.popup = popup;
-        this.elements.settings.menu = wrapper;
+        this.elements.menu.settings.popup = popup;
+        this.elements.menu.settings.menu = wrapper;
       }
 
       // Frame Reverse button
@@ -1640,6 +1648,75 @@ const controls = {
       // Toggle fullscreen button
       if (control === 'fullscreen') {
         container.appendChild(createButton.call(this, 'fullscreen', defaultAttributes));
+      }
+
+      // Angle selector menu
+      if (control === 'angle-selector') {
+        const wrapper = createElement(
+          'div',
+          extend({}, defaultAttributes, {
+            class: `${defaultAttributes.class} plyr__menu`.trim(),
+            hidden: '',
+          }),
+        );
+
+        wrapper.appendChild(
+          createButton.call(this, 'angle-selector', {
+            'aria-haspopup': true,
+            'aria-controls': `plyr-angle-selector-${data.id}`,
+            'aria-expanded': false,
+          }),
+        );
+
+        const popup = createElement('div', {
+          class: 'plyr__menu__container',
+          id: `plyr-angle-selector-${data.id}`,
+          hidden: '',
+        });
+
+        const inner = createElement('div');
+
+        const home = createElement('div', {
+          id: `plyr-angle-selector-${data.id}-home`,
+        });
+
+        // Create the menu
+        const menu = createElement('div', {
+          role: 'menu',
+        });
+
+        home.appendChild(menu);
+        inner.appendChild(home);
+        this.elements.menu.angleSelector.panels.home = home;
+
+        // Build the menu items once metadata is loaded
+        this.once('loadedmetadata', () => {
+          // Verify that the media has more than one possible angle
+          if (!this.media.sources || !this.media.sources.length || this.media.sources.length <= 1) return;
+
+          const type = 'angle';
+
+          this.media.sources.forEach(x => {
+            if (!x.angle) return;
+
+            controls.createMenuItem.call(this, {
+              value: x.angle,
+              list: menu,
+              type,
+              title: x.angle,
+              checked: this.media.angle === x.angle,
+            });
+          });
+
+          toggleHidden(wrapper, false);
+        });
+
+        popup.appendChild(inner);
+        wrapper.appendChild(popup);
+        container.appendChild(wrapper);
+
+        this.elements.menu.angleSelector.popup = popup;
+        this.elements.menu.angleSelector.menu = wrapper;
       }
     });
 
@@ -1751,6 +1828,7 @@ const controls = {
     if (!is.empty(this.elements.buttons)) {
       const addProperty = button => {
         const className = this.config.classNames.controlPressed;
+
         Object.defineProperty(button, 'pressed', {
           enumerable: true,
           get() {

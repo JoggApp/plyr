@@ -1,6 +1,6 @@
 {
   "name": "@JoggApp/plyr",
-  "version": "3.6.7",
+  "version": "3.6.10",
   "description": "A simple, accessible and customizable HTML5, YouTube and Vimeo media player",
   "homepage": "https://plyr.io",
   "author": "JoggApp",
@@ -93,6 +93,7 @@
     "core-js": "^3.10.1",
     "custom-event-polyfill": "^1.0.7",
     "loadjs": "^4.2.0",
+    "lodash": "^4.17.20",
     "rangetouch": "^2.0.1",
     "url-polyfill": "^1.1.12"
   }
