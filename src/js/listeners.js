@@ -217,7 +217,7 @@ class Listeners {
   }
 
   // Device is touch enabled
-  firstTouch() {
+  firstTouch = () => {
     const { player } = this;
     const { elements } = player;
 
@@ -225,9 +225,9 @@ class Listeners {
 
     // Add touch class
     toggleClass(elements.container, player.config.classNames.isTouch, true);
-  }
+  };
 
-  setTabFocus(event) {
+  setTabFocus = event => {
     const { player } = this;
     const { elements } = player;
 
@@ -275,10 +275,10 @@ class Listeners {
         toggleClass(document.activeElement, player.config.classNames.tabFocus, true);
       }, 10);
     }
-  }
+  };
 
   // Global window & document listeners
-  global(toggle = true) {
+  global = (toggle = true) => {
     const { player } = this;
 
     // Keyboard shortcuts
@@ -294,10 +294,10 @@ class Listeners {
 
     // Tab focus detection
     toggleListener.call(player, document.body, 'keydown focus blur focusout', this.setTabFocus, toggle, false, true);
-  }
+  };
 
   // Container listeners
-  container() {
+  container = () => {
     const { player } = this;
     const { config, elements, timers } = player;
 
@@ -390,6 +390,11 @@ class Listeners {
       // Set Vimeo gutter
       setGutter(ratio, padding, isEnter);
 
+      // Horrible hack for Safari 14 not repainting properly on entering fullscreen
+      if (isEnter) {
+        setTimeout(() => repaint(elements.container), 100);
+      }
+
       // If not using native browser fullscreen API, we need to check for resizes of viewport
       if (!usingNative) {
         if (isEnter) {
@@ -399,10 +404,10 @@ class Listeners {
         }
       }
     });
-  }
+  };
 
   // Listen for media events
-  media() {
+  media = () => {
     const { player } = this;
     const { elements } = player;
 
@@ -554,7 +559,7 @@ class Listeners {
 
       triggerEvent.call(player, elements.container, event.type, true, detail);
     });
-  }
+  };
 
   editor() {
     const { timeline } = this.player.editor.elements.container;
@@ -684,7 +689,7 @@ class Listeners {
   }
 
   // Run default and custom handlers
-  proxy(event, defaultHandler, customHandlerKey) {
+  proxy = (event, defaultHandler, customHandlerKey) => {
     const { player } = this;
     const customHandler = player.config.listeners[customHandlerKey];
     const hasCustomHandler = is.function(customHandler);
@@ -699,10 +704,10 @@ class Listeners {
     if (returned !== false && is.function(defaultHandler)) {
       defaultHandler.call(player, event);
     }
-  }
+  };
 
   // Trigger custom and default handlers
-  bind(element, type, defaultHandler, customHandlerKey, passive = true) {
+  bind = (element, type, defaultHandler, customHandlerKey, passive = true) => {
     const { player } = this;
     const customHandler = player.config.listeners[customHandlerKey];
     const hasCustomHandler = is.function(customHandler);
@@ -714,10 +719,10 @@ class Listeners {
       event => this.proxy(event, defaultHandler, customHandlerKey),
       passive && !hasCustomHandler,
     );
-  }
+  };
 
   // Listen for control events
-  controls() {
+  controls = () => {
     const { player } = this;
     const { elements } = player;
     // IE doesn't support input event, so we fallback to change
@@ -741,10 +746,28 @@ class Listeners {
     this.bind(elements.buttons.restart, 'click', player.restart, 'restart');
 
     // Rewind
-    this.bind(elements.buttons.rewind, 'click', player.rewind, 'rewind');
+    this.bind(
+      elements.buttons.rewind,
+      'click',
+      () => {
+        // Record seek time so we can prevent hiding controls for a few seconds after rewind
+        player.lastSeekTime = Date.now();
+        player.rewind();
+      },
+      'rewind',
+    );
 
-    // FastForward
-    this.bind(elements.buttons.fastForward, 'click', player.forward, 'fastForward');
+    // Rewind
+    this.bind(
+      elements.buttons.fastForward,
+      'click',
+      () => {
+        // Record seek time so we can prevent hiding controls for a few seconds after fast forward
+        player.lastSeekTime = Date.now();
+        player.forward();
+      },
+      'fastForward',
+    );
 
     // Frame Back
     this.bind(elements.buttons.frameRewind, 'click', player.frameRewind, 'rewind');
@@ -1073,7 +1096,7 @@ class Listeners {
       'volume',
       false,
     );
-  }
+  };
 }
 
 export default Listeners;
