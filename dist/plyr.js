@@ -4,85 +4,7 @@ typeof navigator === "object" && (function (global, factory) {
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Plyr = factory());
 }(this, (function () { 'use strict';
 
-<<<<<<< HEAD
   function _defineProperty$1(obj, key, value) {
-=======
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
-  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-    try {
-      var info = gen[key](arg);
-      var value = info.value;
-    } catch (error) {
-      reject(error);
-      return;
-    }
-
-    if (info.done) {
-      resolve(value);
-    } else {
-      Promise.resolve(value).then(_next, _throw);
-    }
-  }
-
-  function _asyncToGenerator(fn) {
-    return function () {
-      var self = this,
-          args = arguments;
-      return new Promise(function (resolve, reject) {
-        var gen = fn.apply(self, args);
-
-        function _next(value) {
-          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-        }
-
-        function _throw(err) {
-          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-        }
-
-        _next(undefined);
-      });
-    };
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-  }
-
-  function _defineProperty(obj, key, value) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
     if (key in obj) {
       Object.defineProperty(obj, key, {
         value: value,
@@ -97,153 +19,7 @@ typeof navigator === "object" && (function (global, factory) {
     return obj;
   }
 
-<<<<<<< HEAD
   function _classCallCheck(e, t) {
-=======
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-  }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(Object(source), true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-    }
-
-    return target;
-  }
-
-  function _objectWithoutPropertiesLoose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-
-    for (i = 0; i < sourceKeys.length; i++) {
-      key = sourceKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      target[key] = source[key];
-    }
-
-    return target;
-  }
-
-  function _objectWithoutProperties(source, excluded) {
-    if (source == null) return {};
-
-    var target = _objectWithoutPropertiesLoose(source, excluded);
-
-    var key, i;
-
-    if (Object.getOwnPropertySymbols) {
-      var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-      for (i = 0; i < sourceSymbolKeys.length; i++) {
-        key = sourceSymbolKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-      }
-    }
-
-    return target;
-  }
-
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-  }
-
-  function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-  }
-
-  function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-  }
-
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
-  }
-
-  function _iterableToArray(iter) {
-    if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-  }
-
-  function _iterableToArrayLimit(arr, i) {
-    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-    var _arr = [];
-    var _n = true;
-    var _d = false;
-    var _e = undefined;
-
-    try {
-      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-        _arr.push(_s.value);
-
-        if (i && _arr.length === i) break;
-      }
-    } catch (err) {
-      _d = true;
-      _e = err;
-    } finally {
-      try {
-        if (!_n && _i["return"] != null) _i["return"]();
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-
-    return _arr;
-  }
-
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-
-  function _classCallCheck$1(e, t) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
     if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
   }
 
@@ -1060,15 +836,9 @@ typeof navigator === "object" && (function (global, factory) {
     } // Create and dispatch the event
 
 
-<<<<<<< HEAD
     const event = new CustomEvent(type, {
       bubbles,
       detail: { ...detail,
-=======
-    var event = new CustomEvent(type, {
-      bubbles: bubbles,
-      detail: _objectSpread2(_objectSpread2({}, detail), {}, {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         plyr: this
       }
     }); // Dispatch the event
@@ -1662,63 +1432,40 @@ typeof navigator === "object" && (function (global, factory) {
 
     return `${inverted && time > 0 ? '-' : ''}${hours}${format(mins)}:${format(secs)}`;
   }
-<<<<<<< HEAD
-  function matchTime(time, syncPoints) {
+  function videoToMatchTime(time, syncPoints) {
     const syncPointsOrdered = syncPoints.sort((a, b) => b.time - a.time);
     const syncPoint = syncPointsOrdered.find(x => x.time <= time) || syncPointsOrdered[syncPointsOrdered.length - 1];
     const timeIntoPeriod = Math.max(time - syncPoint.time, 0); // Time into period
 
     const seconds = getSeconds(timeIntoPeriod);
-    const minutes = secondsToMinutes(syncPoint.start + timeIntoPeriod - seconds);
+    const minutes = Math.min(secondsToMinutes(syncPoint.start + timeIntoPeriod - seconds), secondsToMinutes(syncPoint.start + syncPoint.duration));
     const minutesIntoPeriod = secondsToMinutes(timeIntoPeriod - seconds); // Added time into period
-=======
-  function videoToMatchTime(time, syncPoints) {
-    var syncPointsOrdered = syncPoints.sort(function (a, b) {
-      return b.time - a.time;
-    });
-    var syncPoint = syncPointsOrdered.find(function (x) {
-      return x.time <= time;
-    }) || syncPointsOrdered[syncPointsOrdered.length - 1];
-    var timeIntoPeriod = Math.max(time - syncPoint.time, 0); // Time into period
-
-    var seconds = getSeconds(timeIntoPeriod);
-    var minutes = Math.min(secondsToMinutes(syncPoint.start + timeIntoPeriod - seconds), secondsToMinutes(syncPoint.start + syncPoint.duration));
-    var minutesIntoPeriod = secondsToMinutes(timeIntoPeriod - seconds); // Added time into period
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     const addedTime = minutesIntoPeriod >= secondsToMinutes(syncPoint.duration);
     const addedMinutes = minutesIntoPeriod - Math.min(minutesIntoPeriod, secondsToMinutes(syncPoint.duration)); // Format time component to add leading zero
 
-<<<<<<< HEAD
-    const format = value => `0${value}`.slice(-2);
-=======
-    var format = function format(value) {
-      return "".concat(value.toString().length <= 1 ? '0' : '').concat(value);
-    };
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+    const format = value => `${value.toString().length <= 1 ? '0' : ''}${value}`;
 
     return `${format(minutes)}${addedTime ? `+${format(addedMinutes)}` : ''}:${format(seconds)}`;
   }
   function matchToVideoTime(time, syncPoints) {
     // Match Time
-    var syncPointsOrdered = syncPoints.sort(function (a, b) {
-      return a.time - b.time;
-    });
-    var matchTime = time.match(/(^[0-9]{1,3})\+?([0-9]{1,2})?:([0-9]{1,2})/);
-    var minutes = Number(matchTime[1] || 0);
-    var addedMinutes = Number(matchTime[2] || -1);
-    var seconds = Number(matchTime[3] || 0);
-    var hasAddedMinutes = addedMinutes >= 0;
+    const syncPointsOrdered = syncPoints.sort((a, b) => a.time - b.time);
+    const matchTime = time.match(/(^[0-9]{1,3})\+?([0-9]{1,2})?:([0-9]{1,2})/);
+    const minutes = Number(matchTime[1] || 0);
+    let addedMinutes = Number(matchTime[2] || -1);
+    const seconds = Number(matchTime[3] || 0);
+    const hasAddedMinutes = addedMinutes >= 0;
     addedMinutes = Math.max(addedMinutes, 0); // Store match time in seconds
 
-    var matchTimeInSeconds = minutes * 60 + addedMinutes * 60 + seconds; // Match Period Index
+    const matchTimeInSeconds = minutes * 60 + addedMinutes * 60 + seconds; // Match Period Index
 
-    var index = 0;
-    syncPointsOrdered.forEach(function (x) {
+    let index = 0;
+    syncPointsOrdered.forEach(x => {
       if (x.start + x.duration <= matchTimeInSeconds) index += 1;
     }); // Offset index if added time
 
-    var matchPeriod = syncPointsOrdered[hasAddedMinutes ? index - 1 : Math.min(index, syncPoints.length - 1)];
+    const matchPeriod = syncPointsOrdered[hasAddedMinutes ? index - 1 : Math.min(index, syncPoints.length - 1)];
     return matchTimeInSeconds + matchPeriod.time - matchPeriod.start;
   }
 
@@ -1813,14 +1560,10 @@ typeof navigator === "object" && (function (global, factory) {
       return icon;
     },
 
-<<<<<<< HEAD
     // Create hidden text label
     createLabel(key, attr = {}) {
       const text = i18n.get(key, this.config);
       const attributes = { ...attr,
-=======
-      var attributes = _objectSpread2(_objectSpread2({}, attr), {}, {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         class: [attr.class, this.config.classNames.hidden].filter(Boolean).join(' ')
       };
       return createElement('span', attributes, text);
@@ -2169,18 +1912,14 @@ typeof navigator === "object" && (function (global, factory) {
             this.speed = parseFloat(value);
             break;
 
-<<<<<<< HEAD
-        controls.showMenuPanel.call(this, 'home', is.keyboardEvent(event));
-=======
           case 'angle':
-            _this3.angle = value;
+            this.angle = value;
             break;
         } // Angle menu is not a nested menu so don't need to return to home panel
 
 
         if (type === 'angle') return;
-        controls.showMenuPanel.call(_this3, 'home', is$1.keyboardEvent(event));
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        controls.showMenuPanel.call(this, 'home', is.keyboardEvent(event));
       }, type, false);
       controls.bindMenuItemShortcuts.call(this, menuItem, type);
       list.appendChild(menuItem);
@@ -2194,11 +1933,7 @@ typeof navigator === "object" && (function (global, factory) {
       } // Always display hours if duration is over an hour
 
 
-<<<<<<< HEAD
-      const forceHours = getHours(this.duration) > 0;
-=======
-      var forceHours = getHours(this.duration) > 0; // Display match time
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      const forceHours = getHours(this.duration) > 0; // Display match time
 
       if (this.config.matchTime && this.config.syncPoints && this.config.syncPoints.length) {
         return videoToMatchTime(this.mediaFragment.getMediaTime(time), this.config.syncPoints);
@@ -2429,27 +2164,15 @@ typeof navigator === "object" && (function (global, factory) {
     },
 
     // Hide/show a tab
-<<<<<<< HEAD
     toggleMenuButton(setting, toggle) {
-      toggleHidden(this.elements.settings.buttons[setting], !toggle);
-=======
-    toggleMenuButton: function toggleMenuButton(setting, toggle) {
       toggleHidden(this.elements.menu.settings.buttons[setting], !toggle);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
     },
 
     // Update the selected setting
-<<<<<<< HEAD
     updateSetting(setting, container, input) {
-      const pane = this.elements.settings.panels[setting];
+      const pane = this.elements.menu.settings.panels[setting];
       let value = null;
       let list = container;
-=======
-    updateSetting: function updateSetting(setting, container, input) {
-      var pane = this.elements.menu.settings.panels[setting];
-      var value = null;
-      var list = container;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       if (setting === 'captions') {
         value = this.currentTrack;
@@ -2484,11 +2207,7 @@ typeof navigator === "object" && (function (global, factory) {
       } // Update the label
 
 
-<<<<<<< HEAD
-      const label = this.elements.settings.buttons[setting].querySelector(`.${this.config.classNames.menu.value}`);
-=======
-      var label = this.elements.menu.settings.buttons[setting].querySelector(".".concat(this.config.classNames.menu.value));
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      const label = this.elements.menu.settings.buttons[setting].querySelector(`.${this.config.classNames.menu.value}`);
       label.innerHTML = controls.getLabel.call(this, setting, value); // Find the radio option and check it
 
       const target = list && list.querySelector(`[value="${value}"]`);
@@ -2528,21 +2247,12 @@ typeof navigator === "object" && (function (global, factory) {
     // Set the quality menu
     setQualityMenu(options) {
       // Menu required
-<<<<<<< HEAD
-      if (!is.element(this.elements.settings.panels.quality)) {
+      if (!is.element(this.elements.menu.settings.panels.quality)) {
         return;
       }
 
       const type = 'quality';
-      const list = this.elements.settings.panels.quality.querySelector('[role="menu"]'); // Set options if passed and filter based on uniqueness and config
-=======
-      if (!is$1.element(this.elements.menu.settings.panels.quality)) {
-        return;
-      }
-
-      var type = 'quality';
-      var list = this.elements.menu.settings.panels.quality.querySelector('[role="menu"]'); // Set options if passed and filter based on uniqueness and config
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      const list = this.elements.menu.settings.panels.quality.querySelector('[role="menu"]'); // Set options if passed and filter based on uniqueness and config
 
       if (is.array(options)) {
         this.options.quality = dedupe(options).filter(quality => this.config.quality.options.includes(quality));
@@ -2594,21 +2304,12 @@ typeof navigator === "object" && (function (global, factory) {
           if (!is.element(this.elements.menu.settings.panels.loop)) {
               return;
           }
-<<<<<<< HEAD
            const options = ['start', 'end', 'all', 'reset'];
-          const list = this.elements.settings.panels.loop.querySelector('[role="menu"]');
-           // Show the pane and tab
-          toggleHidden(this.elements.settings.buttons.loop, false);
-          toggleHidden(this.elements.settings.panels.loop, false);
-           // Toggle the pane and tab
-=======
-            const options = ['start', 'end', 'all', 'reset'];
           const list = this.elements.menu.settings.panels.loop.querySelector('[role="menu"]');
-            // Show the pane and tab
+           // Show the pane and tab
           toggleHidden(this.elements.menu.settings.buttons.loop, false);
           toggleHidden(this.elements.menu.settings.panels.loop, false);
-            // Toggle the pane and tab
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+           // Toggle the pane and tab
           const toggle = !is.empty(this.loop.options);
           controls.toggleMenuButton.call(this, 'loop', toggle);
            // Empty the menu
@@ -2637,26 +2338,15 @@ typeof navigator === "object" && (function (global, factory) {
     // Set a list of available captions languages
     setCaptionsMenu() {
       // Menu required
-<<<<<<< HEAD
-      if (!is.element(this.elements.settings.panels.captions)) {
-=======
-      if (!is$1.element(this.elements.menu.settings.panels.captions)) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      if (!is.element(this.elements.menu.settings.panels.captions)) {
         return;
       } // TODO: Captions or language? Currently it's mixed
 
 
-<<<<<<< HEAD
       const type = 'captions';
-      const list = this.elements.settings.panels.captions.querySelector('[role="menu"]');
+      const list = this.elements.menu.settings.panels.captions.querySelector('[role="menu"]');
       const tracks = captions.getTracks.call(this);
       const toggle = Boolean(tracks.length); // Toggle the pane and tab
-=======
-      var type = 'captions';
-      var list = this.elements.menu.settings.panels.captions.querySelector('[role="menu"]');
-      var tracks = captions.getTracks.call(this);
-      var toggle = Boolean(tracks.length); // Toggle the pane and tab
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       controls.toggleMenuButton.call(this, type, toggle); // Empty the menu
 
@@ -2693,21 +2383,12 @@ typeof navigator === "object" && (function (global, factory) {
     // Set a list of available captions languages
     setSpeedMenu() {
       // Menu required
-<<<<<<< HEAD
-      if (!is.element(this.elements.settings.panels.speed)) {
+      if (!is.element(this.elements.menu.settings.panels.speed)) {
         return;
       }
 
       const type = 'speed';
-      const list = this.elements.settings.panels.speed.querySelector('[role="menu"]'); // Filter out invalid speeds
-=======
-      if (!is$1.element(this.elements.menu.settings.panels.speed)) {
-        return;
-      }
-
-      var type = 'speed';
-      var list = this.elements.menu.settings.panels.speed.querySelector('[role="menu"]'); // Filter out invalid speeds
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      const list = this.elements.menu.settings.panels.speed.querySelector('[role="menu"]'); // Filter out invalid speeds
 
       this.options.speed = this.options.speed.filter(o => o >= this.minimumSpeed && o <= this.maximumSpeed); // Toggle the pane and tab
 
@@ -2735,44 +2416,24 @@ typeof navigator === "object" && (function (global, factory) {
     },
 
     // Check if we need to hide/show the settings menu
-<<<<<<< HEAD
     checkMenu() {
       const {
         buttons
-      } = this.elements.settings;
+      } = this.elements.menu.settings;
       const visible = !is.empty(buttons) && Object.values(buttons).some(button => !button.hidden);
-      toggleHidden(this.elements.settings.menu, !visible);
-=======
-    checkMenu: function checkMenu() {
-      var buttons = this.elements.menu.settings.buttons;
-      var visible = !is$1.empty(buttons) && Object.values(buttons).some(function (button) {
-        return !button.hidden;
-      });
       toggleHidden(this.elements.menu.settings.menu, !visible);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
     },
 
-<<<<<<< HEAD
     // Focus the first menu item in a given (or visible) menu
     focusFirstMenuItem(pane, tabFocus = false) {
-      if (this.elements.settings.popup.hidden) {
-=======
       if (this.elements.menu.settings.popup.hidden) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         return;
       }
 
       let target = pane;
 
-<<<<<<< HEAD
       if (!is.element(target)) {
-        target = Object.values(this.elements.settings.panels).find(p => !p.hidden);
-=======
-      if (!is$1.element(target)) {
-        target = Object.values(this.elements.menu.settings.panels).find(function (p) {
-          return !p.hidden;
-        });
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        target = Object.values(this.elements.menu.settings.panels).find(p => !p.hidden);
       }
 
       const firstItem = target.querySelector('[role^="menuitem"]');
@@ -2780,17 +2441,11 @@ typeof navigator === "object" && (function (global, factory) {
     },
 
     // Show/hide menu
-<<<<<<< HEAD
-    toggleMenu(input) {
+    toggleMenu(input, menuElement, buttonElement) {
       const {
         popup
-      } = this.elements.settings;
-      const button = this.elements.buttons.settings; // Menu and button are required
-=======
-    toggleMenu: function toggleMenu(input, menuElement, buttonElement) {
-      var popup = menuElement.popup;
-      var button = buttonElement; // Menu and button are required
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+      } = menuElement;
+      const button = buttonElement; // Menu and button are required
 
       if (!is.element(popup) || !is.element(button)) {
         return;
@@ -3063,11 +2718,7 @@ typeof navigator === "object" && (function (global, factory) {
           });
           home.appendChild(menu);
           inner.appendChild(home);
-<<<<<<< HEAD
-          this.elements.settings.panels.home = home; // Build the menu items
-=======
-          _this10.elements.menu.settings.panels.home = home; // Build the menu items
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          this.elements.menu.settings.panels.home = home; // Build the menu items
 
           this.config.settings.forEach(type => {
             // TODO: bundle this with the createMenuItem helper and bindings
@@ -3135,24 +2786,14 @@ typeof navigator === "object" && (function (global, factory) {
               role: 'menu'
             }));
             inner.appendChild(pane);
-<<<<<<< HEAD
-            this.elements.settings.buttons[type] = menuItem;
-            this.elements.settings.panels[type] = pane;
-=======
-            _this10.elements.menu.settings.buttons[type] = menuItem;
-            _this10.elements.menu.settings.panels[type] = pane;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+            this.elements.menu.settings.buttons[type] = menuItem;
+            this.elements.menu.settings.panels[type] = pane;
           });
           popup.appendChild(inner);
           wrapper.appendChild(popup);
           container.appendChild(wrapper);
-<<<<<<< HEAD
-          this.elements.settings.popup = popup;
-          this.elements.settings.menu = wrapper;
-=======
-          _this10.elements.menu.settings.popup = popup;
-          _this10.elements.menu.settings.menu = wrapper;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          this.elements.menu.settings.popup = popup;
+          this.elements.menu.settings.menu = wrapper;
         } // Frame Reverse button
 
 
@@ -3208,75 +2849,58 @@ typeof navigator === "object" && (function (global, factory) {
 
 
         if (control === 'fullscreen') {
-<<<<<<< HEAD
           container.appendChild(createButton.call(this, 'fullscreen', defaultAttributes));
-=======
-          container.appendChild(createButton.call(_this10, 'fullscreen', defaultAttributes));
         } // Angle selector menu
 
 
         if (control === 'angle-selector') {
-          var _wrapper = createElement('div', extend({}, defaultAttributes, {
-            class: "".concat(defaultAttributes.class, " plyr__menu").trim(),
+          const wrapper = createElement('div', extend({}, defaultAttributes, {
+            class: `${defaultAttributes.class} plyr__menu`.trim(),
             hidden: ''
           }));
-
-          _wrapper.appendChild(createButton.call(_this10, 'angle-selector', {
+          wrapper.appendChild(createButton.call(this, 'angle-selector', {
             'aria-haspopup': true,
-            'aria-controls': "plyr-angle-selector-".concat(data.id),
+            'aria-controls': `plyr-angle-selector-${data.id}`,
             'aria-expanded': false
           }));
-
-          var _popup = createElement('div', {
+          const popup = createElement('div', {
             class: 'plyr__menu__container',
-            id: "plyr-angle-selector-".concat(data.id),
+            id: `plyr-angle-selector-${data.id}`,
             hidden: ''
           });
-
-          var _inner = createElement('div');
-
-          var _home = createElement('div', {
-            id: "plyr-angle-selector-".concat(data.id, "-home")
+          const inner = createElement('div');
+          const home = createElement('div', {
+            id: `plyr-angle-selector-${data.id}-home`
           }); // Create the menu
 
-
-          var _menu = createElement('div', {
+          const menu = createElement('div', {
             role: 'menu'
           });
+          home.appendChild(menu);
+          inner.appendChild(home);
+          this.elements.menu.angleSelector.panels.home = home; // Build the menu items once metadata is loaded
 
-          _home.appendChild(_menu);
-
-          _inner.appendChild(_home);
-
-          _this10.elements.menu.angleSelector.panels.home = _home; // Build the menu items once metadata is loaded
-
-          _this10.once('loadedmetadata', function () {
+          this.once('loadedmetadata', () => {
             // Verify that the media has more than one possible angle
-            if (!_this10.media.sources || !_this10.media.sources.length || _this10.media.sources.length <= 1) return;
-            var type = 'angle';
-
-            _this10.media.sources.forEach(function (x) {
+            if (!this.media.sources || !this.media.sources.length || this.media.sources.length <= 1) return;
+            const type = 'angle';
+            this.media.sources.forEach(x => {
               if (!x.angle) return;
-              controls.createMenuItem.call(_this10, {
+              controls.createMenuItem.call(this, {
                 value: x.angle,
-                list: _menu,
-                type: type,
+                list: menu,
+                type,
                 title: x.angle,
-                checked: _this10.media.angle === x.angle
+                checked: this.media.angle === x.angle
               });
             });
-
-            toggleHidden(_wrapper, false);
+            toggleHidden(wrapper, false);
           });
-
-          _popup.appendChild(_inner);
-
-          _wrapper.appendChild(_popup);
-
-          container.appendChild(_wrapper);
-          _this10.elements.menu.angleSelector.popup = _popup;
-          _this10.elements.menu.angleSelector.menu = _wrapper;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          popup.appendChild(inner);
+          wrapper.appendChild(popup);
+          container.appendChild(wrapper);
+          this.elements.menu.angleSelector.popup = popup;
+          this.elements.menu.angleSelector.menu = wrapper;
         }
       }); // Set available quality levels
 
@@ -4874,222 +4498,8 @@ typeof navigator === "object" && (function (global, factory) {
         this.media.removeAttribute('style');
       }
     }
-<<<<<<< HEAD
 
   };
-=======
-  };
-
-  var Listeners = /*#__PURE__*/function () {
-    function Listeners(player) {
-      _classCallCheck(this, Listeners);
-
-      this.player = player;
-      this.lastKey = null;
-      this.focusTimer = null;
-      this.lastKeyDown = null;
-      this.handleKey = this.handleKey.bind(this);
-      this.toggleMenu = this.toggleMenu.bind(this);
-      this.setTabFocus = this.setTabFocus.bind(this);
-      this.firstTouch = this.firstTouch.bind(this);
-    } // Handle key presses
-
-
-    _createClass(Listeners, [{
-      key: "handleKey",
-      value: function handleKey(event) {
-        var player = this.player;
-        var elements = player.elements;
-        var code = event.keyCode ? event.keyCode : event.which;
-        var pressed = event.type === 'keydown';
-        var repeat = pressed && code === this.lastKey; // Bail if a modifier key is set
-
-        if (event.altKey || event.shiftKey) {
-          return;
-        } // If the event is bubbled from the media element
-        // Firefox doesn't get the keycode for whatever reason
-
-
-        if (!is$1.number(code)) {
-          return;
-        } // Seek by the number keys
-
-
-        var seekByKey = function seekByKey() {
-          // Divide the max duration into 10th's and times by the number value
-          player.currentTime = player.duration / 10 * (code - 48);
-        }; // Handle the key on keydown
-        // Reset on keyup
-
-
-        if (pressed) {
-          // Check focused element
-          // and if the focused element is not editable (e.g. text input)
-          // and any that accept key input http://webaim.org/techniques/keyboard/
-          var focused = document.activeElement;
-
-          if (is$1.element(focused)) {
-            var editable = player.config.selectors.editable;
-            var seek = elements.inputs.seek;
-
-            if (focused !== seek && matches$1(focused, editable)) {
-              return;
-            }
-
-            if (event.which === 32 && matches$1(focused, 'button, [role^="menuitem"]')) {
-              return;
-            }
-          } // Which keycodes should we prevent default
-
-
-          var preventDefault = [32, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 56, 57, 67, 70, 73, 75, 76, 77, 79, 187, 189]; // If the code is found prevent default (e.g. prevent scrolling for arrows)
-
-          if (preventDefault.includes(code)) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-
-          if (event.ctrlKey || event.metaKey) {
-            switch (code) {
-              case 39:
-                // Arrow forward
-                player.frameForward();
-                break;
-
-              case 37:
-                // Arrow Back
-                player.frameRewind();
-                break;
-              // Plus key
-
-              case 187:
-                player.editor.setZoomByEvent(event);
-                break;
-              // Minus key
-
-              case 189:
-                player.editor.setZoomByEvent(event);
-                break;
-            }
-
-            return;
-          }
-
-          switch (code) {
-            case 48:
-            case 49:
-            case 50:
-            case 51:
-            case 52:
-            case 53:
-            case 54:
-            case 55:
-            case 56:
-            case 57:
-              // 0-9
-              if (!repeat) {
-                seekByKey();
-              }
-
-              break;
-
-            case 32:
-            case 75:
-              // Space and K key
-              if (!repeat) {
-                // Manually trigger restart for media fragment
-                if (player.mediaFragment.active && player.ended) this.proxy(event, player.restart, 'restart');
-                silencePromise(player.togglePlay());
-              }
-
-              break;
-
-            case 38:
-              // Arrow up
-              player.increaseVolume(0.1);
-              break;
-
-            case 40:
-              // Arrow down
-              player.decreaseVolume(0.1);
-              break;
-
-            case 77:
-              // M key
-              if (!repeat) {
-                player.muted = !player.muted;
-              }
-
-              break;
-
-            case 39:
-              // Arrow forward
-              player.forward();
-              break;
-
-            case 37:
-              // Arrow back
-              player.rewind();
-              break;
-
-            case 84:
-              // T key
-              player.trim.toggle();
-              break;
-
-            case 70:
-              // F key
-              player.fullscreen.toggle();
-              break;
-
-            case 67:
-              // C key
-              if (!repeat) {
-                player.toggleCaptions();
-              }
-
-              break;
-
-            case 76:
-              // L key
-              player.loop = !player.loop;
-              break;
-
-            case 73:
-              // I key
-              player.trim.setTrimStart();
-              break;
-
-            case 79:
-              // O key
-              player.trim.setTrimEnd();
-              break;
-          } // Escape is handle natively when in full screen
-          // So we only need to worry about non native
-
-
-          if (code === 27 && !player.fullscreen.usingNative && player.fullscreen.active) {
-            player.fullscreen.toggle();
-          } // Store last code for next cycle
-
-
-          this.lastKey = code;
-        } else {
-          this.lastKey = null;
-        }
-      } // Toggle menu
-
-    }, {
-      key: "toggleMenu",
-      value: function toggleMenu(event) {
-        var menu = this.player.elements.menu;
-        var buttons = this.player.elements.buttons;
-
-        controls.toggleMenu.call(this.player, event, menu.settings, buttons.settings);
-
-        controls.toggleMenu.call(this.player, event, menu.angleSelector, buttons.angleSelector);
-      } // Device is touch enabled
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
   class Listeners {
     constructor(_player) {
@@ -5402,125 +4812,7 @@ typeof navigator === "object" && (function (global, factory) {
 
           triggerEvent.call(player, elements.container, event.type, true, detail);
         });
-<<<<<<< HEAD
       });
-=======
-      }
-    }, {
-      key: "editor",
-      value: function editor() {
-        var _this2 = this;
-
-        var timeline = this.player.editor.elements.container.timeline;
-        var editor = this.player.editor; // Stores setInterval for checking the timeline position, so can be cleaned up
-
-        var timelineInterval; // IE doesn't support input event, so we fallback to change
-
-        var inputEvent = browser.isIE ? 'change' : 'input'; // Use event listener to support IE, Edge and early versions of Safari
-
-        if ('ResizeObserver' in window) {
-          new ResizeObserver(function () {
-            if (editor.active) {
-              editor.setVideoTimelimeContent();
-            }
-          }).observe(timeline);
-        } else {
-          window.addEventListener('resize', function () {
-            if (editor.active) {
-              editor.setVideoTimelimeContent();
-            }
-          });
-        } // Set seeking start
-
-
-        this.bind(timeline, 'mousedown touchstart', function (event) {
-          if (editor.active) {
-            editor.setSeeking(event);
-
-            if (!_this2.player.trim.editing) {
-              // Adjust timeline position when we get near the end of the timeline
-              timelineInterval = setInterval(function () {
-                return editor.setTimelineOffset(true);
-              }, 50);
-            }
-          }
-        }); // Set seeking end
-
-        this.bind(document.body, 'mouseup touchend', function (event) {
-          if (editor.active) {
-            editor.setSeeking(event);
-          } // End check for adjusting the timeline position when near the end of the timeline
-
-
-          clearInterval(timelineInterval);
-        }); // Update seek position
-
-        this.bind(document.body, 'mousemove touchmove', function (event) {
-          if (editor.seeking) {
-            editor.setSeekTime(event);
-          }
-        }); // Zoom Timeline
-
-        this.bind(editor.elements.container.controls.zoomContainer.zoom, inputEvent, function (event) {
-          if (editor.active) {
-            editor.setZoomByEvent(event);
-          }
-        }); // Zoom Out Control
-
-        this.bind(editor.elements.container.controls.zoomContainer.zoomOut, 'click', function (event) {
-          editor.setZoomByEvent(event);
-        }); // Zoom Out Control
-
-        this.bind(editor.elements.container.controls.zoomContainer.zoomIn, 'click', function (event) {
-          editor.setZoomByEvent(event);
-        }); // Zoom timeline
-
-        this.bind(editor.elements.container, 'wheel', function (event) {
-          event.preventDefault();
-
-          if (editor.active && _this2.player.config.editor.scrollToZoom) {
-            editor.setZoomByEvent(event);
-          }
-        }, 'editor', false);
-        this.bind(timeline.seekHandle, 'mousedown mouseup keydown keyup touchstart touchend', function (event) {
-          var player = _this2.player;
-          var seek = event.currentTarget;
-          var code = event.keyCode ? event.keyCode : event.which;
-          var attribute = 'play-on-seeked';
-
-          if (is$1.keyboardEvent(event) && code !== 39 && code !== 37) {
-            return;
-          } // Record seek time so we can prevent hiding controls for a few seconds after seek
-
-
-          player.lastSeekTime = Date.now(); // Was playing before?
-
-          var play = seek.hasAttribute(attribute); // Done seeking
-
-          var done = ['mouseup', 'touchend', 'keyup'].includes(event.type); // If we're done seeking and it was playing, resume playback
-
-          if (play && done) {
-            seek.removeAttribute(attribute);
-            silencePromise(player.play());
-          } else if (!done && player.playing) {
-            seek.setAttribute(attribute, '');
-            player.pause();
-          }
-        }); // Update seek-value attribute on mousemove
-
-        this.bind(timeline, 'mousedown mousemove', function (event) {
-          if (!_this2.player.editor.seeking) return;
-          var rect = timeline.getBoundingClientRect();
-          var percent = 100 / rect.width * (event.pageX - rect.left);
-          timeline.seekHandle.setAttribute('seek-value', percent); // Update video seek value as well
-
-          _this2.player.elements.inputs.seek.setAttribute('seek-value', percent);
-        });
-        this.player.on('timeupdate seeking seeked', function () {
-          editor.setSeekPosition();
-        });
-      } // Run default and custom handlers
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       _defineProperty$1(this, "proxy", (event, defaultHandler, customHandlerKey) => {
         const {
@@ -5615,14 +4907,9 @@ typeof navigator === "object" && (function (global, factory) {
           // Prevent the document click listener closing the menu
           event.stopPropagation();
           event.preventDefault();
-<<<<<<< HEAD
-          controls.toggleMenu.call(player, event);
-=======
-          var menu = player.elements.menu.settings;
-          var button = player.elements.buttons.settings;
-
+          const menu = player.elements.menu.settings;
+          const button = player.elements.buttons.settings;
           controls.toggleMenu.call(player, event, menu, button);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         }, null, false); // Can't be passive as we're preventing default
         // Settings menu - keyboard toggle
         // We have to bind to keyup otherwise Firefox triggers a click when a keydown event handler shifts focus
@@ -5646,41 +4933,34 @@ typeof navigator === "object" && (function (global, factory) {
 
           event.stopPropagation(); // Toggle menu
 
-          var menu = player.elements.menu.settings;
-          var button = player.elements.buttons.settings;
-
+          const menu = player.elements.menu.settings;
+          const button = player.elements.buttons.settings;
           controls.toggleMenu.call(player, event, menu, button);
         }, null, false // Can't be passive as we're preventing default
         ); // Escape closes menu
 
-<<<<<<< HEAD
-        this.bind(elements.settings.menu, 'keydown', event => {
-=======
-        this.bind(elements.menu.settings.menu, 'keydown', function (event) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        this.bind(elements.menu.settings.menu, 'keydown', event => {
           if (event.which === 27) {
-            var menu = player.elements.menu.settings;
-            var button = player.elements.buttons.settings;
-
+            const menu = player.elements.menu.settings;
+            const button = player.elements.buttons.settings;
             controls.toggleMenu.call(player, event, menu, button);
           }
         }); // Angle Selector - click toggle
 
-        this.bind(elements.buttons.angleSelector, 'click', function (event) {
+        this.bind(elements.buttons.angleSelector, 'click', event => {
           // Prevent the document click listener closing the menu
           event.stopPropagation();
           event.preventDefault();
-          var menuItem = player.elements.menu.angleSelector;
-          var button = player.elements.buttons.angleSelector;
-
+          const menuItem = player.elements.menu.angleSelector;
+          const button = player.elements.buttons.angleSelector;
           controls.toggleMenu.call(player, event, menuItem, button);
         }, null, false); // Can't be passive as we're preventing default
         // Angle selector menu - keyboard toggle
         // We have to bind to keyup otherwise Firefox triggers a click when a keydown event handler shifts focus
         // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
 
-        this.bind(elements.buttons.angleSelector, 'keyup', function (event) {
-          var code = event.which; // We only care about space and return
+        this.bind(elements.buttons.angleSelector, 'keyup', event => {
+          const code = event.which; // We only care about space and return
 
           if (![13, 32].includes(code)) {
             return;
@@ -5689,7 +4969,6 @@ typeof navigator === "object" && (function (global, factory) {
 
           if (code === 13) {
             controls.focusFirstMenuItem.call(player, null, true);
-
             return;
           } // Prevent scroll
 
@@ -5697,8 +4976,8 @@ typeof navigator === "object" && (function (global, factory) {
           event.preventDefault(); // Prevent playing video (Firefox)
 
           event.stopPropagation();
-          var menuItem = _this4.player.elements.menu.angleSelector;
-          var button = _this4.player.elements.buttons.angleSelector; // Toggle menu
+          const menuItem = this.player.elements.menu.angleSelector;
+          const button = this.player.elements.buttons.angleSelector; // Toggle menu
 
           controls.toggleMenu.call(player, event, menuItem, button);
         }, null, false // Can't be passive as we're preventing default
@@ -5952,7 +5231,7 @@ typeof navigator === "object" && (function (global, factory) {
         } // Which keycodes should we prevent default
 
 
-        const preventDefault = [32, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 56, 57, 67, 70, 73, 75, 76, 77, 79]; // If the code is found prevent default (e.g. prevent scrolling for arrows)
+        const preventDefault = [32, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 56, 57, 67, 70, 73, 75, 76, 77, 79, 187, 189]; // If the code is found prevent default (e.g. prevent scrolling for arrows)
 
         if (preventDefault.includes(code)) {
           event.preventDefault();
@@ -5969,6 +5248,16 @@ typeof navigator === "object" && (function (global, factory) {
             case 37:
               // Arrow Back
               player.frameRewind();
+              break;
+            // Plus key
+
+            case 187:
+              player.editor.setZoomByEvent(event);
+              break;
+            // Minus key
+
+            case 189:
+              player.editor.setZoomByEvent(event);
               break;
           }
 
@@ -6081,7 +5370,14 @@ typeof navigator === "object" && (function (global, factory) {
 
 
     toggleMenu(event) {
-      controls.toggleMenu.call(this.player, event);
+      const {
+        menu
+      } = this.player.elements;
+      const {
+        buttons
+      } = this.player.elements;
+      controls.toggleMenu.call(this.player, event, menu.settings, buttons.settings);
+      controls.toggleMenu.call(this.player, event, menu.angleSelector, buttons.angleSelector);
     } // Device is touch enabled
 
 
@@ -6140,23 +5436,23 @@ typeof navigator === "object" && (function (global, factory) {
 
       this.bind(editor.elements.container.controls.zoomContainer.zoom, inputEvent, event => {
         if (editor.active) {
-          editor.setZoom(event);
+          editor.setZoomByEvent(event);
         }
       }); // Zoom Out Control
 
       this.bind(editor.elements.container.controls.zoomContainer.zoomOut, 'click', event => {
-        editor.setZoom(event);
+        editor.setZoomByEvent(event);
       }); // Zoom Out Control
 
       this.bind(editor.elements.container.controls.zoomContainer.zoomIn, 'click', event => {
-        editor.setZoom(event);
+        editor.setZoomByEvent(event);
       }); // Zoom timeline
 
       this.bind(editor.elements.container, 'wheel', event => {
         event.preventDefault();
 
-        if (editor.active) {
-          editor.setZoom(event);
+        if (editor.active && this.player.config.editor.scrollToZoom) {
+          editor.setZoomByEvent(event);
         }
       }, 'editor', false);
       this.bind(timeline.seekHandle, 'mousedown mouseup keydown keyup touchstart touchend', event => {
@@ -7965,43 +7261,8 @@ typeof navigator === "object" && (function (global, factory) {
         return false;
       }
 
-<<<<<<< HEAD
       return this.shown && is.element(this.player.elements.container);
     }
-=======
-        toggleHidden(this.elements.container, false);
-      }
-    }, {
-      key: "hideEditor",
-      value: function hideEditor() {
-        toggleHidden(this.elements.container, true);
-      }
-    }, {
-      key: "createEditor",
-      value: function () {
-        var _createEditor = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-          var container;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  container = this.player.elements.container;
-                  this.createContainer(container);
-                  this.createControls();
-                  this.createTimeline();
-                  this.createTimeStamps();
-                  this.createVideoTimeline();
-                  this.createSeekHandle();
-                  this.player.listeners.editor();
-
-                case 8:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     get previewThumbnailsReady() {
       const {
@@ -8065,7 +7326,6 @@ typeof navigator === "object" && (function (global, factory) {
       this.createVideoTimeline();
       this.createSeekHandle();
       this.player.listeners.editor();
-      triggerEvent.call(this.player, this.player.media, 'editorloaded');
     }
 
     createContainer(container) {
@@ -8090,7 +7350,6 @@ typeof navigator === "object" && (function (global, factory) {
     } // Create and append to video Container
 
 
-<<<<<<< HEAD
     createNewContainer(container) {
       this.elements.container = createElement('div', {
         class: this.player.config.classNames.editor.container
@@ -8098,52 +7357,6 @@ typeof navigator === "object" && (function (global, factory) {
       insertAfter(this.elements.container, container);
     } // Append editor to specified Container
 
-=======
-        container.controls.zoomContainer = createElement('div', {
-          class: "plyr__controls__item ".concat(this.player.config.classNames.editor.zoomContainer)
-        });
-        container.controls.appendChild(container.controls.zoomContainer); // Create minus icon
-
-        container.controls.zoomContainer.zoomOut = controls.createButton.call(this.player, 'zoom-out', 'plyr__controls__item');
-        container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomOut); // Create zoom slider
-
-        container.controls.zoomContainer.zoom = controls.createRange.call(this.player, 'zoom', {
-          id: "plyr__editor__zoom",
-          step: 0.1,
-          min: 1,
-          max: maxZoom,
-          value: 1,
-          'aria-valuemin': 1,
-          'aria-valuemax': maxZoom,
-          'aria-valuenow': 1
-        });
-        container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoom); // Create plus icon
-
-        container.controls.zoomContainer.zoomIn = controls.createButton.call(this.player, 'zoom-in', 'plyr__controls__item');
-        container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomIn);
-      }
-    }, {
-      key: "createTimeline",
-      value: function createTimeline() {
-        var container = this.elements.container;
-        this.elements.container.timeline = createElement('div', {
-          class: this.player.config.classNames.editor.timeline
-        });
-        container.appendChild(this.elements.container.timeline);
-        this.elements.container.timeline.style.width = '100%';
-        this.elements.container.timeline.style.left = '0%';
-      }
-    }, {
-      key: "createTimeStamps",
-      value: function createTimeStamps() {
-        var step = this.player.duration / this.numOfTimestamps;
-        var timeline = this.elements.container.timeline;
-        var timeStamps = [];
-        timeline.timestampsContainer = createElement('div', {
-          class: this.player.config.classNames.editor.timeStampsContainer
-        });
-        timeline.appendChild(timeline.timestampsContainer);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     appendTargetContainer() {
       const {
@@ -8199,7 +7412,7 @@ typeof navigator === "object" && (function (global, factory) {
       });
       container.controls.appendChild(container.controls.zoomContainer); // Create minus icon
 
-      container.controls.zoomContainer.zoomOut = controls.createButton.call(this.player, 'zoomOut', 'plyr__controls__item');
+      container.controls.zoomContainer.zoomOut = controls.createButton.call(this.player, 'zoom-out', 'plyr__controls__item');
       container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomOut); // Create zoom slider
 
       container.controls.zoomContainer.zoom = controls.createRange.call(this.player, 'zoom', {
@@ -8214,7 +7427,7 @@ typeof navigator === "object" && (function (global, factory) {
       });
       container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoom); // Create plus icon
 
-      container.controls.zoomContainer.zoomIn = controls.createButton.call(this.player, 'zoomIn', 'plyr__controls__item');
+      container.controls.zoomContainer.zoomIn = controls.createButton.call(this.player, 'zoom-in', 'plyr__controls__item');
       container.controls.zoomContainer.appendChild(container.controls.zoomContainer.zoomIn);
     }
 
@@ -8252,18 +7465,8 @@ typeof navigator === "object" && (function (global, factory) {
       } // Add list of timestamps to elements object
 
 
-<<<<<<< HEAD
       timeline.timestampsContainer.timeStamps = timeStamps;
     }
-=======
-            videoContainer.appendChild(previewThumb);
-            videoContainer.previewThumbs.push(previewThumb);
-          } else {
-            // Retrieve the existing container
-            previewThumb = videoContainer.previewThumbs[i];
-          } // If preview thumbnails is enabled append an image to the previewThumb
-          // Use an image margin to handle seeking and loading of images
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     updateTimestamps() {
       const {
@@ -8273,16 +7476,9 @@ typeof navigator === "object" && (function (global, factory) {
         duration
       } = this.player;
 
-<<<<<<< HEAD
       if (this.player.duration === 0 || this.duration === duration || !is.element(timeline.timestampsContainer)) {
         return;
       } // Store the current player duration, to avoid setting the editor timestamps if the video length has not changed
-=======
-          if (this.previewThumbnailsReady && time >= this.visibleWindow.start - this.visibleWindow.start * this.imageBuffer && time <= this.visibleWindow.end + this.visibleWindow.end * this.imageBuffer) {
-            // Append the image to the container
-            previewThumbnails.showImageAtCurrentTime(time, previewThumb);
-          }
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
 
       this.duration = duration;
@@ -8298,7 +7494,6 @@ typeof navigator === "object" && (function (global, factory) {
         timeline
       } = this.elements.container; // Create video timeline wrapper
 
-<<<<<<< HEAD
       timeline.videoContainerParent = createElement('div', {
         class: this.player.config.classNames.editor.videoContainerParent
       });
@@ -8318,44 +7513,6 @@ typeof navigator === "object" && (function (global, factory) {
       const {
         timeline
       } = this.elements.container; // Total number of images needed to fill the timeline width
-=======
-        videoContainer.style.width = "".concat(imageCount * this.videoContainerWidth, "px");
-      }
-    }, {
-      key: "createSeekHandle",
-      value: function createSeekHandle() {
-        var timeline = this.elements.container.timeline;
-        var duration = controls.formatTime.call(this.player, this.player.duration); // Create seek Container
-
-        timeline.seekHandle = createElement('div', {
-          class: this.player.config.classNames.editor.seekHandle,
-          role: 'slider',
-          'aria-valuemin': 0,
-          'aria-valuemax': duration,
-          'aria-label': i18n.get('seek', this.player.config)
-        }); // Create seek head
-
-        timeline.seekHandle.head = createElement('div', {
-          class: this.player.config.classNames.editor.seekHandleHead
-        }); // Create seek line
-
-        timeline.seekHandle.line = createElement('div', {
-          class: this.player.config.classNames.editor.seekHandleLine
-        });
-        timeline.appendChild(timeline.seekHandle);
-        timeline.seekHandle.appendChild(timeline.seekHandle.head);
-        timeline.seekHandle.appendChild(timeline.seekHandle.line);
-        this.setSeekPosition();
-      }
-    }, {
-      key: "setZoomByEvent",
-      value: function setZoomByEvent(event) {
-        var maxZoom = this.config.maxZoom;
-
-        if (!(event.type === 'wheel' || event.type === 'input' || event.type === 'click' || event.type === 'keydown')) {
-          return;
-        } // Calculate zoom Delta for mousewheel
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       const clientRect = timeline.getBoundingClientRect();
       const {
@@ -8368,90 +7525,20 @@ typeof navigator === "object" && (function (global, factory) {
         videoContainer.previewThumbs = [];
       } // Enable editor mode in preview thumbnails
 
-<<<<<<< HEAD
 
       if (this.previewThumbnailsReady) {
         previewThumbnails.editor = true;
       } // Append images to video timeline
 
-=======
-          if (this.zoom.scale === maxZoom && delta < 0 || this.zoom.scale === 1 && delta > 0) {
-            return;
-          } // Calculate zoom level based on zoom slider
-
-        } else if (event.type === 'input') {
-          var value = event.target.value;
-          this.zoom.scale = value;
-        } else if (event.type === 'click' || event.type === 'keydown') {
-          if (event.target === this.elements.container.controls.zoomContainer.zoomIn || event.keyCode === 187) {
-            this.zoom.scale += 1;
-          } else {
-            this.zoom.scale -= 1;
-          }
-        }
-
-        this.setZoom();
-      }
-    }, {
-      key: "setZoom",
-      value: function setZoom() {
-        var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.zoom.scale;
-        var centerTimeline = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        if (!this.active) return;
-        var maxZoom = this.config.maxZoom;
-        var container = this.elements.container;
-        var timeline = this.elements.container.timeline;
-        var containerRect = container.getBoundingClientRect();
-        var clientRect = timeline.getBoundingClientRect();
-        var xPos = timeline.seekHandle.getBoundingClientRect().left;
-        var percentage = 100 / clientRect.width * (xPos - clientRect.left); // Limit zoom to be between 1 and max times zoom
-
-        this.zoom.scale = clamp(scale, 1, maxZoom); // Apply zoom scale
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       for (let i = 0; i < imageCount; i += 1) {
         let previewThumb;
 
-<<<<<<< HEAD
         if (is.nullOrUndefined(videoContainer.previewThumbs[i])) {
           // Create new image wrapper
           previewThumb = createElement('span', {
             class: this.player.config.classNames.editor.previewThumb
           }); // Append new image wrapper to the timeline
-=======
-        if (centerTimeline) {
-          var updatedClientRect = timeline.getBoundingClientRect();
-          var updatedXPos = timeline.seekHandle.getBoundingClientRect().left;
-          var timelinePos = 100 / updatedClientRect.width * (updatedXPos - updatedClientRect.left) * this.zoom.scale;
-          var centerOffset = containerRect.width / updatedClientRect.width * 100 * this.zoom.scale / 2;
-          timeline.style.left = "".concat(clamp(-(timelinePos - centerOffset), (this.zoom.scale * 100 - 100) * -1, 0), "%");
-        } else {
-          timeline.style.left = "".concat(-(this.zoom.scale * 100 - 100) * percentage / 100, "%");
-        } // Update slider
-
-
-        if (is$1.element(this.elements.container.controls.zoomContainer)) {
-          controls.setRange.call(this.player, this.elements.container.controls.zoomContainer.zoom, this.zoom.scale);
-        } // Update timeline images
-
-
-        this.setVideoTimelimeContent();
-      }
-    }, {
-      key: "setZoomWindow",
-      value: function setZoomWindow(lowerBound, upperBound) {
-        if (!this.active || !lowerBound || !upperBound) return;
-        var maxZoom = this.config.maxZoom;
-        var timeline = this.elements.container.timeline;
-        var scale = this.player.duration / (upperBound - lowerBound); // Limit zoom to be between 1 and max times zoom
-
-        this.zoom.scale = clamp(scale, 1, maxZoom); // Apply zoom scale
-
-        timeline.style.width = "".concat(this.zoom.scale * 100, "%"); // Position the element based on the lower and upper bound values
-
-        var percentage = lowerBound / this.player.duration * (this.zoom.scale * 100);
-        timeline.style.left = "".concat(clamp(-percentage, (this.zoom.scale * 100 - 100) * -1, 0), "%"); // Update slider
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
           videoContainer.appendChild(previewThumb);
           videoContainer.previewThumbs.push(previewThumb);
@@ -8459,9 +7546,10 @@ typeof navigator === "object" && (function (global, factory) {
           // Retrieve the existing container
           previewThumb = videoContainer.previewThumbs[i];
         } // If preview thumbnails is enabled append an image to the previewThumb
+        // Use an image margin to handle seeking and loading of images
 
 
-        if (this.previewThumbnailsReady && time >= this.visibleWindow.start && time <= this.visibleWindow.end) {
+        if (this.previewThumbnailsReady && time >= this.visibleWindow.start - this.visibleWindow.start * this.imageBuffer && time <= this.visibleWindow.end + this.visibleWindow.end * this.imageBuffer) {
           // Append the image to the container
           previewThumbnails.showImageAtCurrentTime(time, previewThumb);
         }
@@ -8505,19 +7593,12 @@ typeof navigator === "object" && (function (global, factory) {
       this.setSeekPosition();
     }
 
-    setZoom(event) {
-      const {
-        timeline
-      } = this.elements.container;
+    setZoomByEvent(event) {
       const {
         maxZoom
-      } = this.config; // Zoom on seek handle position
+      } = this.config;
 
-      const clientRect = timeline.getBoundingClientRect();
-      const xPos = timeline.seekHandle.getBoundingClientRect().left;
-      const percentage = 100 / clientRect.width * (xPos - clientRect.left);
-
-      if (!(event.type === 'wheel' || event.type === 'input' || event.type === 'click')) {
+      if (!(event.type === 'wheel' || event.type === 'input' || event.type === 'click' || event.type === 'keydown')) {
         return;
       } // Calculate zoom Delta for mousewheel
 
@@ -8535,20 +7616,72 @@ typeof navigator === "object" && (function (global, factory) {
           value
         } = event.target;
         this.zoom.scale = value;
-      } else if (event.type === 'click') {
-        if (event.target === this.elements.container.controls.zoomContainer.zoomIn) {
+      } else if (event.type === 'click' || event.type === 'keydown') {
+        if (event.target === this.elements.container.controls.zoomContainer.zoomIn || event.keyCode === 187) {
           this.zoom.scale += 1;
         } else {
           this.zoom.scale -= 1;
         }
-      } // Limit zoom to be between 1 and max times zoom
+      }
 
+      this.setZoom();
+    }
 
-      this.zoom.scale = clamp(this.zoom.scale, 1, maxZoom); // Apply zoom scale
+    setZoom(scale = this.zoom.scale, centerTimeline = false) {
+      if (!this.active) return;
+      const {
+        maxZoom
+      } = this.config;
+      const {
+        container
+      } = this.elements;
+      const {
+        timeline
+      } = this.elements.container;
+      const containerRect = container.getBoundingClientRect();
+      const clientRect = timeline.getBoundingClientRect();
+      const xPos = timeline.seekHandle.getBoundingClientRect().left;
+      const percentage = 100 / clientRect.width * (xPos - clientRect.left); // Limit zoom to be between 1 and max times zoom
+
+      this.zoom.scale = clamp(scale, 1, maxZoom); // Apply zoom scale
 
       timeline.style.width = `${this.zoom.scale * 100}%`; // Position the element based on the mouse position
 
-      timeline.style.left = `${-(this.zoom.scale * 100 - 100) * percentage / 100}%`; // Update slider
+      if (centerTimeline) {
+        const updatedClientRect = timeline.getBoundingClientRect();
+        const updatedXPos = timeline.seekHandle.getBoundingClientRect().left;
+        const timelinePos = 100 / updatedClientRect.width * (updatedXPos - updatedClientRect.left) * this.zoom.scale;
+        const centerOffset = containerRect.width / updatedClientRect.width * 100 * this.zoom.scale / 2;
+        timeline.style.left = `${clamp(-(timelinePos - centerOffset), (this.zoom.scale * 100 - 100) * -1, 0)}%`;
+      } else {
+        timeline.style.left = `${-(this.zoom.scale * 100 - 100) * percentage / 100}%`;
+      } // Update slider
+
+
+      if (is.element(this.elements.container.controls.zoomContainer)) {
+        controls.setRange.call(this.player, this.elements.container.controls.zoomContainer.zoom, this.zoom.scale);
+      } // Update timeline images
+
+
+      this.setVideoTimelimeContent();
+    }
+
+    setZoomWindow(lowerBound, upperBound) {
+      if (!this.active || !lowerBound || !upperBound) return;
+      const {
+        maxZoom
+      } = this.config;
+      const {
+        timeline
+      } = this.elements.container;
+      const scale = this.player.duration / (upperBound - lowerBound); // Limit zoom to be between 1 and max times zoom
+
+      this.zoom.scale = clamp(scale, 1, maxZoom); // Apply zoom scale
+
+      timeline.style.width = `${this.zoom.scale * 100}%`; // Position the element based on the lower and upper bound values
+
+      const percentage = lowerBound / this.player.duration * (this.zoom.scale * 100);
+      timeline.style.left = `${clamp(-percentage, (this.zoom.scale * 100 - 100) * -1, 0)}%`; // Update slider
 
       if (is.element(this.elements.container.controls.zoomContainer)) {
         controls.setRange.call(this.player, this.elements.container.controls.zoomContainer.zoom, this.zoom.scale);
@@ -8654,13 +7787,6 @@ typeof navigator === "object" && (function (global, factory) {
       }
     } // If the seek handle is near the end of the visible timeline window, shift the timeline
 
-<<<<<<< HEAD
-=======
-        // If the duration changes after loading the editor, the corresponding timestamps need to be updated
-        // If the duration of the video or previewthumbnails has loaded, update
-        this.player.on('loadeddata loadedmetadata', function () {
-          if (_this3.player.media.duration > 0) _this3.loaded = true;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     setTimelineOffset() {
       const {
@@ -8677,23 +7803,9 @@ typeof navigator === "object" && (function (global, factory) {
         scrollSpeed
       } = this.timeline; // Retrieve the container positions for the container, timeline and seek handle
 
-<<<<<<< HEAD
       const clientRect = container.getBoundingClientRect();
       const timelineRect = container.timeline.getBoundingClientRect();
       const seekPos = container.timeline.seekHandle.getBoundingClientRect(); // Current position in the editor container
-=======
-            _this3.setVideoTimelimeContent();
-
-            triggerEvent.call(_this3.player, _this3.player.media, 'editorloaded');
-          }
-        });
-        this.player.on('previewthumbnailsloaded', function () {
-          if (_this3.loaded && _this3.shown) {
-            _this3.setVideoTimelimeContent();
-          }
-        });
-      } // On toggle of the editor, trigger event
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       const zoom = parseFloat(container.timeline.style.width);
       let offset = parseFloat(container.timeline.style.left);
@@ -8710,47 +7822,12 @@ typeof navigator === "object" && (function (global, factory) {
         } else {
           offset = Math.max(offset - (percentage - upperBound), (zoom - 100) * -1);
         }
-<<<<<<< HEAD
       } else if (percentage < lowerSeek) {
         // If the seek handle is visibe move by scroll percentage else move into view
         if (percentage >= 0) {
           offset = Math.min(offset - (lowerSeek - percentage) / scrollSpeed * -1, 0);
         } else {
           offset = Math.min(offset - (lowerSeek - percentage) * -1, 0);
-=======
-      } // Load config after changing of source
-
-    }, {
-      key: "loadConfig",
-      value: function loadConfig(config, duration) {
-        var _this4 = this;
-
-        if (!config) return;
-
-        if (config.editor.shown) {
-          this.enter();
-        }
-
-        if (config.editor.zoom.scale > 1) {
-          this.player.on('editorloaded', function () {
-            _this4.setZoom(config.editor.zoom.scale / duration * _this4.player.duration, true);
-          });
-        }
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        // Remove the elements with listeners on
-        if (this.loaded) {
-          if (is$1.element(this.elements.original)) {
-            replaceElement(this.elements.original, this.elements.container);
-          } // Remove reference to buttons
-
-
-          this.player.elements.buttons.zoomOut = null;
-          this.player.elements.buttons.zoomIn = null;
-          this.loaded = false;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         }
       }
 
@@ -8782,12 +7859,13 @@ typeof navigator === "object" && (function (global, factory) {
       // If the duration changes after loading the editor, the corresponding timestamps need to be updated
       // If the duration of the video or previewthumbnails has loaded, update
       this.player.on('loadeddata loadedmetadata', () => {
-        if (this.player.media.duration) this.loaded = true;
+        if (this.player.media.duration > 0) this.loaded = true;
 
         if (this.loaded && this.shown) {
           this.showEditor();
           this.updateTimestamps();
           this.setVideoTimelimeContent();
+          triggerEvent.call(this.player, this.player.media, 'editorloaded');
         }
       });
       this.player.on('previewthumbnailsloaded', () => {
@@ -8814,12 +7892,33 @@ typeof navigator === "object" && (function (global, factory) {
       } else {
         this.player.debug.log('Trimming is not supported');
       }
+    } // Load config after changing of source
+
+
+    loadConfig(config, duration) {
+      if (!config) return;
+
+      if (config.editor.shown) {
+        this.enter();
+      }
+
+      if (config.editor.zoom.scale > 1) {
+        this.player.on('editorloaded', () => {
+          this.setZoom(config.editor.zoom.scale / duration * this.player.duration, true);
+        });
+      }
     }
 
     destroy() {
       // Remove the elements with listeners on
-      if (this.elements.container && !is.empty(this.elements.container)) {
-        replaceElement(this.elements.original, this.elements.container);
+      if (this.loaded) {
+        if (is.element(this.elements.original)) {
+          replaceElement(this.elements.original, this.elements.container);
+        } // Remove reference to buttons
+
+
+        this.player.elements.buttons.zoomOut = null;
+        this.player.elements.buttons.zoomIn = null;
         this.loaded = false;
       }
     } // Enter Editor
@@ -8988,35 +8087,15 @@ typeof navigator === "object" && (function (global, factory) {
       this.elements.markers.forEach(marker => {
         if (marker.id === id) {
           marker.remove();
-<<<<<<< HEAD
         }
       });
     }
-=======
-        });
-        this.elements.markers = [];
-      }
-    }, {
-      key: "addMarkerListeners",
-      value: function addMarkerListeners(marker) {
-        var _this = this;
-
-        // Listen for marker selection
-        this.player.listeners.bind(marker, 'mousedown touchstart', function (event) {
-          _this.setEditing(event);
-        }); // Listen for marker deselection
-
-        this.player.listeners.bind(document.body, 'mouseup touchend', function (event) {
-          if (!is$1.nullOrUndefined(_this.editing)) {
-            _this.setEditing(event);
-          }
-        }); // Move marker if selected
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     removeMarkers() {
       this.elements.markers.forEach(marker => {
         marker.remove();
       });
+      this.elements.markers = [];
     }
 
     addMarkerListeners(marker) {
@@ -9051,26 +8130,7 @@ typeof navigator === "object" && (function (global, factory) {
       if (type === 'mouseup' || type === 'touchend') {
         const value = marker.getAttribute('aria-valuenow'); // For media fragments the start time can be different from the media's start time
 
-<<<<<<< HEAD
         const mediaValue = mediaFragment.getMediaTime(parseFloat(value));
-=======
-        this.setMarkerPosition(marker, percentage, false);
-      }
-    }, {
-      key: "setMarkerPosition",
-      value: function setMarkerPosition(marker, percentage, triggerChange) {
-        var _this$player = this.player,
-            mediaFragment = _this$player.mediaFragment,
-            duration = _this$player.duration;
-        var clampedPercentage = clamp(parseFloat(percentage), this.lowerBound, this.upperBound);
-        var time = duration * (clampedPercentage / 100);
-        var mediaCurrentTime = mediaFragment.getMediaTime(time); // eslint-disable-next-line no-param-reassign
-
-        marker.style.left = "".concat(clampedPercentage, "%");
-        marker.setAttribute('aria-valuenow', time);
-        marker.setAttribute('aria-valuetext', controls.formatTime.call(this.player, time));
-        if (!triggerChange) return;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         triggerEvent.call(this.player, this.player.media, 'markerchange', false, {
           id: marker.id,
           time: mediaValue
@@ -9096,14 +8156,7 @@ typeof navigator === "object" && (function (global, factory) {
 
       const percentage = clamp(100 / clientRect.width * (xPos - clientRect.left), this.lowerBound, this.upperBound); // Selected marker element
 
-<<<<<<< HEAD
       const marker = this.editing; // Update the position of the marker
-=======
-          if (_this2.preLoadedMarkers.length) {
-            _this2.preLoadedMarkers.forEach(function (marker) {
-              _this2.addMarker(marker.id, marker.name, marker.time);
-            });
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       this.setMarkerPosition(marker, percentage, false);
     }
@@ -9119,7 +8172,7 @@ typeof navigator === "object" && (function (global, factory) {
 
       marker.style.left = `${clampedPercentage}%`;
       marker.setAttribute('aria-valuenow', time);
-      marker.setAttribute('aria-valuetext', controls.formatTime(this.player, time));
+      marker.setAttribute('aria-valuetext', controls.formatTime.call(this.player, time));
       if (!triggerChange) return;
       triggerEvent.call(this.player, this.player.media, 'markerchange', false, {
         id: marker.id,
@@ -9127,7 +8180,6 @@ typeof navigator === "object" && (function (global, factory) {
       });
     }
 
-<<<<<<< HEAD
     listeners() {
       this.player.on('loadeddata loadedmetadata editorloaded', () => {
         const {
@@ -9137,61 +8189,14 @@ typeof navigator === "object" && (function (global, factory) {
 
         if (!duration || editor.active && !is.element(editor.elements.container.timeline)) {
           return;
-=======
-          _this2.elements.markers.forEach(function (marker) {
-            return _this2.setMarkerPosition(marker, marker.style.left, true);
-          });
-        });
-      }
-    }, {
-      key: "toggleMarkers",
-      value: function toggleMarkers() {
-        var show = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-        this.elements.markers.forEach(function (marker) {
-          toggleHidden(marker, show);
-        });
-      } // Load config after changing of source (only do this for sources which have sync points)
-
-    }, {
-      key: "loadConfig",
-      value: function loadConfig(config) {
-        var _this3 = this;
-
-        if (!config) return;
-        if (!(this.player.config.syncPoints && this.player.config.syncPoints.length) || !(config.config.syncPoints && config.config.syncPoints.length)) return;
-        if (!config.markers.elements.markers) return;
-        this.player.once('editorloaded', function () {
-          config.markers.elements.markers.forEach(function (marker) {
-            if (!marker.getAttribute('aria-valuetext')) return;
-
-            _this3.addMarker(marker.id, marker.innerText, matchToVideoTime(marker.getAttribute('aria-valuetext'), _this3.player.config.syncPoints) - _this3.player.mediaFragment.startTime);
-          });
-        });
-      } // Update UI
-
-    }, {
-      key: "update",
-      value: function update() {
-        if (this.enabled) {
-          this.player.debug.log("Video Markers enabled");
-        } else {
-          this.player.debug.log('Video markers is not supported');
-        }
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        // Remove the elements with listeners on
-        if (this.elements.markers && !is$1.empty(this.elements.markers)) {
-          // This should be cleaned up the by the editor
-          this.elements.markers = [];
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         }
 
         this.loaded = true;
 
         if (this.preLoadedMarkers.length) {
-          this.preLoadedMarkers.forEach(marker => this.addMarker(marker.id, marker.name, marker.time));
+          this.preLoadedMarkers.forEach(marker => {
+            this.addMarker(marker.id, marker.name, marker.time);
+          });
           this.preLoadedMarkers = [];
         }
       });
@@ -9209,6 +8214,19 @@ typeof navigator === "object" && (function (global, factory) {
       this.elements.markers.forEach(marker => {
         toggleHidden(marker, show);
       });
+    } // Load config after changing of source (only do this for sources which have sync points)
+
+
+    loadConfig(config) {
+      if (!config) return;
+      if (!(this.player.config.syncPoints && this.player.config.syncPoints.length) || !(config.config.syncPoints && config.config.syncPoints.length)) return;
+      if (!config.markers.elements.markers) return;
+      this.player.once('editorloaded', () => {
+        config.markers.elements.markers.forEach(marker => {
+          if (!marker.getAttribute('aria-valuetext')) return;
+          this.addMarker(marker.id, marker.innerText, matchToVideoTime(marker.getAttribute('aria-valuetext'), this.player.config.syncPoints) - this.player.mediaFragment.startTime);
+        });
+      });
     } // Update UI
 
 
@@ -9224,7 +8242,7 @@ typeof navigator === "object" && (function (global, factory) {
       // Remove the elements with listeners on
       if (this.elements.markers && !is.empty(this.elements.markers)) {
         // This should be cleaned up the by the editor
-        this.elements.markers = {};
+        this.elements.markers = [];
       }
     }
 
@@ -9296,15 +8314,6 @@ typeof navigator === "object" && (function (global, factory) {
       return lowerBound > 0 ? lowerBound / this.player.duration * 100 : 0;
     } // Calculate the upper Limit of the trim region
 
-<<<<<<< HEAD
-=======
-        if (this.config.zoom && this.config.zoom.enabled) {
-          this.setTimelineZoom();
-        }
-
-        toggleHidden(this.elements.container, false);
-      } // Hide the trim toolbar from the timeline
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     get upperBound() {
       const {
@@ -9368,44 +8377,22 @@ typeof navigator === "object" && (function (global, factory) {
       if (this.player.editor && !this.player.editor.active) {
         this.player.editor.enter();
       }
-<<<<<<< HEAD
-=======
-    }, {
-      key: "createThumbTime",
-      value: function createThumbTime() {
-        var _this$elements$contai2 = this.elements.container.bar,
-            leftThumb = _this$elements$contai2.leftThumb,
-            rightThumb = _this$elements$contai2.rightThumb;
-        var alwaysShowTimestamps = this.config.alwaysShowTimestamps;
-        var classNames = this.player.config.classNames; // Create HTML element, parent+span: time text (e.g., 01:32:00)
-
-        leftThumb.timeContainer = createElement('div', {
-          class: classNames.trim.timeContainer
-        });
-        rightThumb.timeContainer = createElement('div', {
-          class: classNames.trim.timeContainer
-        }); // Append the time element to the container
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       if (is.empty(this.elements.container.bar)) {
         this.createTrimTool();
+      }
+
+      if (this.config.zoom && this.config.zoom.enabled) {
+        this.setTimelineZoom();
       }
 
       toggleHidden(this.elements.container, false);
     } // Hide the trim toolbar from the timeline
 
 
-<<<<<<< HEAD
     hideTrimTool() {
       if (this.config.closeEditor) {
         this.player.editor.exit();
-=======
-        leftThumb.appendChild(leftThumb.timeContainer);
-        rightThumb.appendChild(rightThumb.timeContainer); // Toggle whether to always show time stamps or just on hover
-
-        toggleClass(leftThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
-        toggleClass(rightThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
       }
 
       toggleHidden(this.elements.container, true);
@@ -9554,13 +8541,19 @@ typeof navigator === "object" && (function (global, factory) {
       const {
         leftThumb,
         rightThumb
-      } = this.elements.container.bar; // Create HTML element, parent+span: time text (e.g., 01:32:00)
+      } = this.elements.container.bar;
+      const {
+        alwaysShowTimestamps
+      } = this.config;
+      const {
+        classNames
+      } = this.player.config; // Create HTML element, parent+span: time text (e.g., 01:32:00)
 
       leftThumb.timeContainer = createElement('div', {
-        class: this.player.config.classNames.trim.timeContainer
+        class: classNames.trim.timeContainer
       });
       rightThumb.timeContainer = createElement('div', {
-        class: this.player.config.classNames.trim.timeContainer
+        class: classNames.trim.timeContainer
       }); // Append the time element to the container
 
       leftThumb.timeContainer.time = createElement('span', {}, controls.formatTime.call(this.player, this.startTime));
@@ -9569,7 +8562,10 @@ typeof navigator === "object" && (function (global, factory) {
       rightThumb.timeContainer.appendChild(rightThumb.timeContainer.time); // Append the time container to the bar
 
       leftThumb.appendChild(leftThumb.timeContainer);
-      rightThumb.appendChild(rightThumb.timeContainer);
+      rightThumb.appendChild(rightThumb.timeContainer); // Toggle whether to always show time stamps or just on hover
+
+      toggleClass(leftThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
+      toggleClass(rightThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
     }
 
     setEditing(event) {
@@ -9649,17 +8645,11 @@ typeof navigator === "object" && (function (global, factory) {
       triggerEvent.call(this.player, this.player.media, 'trimchanging', false, this.trimTime);
     }
 
-<<<<<<< HEAD
     setTrimStart(time = this.player.currentTime) {
       const percentage = clamp(100 / this.player.duration * parseFloat(time), this.lowerBound, this.upperBound);
       this.setLeftThumbPosition(percentage);
       triggerEvent.call(this.player, this.player.media, 'trimchange', false, this.trimTime);
     }
-=======
-        bar.style.left = "".concat(percentage, "%");
-        if (maxTrimLength) this.setEndTime(percentage + parseFloat(width));
-        this.setStartTime(percentage); // Prevent the end time being before the start time
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     setTrimEnd(time = this.player.currentTime) {
       const percentage = clamp(100 / this.player.duration * parseFloat(time), this.lowerBound, this.upperBound);
@@ -9683,7 +8673,7 @@ typeof navigator === "object" && (function (global, factory) {
       if (!maxTrimLength) bar.style.width = `${rightThumbRelativePos}%`; // Store and convert the start percentage to time
 
       bar.style.left = `${percentage}%`;
-      if (maxTrimLength) this.setEndTime(rightThumbPos);
+      if (maxTrimLength) this.setEndTime(percentage + parseFloat(width));
       this.setStartTime(percentage); // Prevent the end time being before the start time
 
       if (this.startTime > this.endTime) this.setEndTime(percentage); // Set the timestamp of the current trim handle position
@@ -9735,24 +8725,10 @@ typeof navigator === "object" && (function (global, factory) {
       bar.rightThumb.timeContainer.time.innerText = controls.formatTime.call(this.player, this.endTime);
     }
 
-<<<<<<< HEAD
     setThumbAriaData() {
       const {
         bar
       } = this.elements.container; // Update the aria-value and text
-=======
-        var className = this.player.config.classNames.trim.timeContainerShown;
-        element.timeContainer.classList.toggle(className, toggle);
-      }
-    }, {
-      key: "setTimelineZoom",
-      value: function setTimelineZoom() {
-        var _this$config$zoom = this.config.zoom,
-            preRoll = _this$config$zoom.preRoll,
-            postRoll = _this$config$zoom.postRoll;
-        this.player.editor.setZoomWindow(this.startTime - preRoll, this.endTime + postRoll);
-      } // Set the seektime to the start of the trim timeline, if the seektime is outside of the region.
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       bar.leftThumb.setAttribute('aria-valuenow', this.startTime);
       bar.leftThumb.setAttribute('aria-valuetext', controls.formatTime.call(this.player, this.startTime));
@@ -9767,6 +8743,14 @@ typeof navigator === "object" && (function (global, factory) {
 
       const className = this.player.config.classNames.trim.timeContainerShown;
       element.timeContainer.classList.toggle(className, toggle);
+    }
+
+    setTimelineZoom() {
+      const {
+        preRoll,
+        postRoll
+      } = this.config.zoom;
+      this.player.editor.setZoomWindow(this.startTime - preRoll, this.endTime + postRoll);
     } // Set the seektime to the start of the trim timeline, if the seektime is outside of the region.
 
 
@@ -9813,50 +8797,9 @@ typeof navigator === "object" && (function (global, factory) {
 
       const button = this.player.elements.buttons.trim;
 
-<<<<<<< HEAD
       if (is.element(button)) {
         button.pressed = this.active;
       } // Trigger an event
-=======
-        toggleClass(this.player.elements.container, this.player.config.classNames.trim.enabled, this.enabled);
-      } // Load config after changing of source (only do this for sources which have sync points)
-
-    }, {
-      key: "loadConfig",
-      value: function loadConfig(config) {
-        var _this4 = this;
-
-        if (!config) return;
-        if (!(this.player.config.syncPoints && this.player.config.syncPoints.length) || !(config.config.syncPoints && config.config.syncPoints.length)) return;
-        if (!config.trim.trimming) return;
-        this.enter();
-
-        if (config.config.trim.lowerBound > 0) {
-          var previousLowerBound = videoToMatchTime(config.config.trim.lowerBound, config.config.syncPoints);
-          this.config.lowerBound = matchToVideoTime(previousLowerBound, this.player.config.syncPoints);
-        }
-
-        if (config.config.trim.upperBound > 0) {
-          var previousUpperBound = videoToMatchTime(config.config.trim.upperBound, config.config.syncPoints);
-          this.config.upperBound = matchToVideoTime(previousUpperBound, this.player.config.syncPoints);
-        }
-
-        var previousStartTime = config.trim.elements.container.bar.leftThumb.getAttribute('aria-valuetext');
-        var previousEndTime = config.trim.elements.container.bar.rightThumb.getAttribute('aria-valuetext');
-        this.player.once('trimloaded', function () {
-          _this4.setTrimStart(matchToVideoTime(previousStartTime, _this4.player.config.syncPoints) - _this4.player.mediaFragment.startTime);
-
-          _this4.setTrimEnd(matchToVideoTime(previousEndTime, _this4.player.config.syncPoints) - _this4.player.mediaFragment.startTime);
-        });
-      }
-    }, {
-      key: "destroy",
-      value: function destroy() {
-        // Remove the elements with listeners on
-        if (this.elements.container.bar && !is$1.empty(this.elements.container.bar)) {
-          this.elements.container.remove();
-        }
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
 
       triggerEvent.call(this.player, this.player.media, this.trimming ? 'entertrim' : 'exittrim', false, this.trimTime);
@@ -9872,6 +8815,31 @@ typeof navigator === "object" && (function (global, factory) {
 
 
       toggleClass(this.player.elements.container, this.player.config.classNames.trim.enabled, this.enabled);
+    } // Load config after changing of source (only do this for sources which have sync points)
+
+
+    loadConfig(config) {
+      if (!config) return;
+      if (!(this.player.config.syncPoints && this.player.config.syncPoints.length) || !(config.config.syncPoints && config.config.syncPoints.length)) return;
+      if (!config.trim.trimming) return;
+      this.enter();
+
+      if (config.config.trim.lowerBound > 0) {
+        const previousLowerBound = videoToMatchTime(config.config.trim.lowerBound, config.config.syncPoints);
+        this.config.lowerBound = matchToVideoTime(previousLowerBound, this.player.config.syncPoints);
+      }
+
+      if (config.config.trim.upperBound > 0) {
+        const previousUpperBound = videoToMatchTime(config.config.trim.upperBound, config.config.syncPoints);
+        this.config.upperBound = matchToVideoTime(previousUpperBound, this.player.config.syncPoints);
+      }
+
+      const previousStartTime = config.trim.elements.container.bar.leftThumb.getAttribute('aria-valuetext');
+      const previousEndTime = config.trim.elements.container.bar.rightThumb.getAttribute('aria-valuetext');
+      this.player.once('trimloaded', () => {
+        this.setTrimStart(matchToVideoTime(previousStartTime, this.player.config.syncPoints) - this.player.mediaFragment.startTime);
+        this.setTrimEnd(matchToVideoTime(previousEndTime, this.player.config.syncPoints) - this.player.mediaFragment.startTime);
+      });
     }
 
     destroy() {
@@ -10041,92 +9009,7 @@ typeof navigator === "object" && (function (global, factory) {
               Promise.all(promises).then(sortAndResolve);
             }
         });
-<<<<<<< HEAD
       });
-=======
-      } // Process individual VTT file
-
-    }, {
-      key: "getVttFile",
-      value: function () {
-        var _getVttFile = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(src) {
-          var response;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (!src.startsWith('WEBVTT')) {
-                    _context.next = 5;
-                    break;
-                  }
-
-                  _context.next = 3;
-                  return this.getThumbnail(src);
-
-                case 3:
-                  _context.next = 16;
-                  break;
-
-                case 5:
-                  _context.prev = 5;
-                  _context.next = 8;
-                  return fetch(src);
-
-                case 8:
-                  response = _context.sent;
-                  _context.next = 11;
-                  return this.getThumbnail(response, src);
-
-                case 11:
-                  _context.next = 16;
-                  break;
-
-                case 13:
-                  _context.prev = 13;
-                  _context.t0 = _context["catch"](5);
-                  this.player.debug.warn("Error retrieving VTT File");
-
-                case 16:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this, [[5, 13]]);
-        }));
-
-        function getVttFile(_x) {
-          return _getVttFile.apply(this, arguments);
-        }
-
-        return getVttFile;
-      }() // Process thumbnail
-
-    }, {
-      key: "getThumbnail",
-      value: function getThumbnail(src, url) {
-        var _this3 = this;
-
-        return new Promise(function (resolve) {
-          var thumbnail = {
-            frames: parseVtt(src),
-            height: null,
-            urlPrefix: ''
-          }; // If the URLs don't start with '/', then we need to set their relative path to be the location of the VTT file
-          // If the URLs do start with '/', then they obviously don't need a prefix, so it will remain blank
-          // If the thumbnail URLs start with with none of '/', 'http://' or 'https://', then we need to set their relative path to be the location of the VTT file
-
-          if (!thumbnail.frames[0].text.startsWith('/') && !thumbnail.frames[0].text.startsWith('http://') && !thumbnail.frames[0].text.startsWith('https://')) {
-            thumbnail.urlPrefix = url.substring(0, url.lastIndexOf('/') + 1);
-          } // Download the first frame, so that we can determine/set the height of this thumbnailsDef
-
-
-          var tempImage = new Image();
-          tempImage.addEventListener('load', function () {
-            thumbnail.height = tempImage.naturalHeight;
-            thumbnail.width = tempImage.naturalWidth;
-
-            _this3.thumbnails.push(thumbnail);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       _defineProperty$1(this, "startMove", event => {
         if (!this.loaded) {
@@ -10574,8 +9457,12 @@ typeof navigator === "object" && (function (global, factory) {
       if (src.startsWith('WEBVTT')) {
         await this.getThumbnail(src);
       } else {
-        const response = await fetch(src);
-        await this.getThumbnail(response, src);
+        try {
+          const response = await fetch(src);
+          await this.getThumbnail(response, src);
+        } catch {
+          this.player.debug.warn("Error retrieving VTT File");
+        }
       }
     } // Process thumbnail
 
@@ -10660,7 +9547,6 @@ typeof navigator === "object" && (function (global, factory) {
       return this.currentThumbnailImageElement;
     }
 
-<<<<<<< HEAD
     set currentImageElement(element) {
       if (this.mouseDown) {
         this.currentScrubbingImageElement = element;
@@ -10670,19 +9556,28 @@ typeof navigator === "object" && (function (global, factory) {
     }
 
   }
-=======
-  var lodash=createCommonjsModule(function(module,exports){(function(){/** Used as a safe reference for `undefined` in pre-ES5 environments. */var undefined$1;/** Used as the semantic version number. */var VERSION='4.17.20';/** Used as the size to enable large array optimizations. */var LARGE_ARRAY_SIZE=200;/** Error message constants. */var CORE_ERROR_TEXT='Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',FUNC_ERROR_TEXT='Expected a function';/** Used to stand-in for `undefined` hash values. */var HASH_UNDEFINED='__lodash_hash_undefined__';/** Used as the maximum memoize cache size. */var MAX_MEMOIZE_SIZE=500;/** Used as the internal argument placeholder. */var PLACEHOLDER='__lodash_placeholder__';/** Used to compose bitmasks for cloning. */var CLONE_DEEP_FLAG=1,CLONE_FLAT_FLAG=2,CLONE_SYMBOLS_FLAG=4;/** Used to compose bitmasks for value comparisons. */var COMPARE_PARTIAL_FLAG=1,COMPARE_UNORDERED_FLAG=2;/** Used to compose bitmasks for function metadata. */var WRAP_BIND_FLAG=1,WRAP_BIND_KEY_FLAG=2,WRAP_CURRY_BOUND_FLAG=4,WRAP_CURRY_FLAG=8,WRAP_CURRY_RIGHT_FLAG=16,WRAP_PARTIAL_FLAG=32,WRAP_PARTIAL_RIGHT_FLAG=64,WRAP_ARY_FLAG=128,WRAP_REARG_FLAG=256,WRAP_FLIP_FLAG=512;/** Used as default options for `_.truncate`. */var DEFAULT_TRUNC_LENGTH=30,DEFAULT_TRUNC_OMISSION='...';/** Used to detect hot functions by number of calls within a span of milliseconds. */var HOT_COUNT=800,HOT_SPAN=16;/** Used to indicate the type of lazy iteratees. */var LAZY_FILTER_FLAG=1,LAZY_MAP_FLAG=2,LAZY_WHILE_FLAG=3;/** Used as references for various `Number` constants. */var INFINITY=1/0,MAX_SAFE_INTEGER=9007199254740991,MAX_INTEGER=1.7976931348623157e+308,NAN=0/0;/** Used as references for the maximum length and index of an array. */var MAX_ARRAY_LENGTH=4294967295,MAX_ARRAY_INDEX=MAX_ARRAY_LENGTH-1,HALF_MAX_ARRAY_LENGTH=MAX_ARRAY_LENGTH>>>1;/** Used to associate wrap methods with their bit flags. */var wrapFlags=[['ary',WRAP_ARY_FLAG],['bind',WRAP_BIND_FLAG],['bindKey',WRAP_BIND_KEY_FLAG],['curry',WRAP_CURRY_FLAG],['curryRight',WRAP_CURRY_RIGHT_FLAG],['flip',WRAP_FLIP_FLAG],['partial',WRAP_PARTIAL_FLAG],['partialRight',WRAP_PARTIAL_RIGHT_FLAG],['rearg',WRAP_REARG_FLAG]];/** `Object#toString` result references. */var argsTag='[object Arguments]',arrayTag='[object Array]',asyncTag='[object AsyncFunction]',boolTag='[object Boolean]',dateTag='[object Date]',domExcTag='[object DOMException]',errorTag='[object Error]',funcTag='[object Function]',genTag='[object GeneratorFunction]',mapTag='[object Map]',numberTag='[object Number]',nullTag='[object Null]',objectTag='[object Object]',promiseTag='[object Promise]',proxyTag='[object Proxy]',regexpTag='[object RegExp]',setTag='[object Set]',stringTag='[object String]',symbolTag='[object Symbol]',undefinedTag='[object Undefined]',weakMapTag='[object WeakMap]',weakSetTag='[object WeakSet]';var arrayBufferTag='[object ArrayBuffer]',dataViewTag='[object DataView]',float32Tag='[object Float32Array]',float64Tag='[object Float64Array]',int8Tag='[object Int8Array]',int16Tag='[object Int16Array]',int32Tag='[object Int32Array]',uint8Tag='[object Uint8Array]',uint8ClampedTag='[object Uint8ClampedArray]',uint16Tag='[object Uint16Array]',uint32Tag='[object Uint32Array]';/** Used to match empty string literals in compiled template source. */var reEmptyStringLeading=/\b__p \+= '';/g,reEmptyStringMiddle=/\b(__p \+=) '' \+/g,reEmptyStringTrailing=/(__e\(.*?\)|\b__t\)) \+\n'';/g;/** Used to match HTML entities and HTML characters. */var reEscapedHtml=/&(?:amp|lt|gt|quot|#39);/g,reUnescapedHtml=/[&<>"']/g,reHasEscapedHtml=RegExp(reEscapedHtml.source),reHasUnescapedHtml=RegExp(reUnescapedHtml.source);/** Used to match template delimiters. */var reEscape=/<%-([\s\S]+?)%>/g,reEvaluate=/<%([\s\S]+?)%>/g,reInterpolate=/<%=([\s\S]+?)%>/g;/** Used to match property names within property paths. */var reIsDeepProp=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,reIsPlainProp=/^\w*$/,rePropName=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;/**
+
+  var lodash=createCommonjsModule(function(module,exports){(function(){/** Used as a safe reference for `undefined` in pre-ES5 environments. */var undefined$1;/** Used as the semantic version number. */var VERSION='4.17.21';/** Used as the size to enable large array optimizations. */var LARGE_ARRAY_SIZE=200;/** Error message constants. */var CORE_ERROR_TEXT='Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',FUNC_ERROR_TEXT='Expected a function',INVALID_TEMPL_VAR_ERROR_TEXT='Invalid `variable` option passed into `_.template`';/** Used to stand-in for `undefined` hash values. */var HASH_UNDEFINED='__lodash_hash_undefined__';/** Used as the maximum memoize cache size. */var MAX_MEMOIZE_SIZE=500;/** Used as the internal argument placeholder. */var PLACEHOLDER='__lodash_placeholder__';/** Used to compose bitmasks for cloning. */var CLONE_DEEP_FLAG=1,CLONE_FLAT_FLAG=2,CLONE_SYMBOLS_FLAG=4;/** Used to compose bitmasks for value comparisons. */var COMPARE_PARTIAL_FLAG=1,COMPARE_UNORDERED_FLAG=2;/** Used to compose bitmasks for function metadata. */var WRAP_BIND_FLAG=1,WRAP_BIND_KEY_FLAG=2,WRAP_CURRY_BOUND_FLAG=4,WRAP_CURRY_FLAG=8,WRAP_CURRY_RIGHT_FLAG=16,WRAP_PARTIAL_FLAG=32,WRAP_PARTIAL_RIGHT_FLAG=64,WRAP_ARY_FLAG=128,WRAP_REARG_FLAG=256,WRAP_FLIP_FLAG=512;/** Used as default options for `_.truncate`. */var DEFAULT_TRUNC_LENGTH=30,DEFAULT_TRUNC_OMISSION='...';/** Used to detect hot functions by number of calls within a span of milliseconds. */var HOT_COUNT=800,HOT_SPAN=16;/** Used to indicate the type of lazy iteratees. */var LAZY_FILTER_FLAG=1,LAZY_MAP_FLAG=2,LAZY_WHILE_FLAG=3;/** Used as references for various `Number` constants. */var INFINITY=1/0,MAX_SAFE_INTEGER=9007199254740991,MAX_INTEGER=1.7976931348623157e+308,NAN=0/0;/** Used as references for the maximum length and index of an array. */var MAX_ARRAY_LENGTH=4294967295,MAX_ARRAY_INDEX=MAX_ARRAY_LENGTH-1,HALF_MAX_ARRAY_LENGTH=MAX_ARRAY_LENGTH>>>1;/** Used to associate wrap methods with their bit flags. */var wrapFlags=[['ary',WRAP_ARY_FLAG],['bind',WRAP_BIND_FLAG],['bindKey',WRAP_BIND_KEY_FLAG],['curry',WRAP_CURRY_FLAG],['curryRight',WRAP_CURRY_RIGHT_FLAG],['flip',WRAP_FLIP_FLAG],['partial',WRAP_PARTIAL_FLAG],['partialRight',WRAP_PARTIAL_RIGHT_FLAG],['rearg',WRAP_REARG_FLAG]];/** `Object#toString` result references. */var argsTag='[object Arguments]',arrayTag='[object Array]',asyncTag='[object AsyncFunction]',boolTag='[object Boolean]',dateTag='[object Date]',domExcTag='[object DOMException]',errorTag='[object Error]',funcTag='[object Function]',genTag='[object GeneratorFunction]',mapTag='[object Map]',numberTag='[object Number]',nullTag='[object Null]',objectTag='[object Object]',promiseTag='[object Promise]',proxyTag='[object Proxy]',regexpTag='[object RegExp]',setTag='[object Set]',stringTag='[object String]',symbolTag='[object Symbol]',undefinedTag='[object Undefined]',weakMapTag='[object WeakMap]',weakSetTag='[object WeakSet]';var arrayBufferTag='[object ArrayBuffer]',dataViewTag='[object DataView]',float32Tag='[object Float32Array]',float64Tag='[object Float64Array]',int8Tag='[object Int8Array]',int16Tag='[object Int16Array]',int32Tag='[object Int32Array]',uint8Tag='[object Uint8Array]',uint8ClampedTag='[object Uint8ClampedArray]',uint16Tag='[object Uint16Array]',uint32Tag='[object Uint32Array]';/** Used to match empty string literals in compiled template source. */var reEmptyStringLeading=/\b__p \+= '';/g,reEmptyStringMiddle=/\b(__p \+=) '' \+/g,reEmptyStringTrailing=/(__e\(.*?\)|\b__t\)) \+\n'';/g;/** Used to match HTML entities and HTML characters. */var reEscapedHtml=/&(?:amp|lt|gt|quot|#39);/g,reUnescapedHtml=/[&<>"']/g,reHasEscapedHtml=RegExp(reEscapedHtml.source),reHasUnescapedHtml=RegExp(reUnescapedHtml.source);/** Used to match template delimiters. */var reEscape=/<%-([\s\S]+?)%>/g,reEvaluate=/<%([\s\S]+?)%>/g,reInterpolate=/<%=([\s\S]+?)%>/g;/** Used to match property names within property paths. */var reIsDeepProp=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,reIsPlainProp=/^\w*$/,rePropName=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;/**
      * Used to match `RegExp`
      * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
-     */var reRegExpChar=/[\\^$.*+?()[\]{}|]/g,reHasRegExpChar=RegExp(reRegExpChar.source);/** Used to match leading and trailing whitespace. */var reTrim=/^\s+|\s+$/g,reTrimStart=/^\s+/,reTrimEnd=/\s+$/;/** Used to match wrap detail comments. */var reWrapComment=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,reWrapDetails=/\{\n\/\* \[wrapped with (.+)\] \*/,reSplitDetails=/,? & /;/** Used to match words composed of alphanumeric characters. */var reAsciiWord=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;/** Used to match backslashes in property paths. */var reEscapeChar=/\\(\\)?/g;/**
+     */var reRegExpChar=/[\\^$.*+?()[\]{}|]/g,reHasRegExpChar=RegExp(reRegExpChar.source);/** Used to match leading whitespace. */var reTrimStart=/^\s+/;/** Used to match a single whitespace character. */var reWhitespace=/\s/;/** Used to match wrap detail comments. */var reWrapComment=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,reWrapDetails=/\{\n\/\* \[wrapped with (.+)\] \*/,reSplitDetails=/,? & /;/** Used to match words composed of alphanumeric characters. */var reAsciiWord=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g;/**
+     * Used to validate the `validate` option in `_.template` variable.
+     *
+     * Forbids characters which could potentially change the meaning of the function argument definition:
+     * - "()," (modification of function parameters)
+     * - "=" (default value)
+     * - "[]{}" (destructuring of function parameters)
+     * - "/" (beginning of a comment)
+     * - whitespace
+     */var reForbiddenIdentifierChars=/[()=,{}\[\]\/\s]/;/** Used to match backslashes in property paths. */var reEscapeChar=/\\(\\)?/g;/**
      * Used to match
      * [ES template delimiters](http://ecma-international.org/ecma-262/7.0/#sec-template-literal-lexical-components).
-     */var reEsTemplate=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;/** Used to match `RegExp` flags from their coerced string values. */var reFlags=/\w*$/;/** Used to detect bad signed hexadecimal string values. */var reIsBadHex=/^[-+]0x[0-9a-f]+$/i;/** Used to detect binary string values. */var reIsBinary=/^0b[01]+$/i;/** Used to detect host constructors (Safari). */var reIsHostCtor=/^\[object .+?Constructor\]$/;/** Used to detect octal string values. */var reIsOctal=/^0o[0-7]+$/i;/** Used to detect unsigned integer values. */var reIsUint=/^(?:0|[1-9]\d*)$/;/** Used to match Latin Unicode letters (excluding mathematical operators). */var reLatin=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;/** Used to ensure capturing order of template delimiters. */var reNoMatch=/($^)/;/** Used to match unescaped characters in compiled string literals. */var reUnescapedString=/['\n\r\u2028\u2029\\]/g;/** Used to compose unicode character classes. */var rsAstralRange="\\ud800-\\udfff",rsComboMarksRange="\\u0300-\\u036f",reComboHalfMarksRange="\\ufe20-\\ufe2f",rsComboSymbolsRange="\\u20d0-\\u20ff",rsComboRange=rsComboMarksRange+reComboHalfMarksRange+rsComboSymbolsRange,rsDingbatRange="\\u2700-\\u27bf",rsLowerRange='a-z\\xdf-\\xf6\\xf8-\\xff',rsMathOpRange='\\xac\\xb1\\xd7\\xf7',rsNonCharRange='\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf',rsPunctuationRange="\\u2000-\\u206f",rsSpaceRange=" \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",rsUpperRange='A-Z\\xc0-\\xd6\\xd8-\\xde',rsVarRange="\\ufe0e\\ufe0f",rsBreakRange=rsMathOpRange+rsNonCharRange+rsPunctuationRange+rsSpaceRange;/** Used to compose unicode capture groups. */var rsApos="['\u2019]",rsAstral='['+rsAstralRange+']',rsBreak='['+rsBreakRange+']',rsCombo='['+rsComboRange+']',rsDigits='\\d+',rsDingbat='['+rsDingbatRange+']',rsLower='['+rsLowerRange+']',rsMisc='[^'+rsAstralRange+rsBreakRange+rsDigits+rsDingbatRange+rsLowerRange+rsUpperRange+']',rsFitz="\\ud83c[\\udffb-\\udfff]",rsModifier='(?:'+rsCombo+'|'+rsFitz+')',rsNonAstral='[^'+rsAstralRange+']',rsRegional="(?:\\ud83c[\\udde6-\\uddff]){2}",rsSurrPair="[\\ud800-\\udbff][\\udc00-\\udfff]",rsUpper='['+rsUpperRange+']',rsZWJ="\\u200d";/** Used to compose unicode regexes. */var rsMiscLower='(?:'+rsLower+'|'+rsMisc+')',rsMiscUpper='(?:'+rsUpper+'|'+rsMisc+')',rsOptContrLower='(?:'+rsApos+'(?:d|ll|m|re|s|t|ve))?',rsOptContrUpper='(?:'+rsApos+'(?:D|LL|M|RE|S|T|VE))?',reOptMod=rsModifier+'?',rsOptVar='['+rsVarRange+']?',rsOptJoin='(?:'+rsZWJ+'(?:'+[rsNonAstral,rsRegional,rsSurrPair].join('|')+')'+rsOptVar+reOptMod+')*',rsOrdLower='\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])',rsOrdUpper='\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])',rsSeq=rsOptVar+reOptMod+rsOptJoin,rsEmoji='(?:'+[rsDingbat,rsRegional,rsSurrPair].join('|')+')'+rsSeq,rsSymbol='(?:'+[rsNonAstral+rsCombo+'?',rsCombo,rsRegional,rsSurrPair,rsAstral].join('|')+')';/** Used to match apostrophes. */var reApos=RegExp(rsApos,'g');/**
+     */var reEsTemplate=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;/** Used to match `RegExp` flags from their coerced string values. */var reFlags=/\w*$/;/** Used to detect bad signed hexadecimal string values. */var reIsBadHex=/^[-+]0x[0-9a-f]+$/i;/** Used to detect binary string values. */var reIsBinary=/^0b[01]+$/i;/** Used to detect host constructors (Safari). */var reIsHostCtor=/^\[object .+?Constructor\]$/;/** Used to detect octal string values. */var reIsOctal=/^0o[0-7]+$/i;/** Used to detect unsigned integer values. */var reIsUint=/^(?:0|[1-9]\d*)$/;/** Used to match Latin Unicode letters (excluding mathematical operators). */var reLatin=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;/** Used to ensure capturing order of template delimiters. */var reNoMatch=/($^)/;/** Used to match unescaped characters in compiled string literals. */var reUnescapedString=/['\n\r\u2028\u2029\\]/g;/** Used to compose unicode character classes. */var rsAstralRange='\\ud800-\\udfff',rsComboMarksRange='\\u0300-\\u036f',reComboHalfMarksRange='\\ufe20-\\ufe2f',rsComboSymbolsRange='\\u20d0-\\u20ff',rsComboRange=rsComboMarksRange+reComboHalfMarksRange+rsComboSymbolsRange,rsDingbatRange='\\u2700-\\u27bf',rsLowerRange='a-z\\xdf-\\xf6\\xf8-\\xff',rsMathOpRange='\\xac\\xb1\\xd7\\xf7',rsNonCharRange='\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf',rsPunctuationRange='\\u2000-\\u206f',rsSpaceRange=' \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000',rsUpperRange='A-Z\\xc0-\\xd6\\xd8-\\xde',rsVarRange='\\ufe0e\\ufe0f',rsBreakRange=rsMathOpRange+rsNonCharRange+rsPunctuationRange+rsSpaceRange;/** Used to compose unicode capture groups. */var rsApos="['\u2019]",rsAstral='['+rsAstralRange+']',rsBreak='['+rsBreakRange+']',rsCombo='['+rsComboRange+']',rsDigits='\\d+',rsDingbat='['+rsDingbatRange+']',rsLower='['+rsLowerRange+']',rsMisc='[^'+rsAstralRange+rsBreakRange+rsDigits+rsDingbatRange+rsLowerRange+rsUpperRange+']',rsFitz='\\ud83c[\\udffb-\\udfff]',rsModifier='(?:'+rsCombo+'|'+rsFitz+')',rsNonAstral='[^'+rsAstralRange+']',rsRegional='(?:\\ud83c[\\udde6-\\uddff]){2}',rsSurrPair='[\\ud800-\\udbff][\\udc00-\\udfff]',rsUpper='['+rsUpperRange+']',rsZWJ='\\u200d';/** Used to compose unicode regexes. */var rsMiscLower='(?:'+rsLower+'|'+rsMisc+')',rsMiscUpper='(?:'+rsUpper+'|'+rsMisc+')',rsOptContrLower='(?:'+rsApos+'(?:d|ll|m|re|s|t|ve))?',rsOptContrUpper='(?:'+rsApos+'(?:D|LL|M|RE|S|T|VE))?',reOptMod=rsModifier+'?',rsOptVar='['+rsVarRange+']?',rsOptJoin='(?:'+rsZWJ+'(?:'+[rsNonAstral,rsRegional,rsSurrPair].join('|')+')'+rsOptVar+reOptMod+')*',rsOrdLower='\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])',rsOrdUpper='\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])',rsSeq=rsOptVar+reOptMod+rsOptJoin,rsEmoji='(?:'+[rsDingbat,rsRegional,rsSurrPair].join('|')+')'+rsSeq,rsSymbol='(?:'+[rsNonAstral+rsCombo+'?',rsCombo,rsRegional,rsSurrPair,rsAstral].join('|')+')';/** Used to match apostrophes. */var reApos=RegExp(rsApos,'g');/**
      * Used to match [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) and
      * [combining diacritical marks for symbols](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks_for_Symbols).
      */var reComboMark=RegExp(rsCombo,'g');/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */var reUnicode=RegExp(rsFitz+'(?='+rsFitz+')|'+rsSymbol+rsSeq,'g');/** Used to match complex or compound words. */var reUnicodeWord=RegExp([rsUpper+'?'+rsLower+'+'+rsOptContrLower+'(?='+[rsBreak,rsUpper,'$'].join('|')+')',rsMiscUpper+'+'+rsOptContrUpper+'(?='+[rsBreak,rsUpper+rsMiscLower,'$'].join('|')+')',rsUpper+'?'+rsMiscLower+'+'+rsOptContrLower,rsUpper+'+'+rsOptContrUpper,rsOrdUpper,rsOrdLower,rsDigits,rsEmoji].join('|'),'g');/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */var reHasUnicode=RegExp('['+rsZWJ+rsAstralRange+rsComboRange+rsVarRange+']');/** Used to detect strings that need a more robust regexp to match words. */var reHasUnicodeWord=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;/** Used to assign default `context` object properties. */var contextProps=['Array','Buffer','DataView','Date','Error','Float32Array','Float64Array','Function','Int8Array','Int16Array','Int32Array','Map','Math','Object','Promise','RegExp','Set','String','Symbol','TypeError','Uint8Array','Uint8ClampedArray','Uint16Array','Uint32Array','WeakMap','_','clearTimeout','isFinite','parseInt','setTimeout'];/** Used to make template sourceURLs easier to identify. */var templateCounter=-1;/** Used to identify `toStringTag` values of typed arrays. */var typedArrayTags={};typedArrayTags[float32Tag]=typedArrayTags[float64Tag]=typedArrayTags[int8Tag]=typedArrayTags[int16Tag]=typedArrayTags[int32Tag]=typedArrayTags[uint8Tag]=typedArrayTags[uint8ClampedTag]=typedArrayTags[uint16Tag]=typedArrayTags[uint32Tag]=true;typedArrayTags[argsTag]=typedArrayTags[arrayTag]=typedArrayTags[arrayBufferTag]=typedArrayTags[boolTag]=typedArrayTags[dataViewTag]=typedArrayTags[dateTag]=typedArrayTags[errorTag]=typedArrayTags[funcTag]=typedArrayTags[mapTag]=typedArrayTags[numberTag]=typedArrayTags[objectTag]=typedArrayTags[regexpTag]=typedArrayTags[setTag]=typedArrayTags[stringTag]=typedArrayTags[weakMapTag]=false;/** Used to identify `toStringTag` values supported by `_.clone`. */var cloneableTags={};cloneableTags[argsTag]=cloneableTags[arrayTag]=cloneableTags[arrayBufferTag]=cloneableTags[dataViewTag]=cloneableTags[boolTag]=cloneableTags[dateTag]=cloneableTags[float32Tag]=cloneableTags[float64Tag]=cloneableTags[int8Tag]=cloneableTags[int16Tag]=cloneableTags[int32Tag]=cloneableTags[mapTag]=cloneableTags[numberTag]=cloneableTags[objectTag]=cloneableTags[regexpTag]=cloneableTags[setTag]=cloneableTags[stringTag]=cloneableTags[symbolTag]=cloneableTags[uint8Tag]=cloneableTags[uint8ClampedTag]=cloneableTags[uint16Tag]=cloneableTags[uint32Tag]=true;cloneableTags[errorTag]=cloneableTags[funcTag]=cloneableTags[weakMapTag]=false;/** Used to map Latin Unicode letters to basic Latin letters. */var deburredLetters={// Latin-1 Supplement block.
   '\xc0':'A','\xc1':'A','\xc2':'A','\xc3':'A','\xc4':'A','\xc5':'A','\xe0':'a','\xe1':'a','\xe2':'a','\xe3':'a','\xe4':'a','\xe5':'a','\xc7':'C','\xe7':'c','\xd0':'D','\xf0':'d','\xc8':'E','\xc9':'E','\xca':'E','\xcb':'E','\xe8':'e','\xe9':'e','\xea':'e','\xeb':'e','\xcc':'I','\xcd':'I','\xce':'I','\xcf':'I','\xec':'i','\xed':'i','\xee':'i','\xef':'i','\xd1':'N','\xf1':'n','\xd2':'O','\xd3':'O','\xd4':'O','\xd5':'O','\xd6':'O','\xd8':'O','\xf2':'o','\xf3':'o','\xf4':'o','\xf5':'o','\xf6':'o','\xf8':'o','\xd9':'U','\xda':'U','\xdb':'U','\xdc':'U','\xf9':'u','\xfa':'u','\xfb':'u','\xfc':'u','\xdd':'Y','\xfd':'y','\xff':'y','\xc6':'Ae','\xe6':'ae','\xde':'Th','\xfe':'th','\xdf':'ss',// Latin Extended-A block.
-  "\u0100":'A',"\u0102":'A',"\u0104":'A',"\u0101":'a',"\u0103":'a',"\u0105":'a',"\u0106":'C',"\u0108":'C',"\u010A":'C',"\u010C":'C',"\u0107":'c',"\u0109":'c',"\u010B":'c',"\u010D":'c',"\u010E":'D',"\u0110":'D',"\u010F":'d',"\u0111":'d',"\u0112":'E',"\u0114":'E',"\u0116":'E',"\u0118":'E',"\u011A":'E',"\u0113":'e',"\u0115":'e',"\u0117":'e',"\u0119":'e',"\u011B":'e',"\u011C":'G',"\u011E":'G',"\u0120":'G',"\u0122":'G',"\u011D":'g',"\u011F":'g',"\u0121":'g',"\u0123":'g',"\u0124":'H',"\u0126":'H',"\u0125":'h',"\u0127":'h',"\u0128":'I',"\u012A":'I',"\u012C":'I',"\u012E":'I',"\u0130":'I',"\u0129":'i',"\u012B":'i',"\u012D":'i',"\u012F":'i',"\u0131":'i',"\u0134":'J',"\u0135":'j',"\u0136":'K',"\u0137":'k',"\u0138":'k',"\u0139":'L',"\u013B":'L',"\u013D":'L',"\u013F":'L',"\u0141":'L',"\u013A":'l',"\u013C":'l',"\u013E":'l',"\u0140":'l',"\u0142":'l',"\u0143":'N',"\u0145":'N',"\u0147":'N',"\u014A":'N',"\u0144":'n',"\u0146":'n',"\u0148":'n',"\u014B":'n',"\u014C":'O',"\u014E":'O',"\u0150":'O',"\u014D":'o',"\u014F":'o',"\u0151":'o',"\u0154":'R',"\u0156":'R',"\u0158":'R',"\u0155":'r',"\u0157":'r',"\u0159":'r',"\u015A":'S',"\u015C":'S',"\u015E":'S',"\u0160":'S',"\u015B":'s',"\u015D":'s',"\u015F":'s',"\u0161":'s',"\u0162":'T',"\u0164":'T',"\u0166":'T',"\u0163":'t',"\u0165":'t',"\u0167":'t',"\u0168":'U',"\u016A":'U',"\u016C":'U',"\u016E":'U',"\u0170":'U',"\u0172":'U',"\u0169":'u',"\u016B":'u',"\u016D":'u',"\u016F":'u',"\u0171":'u',"\u0173":'u',"\u0174":'W',"\u0175":'w',"\u0176":'Y',"\u0177":'y',"\u0178":'Y',"\u0179":'Z',"\u017B":'Z',"\u017D":'Z',"\u017A":'z',"\u017C":'z',"\u017E":'z',"\u0132":'IJ',"\u0133":'ij',"\u0152":'Oe',"\u0153":'oe',"\u0149":"'n","\u017F":'s'};/** Used to map characters to HTML entities. */var htmlEscapes={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};/** Used to map HTML entities to characters. */var htmlUnescapes={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'"};/** Used to escape characters for inclusion in compiled string literals. */var stringEscapes={'\\':'\\',"'":"'",'\n':'n','\r':'r',"\u2028":'u2028',"\u2029":'u2029'};/** Built-in method references without a dependency on `root`. */var freeParseFloat=parseFloat,freeParseInt=parseInt;/** Detect free variable `global` from Node.js. */var freeGlobal=_typeof(commonjsGlobal)=='object'&&commonjsGlobal&&commonjsGlobal.Object===Object&&commonjsGlobal;/** Detect free variable `self`. */var freeSelf=(typeof self==="undefined"?"undefined":_typeof(self))=='object'&&self&&self.Object===Object&&self;/** Used as a reference to the global object. */var root=freeGlobal||freeSelf||Function('return this')();/** Detect free variable `exports`. */var freeExports=exports&&!exports.nodeType&&exports;/** Detect free variable `module`. */var freeModule=freeExports&&'object'=='object'&&module&&!module.nodeType&&module;/** Detect the popular CommonJS extension `module.exports`. */var moduleExports=freeModule&&freeModule.exports===freeExports;/** Detect free variable `process` from Node.js. */var freeProcess=moduleExports&&freeGlobal.process;/** Used to access faster Node.js helpers. */var nodeUtil=function(){try{// Use `util.types` for Node.js 10+.
+  '\u0100':'A','\u0102':'A','\u0104':'A','\u0101':'a','\u0103':'a','\u0105':'a','\u0106':'C','\u0108':'C','\u010a':'C','\u010c':'C','\u0107':'c','\u0109':'c','\u010b':'c','\u010d':'c','\u010e':'D','\u0110':'D','\u010f':'d','\u0111':'d','\u0112':'E','\u0114':'E','\u0116':'E','\u0118':'E','\u011a':'E','\u0113':'e','\u0115':'e','\u0117':'e','\u0119':'e','\u011b':'e','\u011c':'G','\u011e':'G','\u0120':'G','\u0122':'G','\u011d':'g','\u011f':'g','\u0121':'g','\u0123':'g','\u0124':'H','\u0126':'H','\u0125':'h','\u0127':'h','\u0128':'I','\u012a':'I','\u012c':'I','\u012e':'I','\u0130':'I','\u0129':'i','\u012b':'i','\u012d':'i','\u012f':'i','\u0131':'i','\u0134':'J','\u0135':'j','\u0136':'K','\u0137':'k','\u0138':'k','\u0139':'L','\u013b':'L','\u013d':'L','\u013f':'L','\u0141':'L','\u013a':'l','\u013c':'l','\u013e':'l','\u0140':'l','\u0142':'l','\u0143':'N','\u0145':'N','\u0147':'N','\u014a':'N','\u0144':'n','\u0146':'n','\u0148':'n','\u014b':'n','\u014c':'O','\u014e':'O','\u0150':'O','\u014d':'o','\u014f':'o','\u0151':'o','\u0154':'R','\u0156':'R','\u0158':'R','\u0155':'r','\u0157':'r','\u0159':'r','\u015a':'S','\u015c':'S','\u015e':'S','\u0160':'S','\u015b':'s','\u015d':'s','\u015f':'s','\u0161':'s','\u0162':'T','\u0164':'T','\u0166':'T','\u0163':'t','\u0165':'t','\u0167':'t','\u0168':'U','\u016a':'U','\u016c':'U','\u016e':'U','\u0170':'U','\u0172':'U','\u0169':'u','\u016b':'u','\u016d':'u','\u016f':'u','\u0171':'u','\u0173':'u','\u0174':'W','\u0175':'w','\u0176':'Y','\u0177':'y','\u0178':'Y','\u0179':'Z','\u017b':'Z','\u017d':'Z','\u017a':'z','\u017c':'z','\u017e':'z','\u0132':'IJ','\u0133':'ij','\u0152':'Oe','\u0153':'oe','\u0149':"'n",'\u017f':'s'};/** Used to map characters to HTML entities. */var htmlEscapes={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};/** Used to map HTML entities to characters. */var htmlUnescapes={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'"};/** Used to escape characters for inclusion in compiled string literals. */var stringEscapes={'\\':'\\',"'":"'",'\n':'n','\r':'r','\u2028':'u2028','\u2029':'u2029'};/** Built-in method references without a dependency on `root`. */var freeParseFloat=parseFloat,freeParseInt=parseInt;/** Detect free variable `global` from Node.js. */var freeGlobal=typeof commonjsGlobal=='object'&&commonjsGlobal&&commonjsGlobal.Object===Object&&commonjsGlobal;/** Detect free variable `self`. */var freeSelf=typeof self=='object'&&self&&self.Object===Object&&self;/** Used as a reference to the global object. */var root=freeGlobal||freeSelf||Function('return this')();/** Detect free variable `exports`. */var freeExports=exports&&!exports.nodeType&&exports;/** Detect free variable `module`. */var freeModule=freeExports&&'object'=='object'&&module&&!module.nodeType&&module;/** Detect the popular CommonJS extension `module.exports`. */var moduleExports=freeModule&&freeModule.exports===freeExports;/** Detect free variable `process` from Node.js. */var freeProcess=moduleExports&&freeGlobal.process;/** Used to access faster Node.js helpers. */var nodeUtil=function(){try{// Use `util.types` for Node.js 10+.
   var types=freeModule&&freeModule.require&&freeModule.require('util').types;if(types){return types;}// Legacy `process.binding('util')` for Node.js < 10.
   return freeProcess&&freeProcess.binding&&freeProcess.binding('util');}catch(e){}}();/* Node.js helper references. */var nodeIsArrayBuffer=nodeUtil&&nodeUtil.isArrayBuffer,nodeIsDate=nodeUtil&&nodeUtil.isDate,nodeIsMap=nodeUtil&&nodeUtil.isMap,nodeIsRegExp=nodeUtil&&nodeUtil.isRegExp,nodeIsSet=nodeUtil&&nodeUtil.isSet,nodeIsTypedArray=nodeUtil&&nodeUtil.isTypedArray;/*--------------------------------------------------------------------------*/ /**
      * A faster alternative to `Function#apply`, this function invokes `func`
@@ -10924,6 +9819,12 @@ typeof navigator === "object" && (function (global, factory) {
      * @param {Array} props The property names to get values for.
      * @returns {Object} Returns the key-value pairs.
      */function baseToPairs(object,props){return arrayMap(props,function(key){return [key,object[key]];});}/**
+     * The base implementation of `_.trim`.
+     *
+     * @private
+     * @param {string} string The string to trim.
+     * @returns {string} Returns the trimmed string.
+     */function baseTrim(string){return string?string.slice(0,trimmedEndIndex(string)+1).replace(reTrimStart,''):string;}/**
      * The base implementation of `_.unary` without support for storing metadata.
      *
      * @private
@@ -11076,6 +9977,13 @@ typeof navigator === "object" && (function (global, factory) {
      * @param {string} string The string to convert.
      * @returns {Array} Returns the converted array.
      */function stringToArray(string){return hasUnicode(string)?unicodeToArray(string):asciiToArray(string);}/**
+     * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+     * character of `string`.
+     *
+     * @private
+     * @param {string} string The string to inspect.
+     * @returns {number} Returns the index of the last non-whitespace character.
+     */function trimmedEndIndex(string){var index=string.length;while(index--&&reWhitespace.test(string.charAt(index))){}return index;}/**
      * Used by `_.unescape` to convert HTML entities to characters.
      *
      * @private
@@ -11131,7 +10039,7 @@ typeof navigator === "object" && (function (global, factory) {
        * Used to resolve the
        * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
        * of values.
-       */var nativeObjectToString=objectProto.toString;/** Used to infer the `Object` constructor. */var objectCtorString=funcToString.call(Object);/** Used to restore the original `_` reference in `_.noConflict`. */var oldDash=root._;/** Used to detect if a method is native. */var reIsNative=RegExp('^'+funcToString.call(hasOwnProperty).replace(reRegExpChar,'\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,'$1.*?')+'$');/** Built-in value references. */var Buffer=moduleExports?context.Buffer:undefined$1,_Symbol=context.Symbol,Uint8Array=context.Uint8Array,allocUnsafe=Buffer?Buffer.allocUnsafe:undefined$1,getPrototype=overArg(Object.getPrototypeOf,Object),objectCreate=Object.create,propertyIsEnumerable=objectProto.propertyIsEnumerable,splice=arrayProto.splice,spreadableSymbol=_Symbol?_Symbol.isConcatSpreadable:undefined$1,symIterator=_Symbol?_Symbol.iterator:undefined$1,symToStringTag=_Symbol?_Symbol.toStringTag:undefined$1;var defineProperty=function(){try{var func=getNative(Object,'defineProperty');func({},'',{});return func;}catch(e){}}();/** Mocked built-ins. */var ctxClearTimeout=context.clearTimeout!==root.clearTimeout&&context.clearTimeout,ctxNow=Date&&Date.now!==root.Date.now&&Date.now,ctxSetTimeout=context.setTimeout!==root.setTimeout&&context.setTimeout;/* Built-in method references for those with the same name as other `lodash` methods. */var nativeCeil=Math.ceil,nativeFloor=Math.floor,nativeGetSymbols=Object.getOwnPropertySymbols,nativeIsBuffer=Buffer?Buffer.isBuffer:undefined$1,nativeIsFinite=context.isFinite,nativeJoin=arrayProto.join,nativeKeys=overArg(Object.keys,Object),nativeMax=Math.max,nativeMin=Math.min,nativeNow=Date.now,nativeParseInt=context.parseInt,nativeRandom=Math.random,nativeReverse=arrayProto.reverse;/* Built-in method references that are verified to be native. */var DataView=getNative(context,'DataView'),Map=getNative(context,'Map'),Promise=getNative(context,'Promise'),Set=getNative(context,'Set'),WeakMap=getNative(context,'WeakMap'),nativeCreate=getNative(Object,'create');/** Used to store function metadata. */var metaMap=WeakMap&&new WeakMap();/** Used to lookup unminified function names. */var realNames={};/** Used to detect maps, sets, and weakmaps. */var dataViewCtorString=toSource(DataView),mapCtorString=toSource(Map),promiseCtorString=toSource(Promise),setCtorString=toSource(Set),weakMapCtorString=toSource(WeakMap);/** Used to convert symbols to primitives and strings. */var symbolProto=_Symbol?_Symbol.prototype:undefined$1,symbolValueOf=symbolProto?symbolProto.valueOf:undefined$1,symbolToString=symbolProto?symbolProto.toString:undefined$1;/*------------------------------------------------------------------------*/ /**
+       */var nativeObjectToString=objectProto.toString;/** Used to infer the `Object` constructor. */var objectCtorString=funcToString.call(Object);/** Used to restore the original `_` reference in `_.noConflict`. */var oldDash=root._;/** Used to detect if a method is native. */var reIsNative=RegExp('^'+funcToString.call(hasOwnProperty).replace(reRegExpChar,'\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,'$1.*?')+'$');/** Built-in value references. */var Buffer=moduleExports?context.Buffer:undefined$1,Symbol=context.Symbol,Uint8Array=context.Uint8Array,allocUnsafe=Buffer?Buffer.allocUnsafe:undefined$1,getPrototype=overArg(Object.getPrototypeOf,Object),objectCreate=Object.create,propertyIsEnumerable=objectProto.propertyIsEnumerable,splice=arrayProto.splice,spreadableSymbol=Symbol?Symbol.isConcatSpreadable:undefined$1,symIterator=Symbol?Symbol.iterator:undefined$1,symToStringTag=Symbol?Symbol.toStringTag:undefined$1;var defineProperty=function(){try{var func=getNative(Object,'defineProperty');func({},'',{});return func;}catch(e){}}();/** Mocked built-ins. */var ctxClearTimeout=context.clearTimeout!==root.clearTimeout&&context.clearTimeout,ctxNow=Date&&Date.now!==root.Date.now&&Date.now,ctxSetTimeout=context.setTimeout!==root.setTimeout&&context.setTimeout;/* Built-in method references for those with the same name as other `lodash` methods. */var nativeCeil=Math.ceil,nativeFloor=Math.floor,nativeGetSymbols=Object.getOwnPropertySymbols,nativeIsBuffer=Buffer?Buffer.isBuffer:undefined$1,nativeIsFinite=context.isFinite,nativeJoin=arrayProto.join,nativeKeys=overArg(Object.keys,Object),nativeMax=Math.max,nativeMin=Math.min,nativeNow=Date.now,nativeParseInt=context.parseInt,nativeRandom=Math.random,nativeReverse=arrayProto.reverse;/* Built-in method references that are verified to be native. */var DataView=getNative(context,'DataView'),Map=getNative(context,'Map'),Promise=getNative(context,'Promise'),Set=getNative(context,'Set'),WeakMap=getNative(context,'WeakMap'),nativeCreate=getNative(Object,'create');/** Used to store function metadata. */var metaMap=WeakMap&&new WeakMap();/** Used to lookup unminified function names. */var realNames={};/** Used to detect maps, sets, and weakmaps. */var dataViewCtorString=toSource(DataView),mapCtorString=toSource(Map),promiseCtorString=toSource(Promise),setCtorString=toSource(Set),weakMapCtorString=toSource(WeakMap);/** Used to convert symbols to primitives and strings. */var symbolProto=Symbol?Symbol.prototype:undefined$1,symbolValueOf=symbolProto?symbolProto.valueOf:undefined$1,symbolToString=symbolProto?symbolProto.toString:undefined$1;/*------------------------------------------------------------------------*/ /**
        * Creates a `lodash` object which wraps `value` to enable implicit method
        * chain sequences. Methods that operate on and return arrays, collections,
        * and functions can be chained together. Methods that retrieve a single value
@@ -11966,7 +10874,7 @@ typeof navigator === "object" && (function (global, factory) {
        * @returns {Function} Returns the iteratee.
        */function baseIteratee(value){// Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
   // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
-  if(typeof value=='function'){return value;}if(value==null){return identity;}if(_typeof(value)=='object'){return isArray(value)?baseMatchesProperty(value[0],value[1]):baseMatches(value);}return property(value);}/**
+  if(typeof value=='function'){return value;}if(value==null){return identity;}if(typeof value=='object'){return isArray(value)?baseMatchesProperty(value[0],value[1]):baseMatches(value);}return property(value);}/**
        * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
        *
        * @private
@@ -12514,7 +11422,7 @@ typeof navigator === "object" && (function (global, factory) {
        * @private
        * @param {Function} findIndexFunc The function to find the collection index.
        * @returns {Function} Returns the new find function.
-       */function createFind(findIndexFunc){return function(collection,predicate,fromIndex){var iterable=Object(collection);if(!isArrayLike(collection)){var iteratee=getIteratee(predicate,3);collection=keys(collection);predicate=function predicate(key){return iteratee(iterable[key],key,iterable);};}var index=findIndexFunc(collection,predicate,fromIndex);return index>-1?iterable[iteratee?collection[index]:index]:undefined$1;};}/**
+       */function createFind(findIndexFunc){return function(collection,predicate,fromIndex){var iterable=Object(collection);if(!isArrayLike(collection)){var iteratee=getIteratee(predicate,3);collection=keys(collection);predicate=function(key){return iteratee(iterable[key],key,iterable);};}var index=findIndexFunc(collection,predicate,fromIndex);return index>-1?iterable[iteratee?collection[index]:index]:undefined$1;};}/**
        * Creates a `_.flow` or `_.flowRight` function.
        *
        * @private
@@ -12828,7 +11736,7 @@ typeof navigator === "object" && (function (global, factory) {
        * @param {*} value The value to query.
        * @returns {string} Returns the `toStringTag`.
        */var getTag=baseGetTag;// Fallback for data views, maps, sets, and weak maps in IE 11 and promises in Node.js < 6.
-  if(DataView&&getTag(new DataView(new ArrayBuffer(1)))!=dataViewTag||Map&&getTag(new Map())!=mapTag||Promise&&getTag(Promise.resolve())!=promiseTag||Set&&getTag(new Set())!=setTag||WeakMap&&getTag(new WeakMap())!=weakMapTag){getTag=function getTag(value){var result=baseGetTag(value),Ctor=result==objectTag?value.constructor:undefined$1,ctorString=Ctor?toSource(Ctor):'';if(ctorString){switch(ctorString){case dataViewCtorString:return dataViewTag;case mapCtorString:return mapTag;case promiseCtorString:return promiseTag;case setCtorString:return setTag;case weakMapCtorString:return weakMapTag;}}return result;};}/**
+  if(DataView&&getTag(new DataView(new ArrayBuffer(1)))!=dataViewTag||Map&&getTag(new Map())!=mapTag||Promise&&getTag(Promise.resolve())!=promiseTag||Set&&getTag(new Set())!=setTag||WeakMap&&getTag(new WeakMap())!=weakMapTag){getTag=function(value){var result=baseGetTag(value),Ctor=result==objectTag?value.constructor:undefined$1,ctorString=Ctor?toSource(Ctor):'';if(ctorString){switch(ctorString){case dataViewCtorString:return dataViewTag;case mapCtorString:return mapTag;case promiseCtorString:return promiseTag;case setCtorString:return setTag;case weakMapCtorString:return weakMapTag;}}return result;};}/**
        * Gets the view, applying any `transforms` to the `start` and `end` positions.
        *
        * @private
@@ -12895,7 +11803,7 @@ typeof navigator === "object" && (function (global, factory) {
        * @param {*} value The value to check.
        * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
        * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
-       */function isIndex(value,length){var type=_typeof(value);length=length==null?MAX_SAFE_INTEGER:length;return !!length&&(type=='number'||type!='symbol'&&reIsUint.test(value))&&value>-1&&value%1==0&&value<length;}/**
+       */function isIndex(value,length){var type=typeof value;length=length==null?MAX_SAFE_INTEGER:length;return !!length&&(type=='number'||type!='symbol'&&reIsUint.test(value))&&value>-1&&value%1==0&&value<length;}/**
        * Checks if the given arguments are from an iteratee call.
        *
        * @private
@@ -12904,20 +11812,20 @@ typeof navigator === "object" && (function (global, factory) {
        * @param {*} object The potential iteratee object argument.
        * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
        *  else `false`.
-       */function isIterateeCall(value,index,object){if(!isObject(object)){return false;}var type=_typeof(index);if(type=='number'?isArrayLike(object)&&isIndex(index,object.length):type=='string'&&index in object){return eq(object[index],value);}return false;}/**
+       */function isIterateeCall(value,index,object){if(!isObject(object)){return false;}var type=typeof index;if(type=='number'?isArrayLike(object)&&isIndex(index,object.length):type=='string'&&index in object){return eq(object[index],value);}return false;}/**
        * Checks if `value` is a property name and not a property path.
        *
        * @private
        * @param {*} value The value to check.
        * @param {Object} [object] The object to query keys on.
        * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
-       */function isKey(value,object){if(isArray(value)){return false;}var type=_typeof(value);if(type=='number'||type=='symbol'||type=='boolean'||value==null||isSymbol(value)){return true;}return reIsPlainProp.test(value)||!reIsDeepProp.test(value)||object!=null&&value in Object(object);}/**
+       */function isKey(value,object){if(isArray(value)){return false;}var type=typeof value;if(type=='number'||type=='symbol'||type=='boolean'||value==null||isSymbol(value)){return true;}return reIsPlainProp.test(value)||!reIsDeepProp.test(value)||object!=null&&value in Object(object);}/**
        * Checks if `value` is suitable for use as unique object key.
        *
        * @private
        * @param {*} value The value to check.
        * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
-       */function isKeyable(value){var type=_typeof(value);return type=='string'||type=='number'||type=='symbol'||type=='boolean'?value!=='__proto__':value===null;}/**
+       */function isKeyable(value){var type=typeof value;return type=='string'||type=='number'||type=='symbol'||type=='boolean'?value!=='__proto__':value===null;}/**
        * Checks if `func` has a lazy counterpart.
        *
        * @private
@@ -14507,7 +13415,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _(object).at(['a[0].b.c', 'a[1]']).value();
        * // => [3, 4]
-       */var wrapperAt=flatRest(function(paths){var length=paths.length,start=length?paths[0]:0,value=this.__wrapped__,interceptor=function interceptor(object){return baseAt(object,paths);};if(length>1||this.__actions__.length||!(value instanceof LazyWrapper)||!isIndex(start)){return this.thru(interceptor);}value=value.slice(start,+start+(length?1:0));value.__actions__.push({'func':thru,'args':[interceptor],'thisArg':undefined$1});return new LodashWrapper(value,this.__chain__).thru(function(array){if(length&&!array.length){array.push(undefined$1);}return array;});});/**
+       */var wrapperAt=flatRest(function(paths){var length=paths.length,start=length?paths[0]:0,value=this.__wrapped__,interceptor=function(object){return baseAt(object,paths);};if(length>1||this.__actions__.length||!(value instanceof LazyWrapper)||!isIndex(start)){return this.thru(interceptor);}value=value.slice(start,+start+(length?1:0));value.__actions__.push({'func':thru,'args':[interceptor],'thisArg':undefined$1});return new LodashWrapper(value,this.__chain__).thru(function(array){if(length&&!array.length){array.push(undefined$1);}return array;});});/**
        * Creates a `lodash` wrapper instance with explicit method chain sequences enabled.
        *
        * @name chain
@@ -15718,7 +14626,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * // Replace `_.memoize.Cache`.
        * _.memoize.Cache = WeakMap;
-       */function memoize(func,resolver){if(typeof func!='function'||resolver!=null&&typeof resolver!='function'){throw new TypeError(FUNC_ERROR_TEXT);}var memoized=function memoized(){var args=arguments,key=resolver?resolver.apply(this,args):args[0],cache=memoized.cache;if(cache.has(key)){return cache.get(key);}var result=func.apply(this,args);memoized.cache=cache.set(key,result)||cache;return result;};memoized.cache=new(memoize.Cache||MapCache)();return memoized;}// Expose `MapCache`.
+       */function memoize(func,resolver){if(typeof func!='function'||resolver!=null&&typeof resolver!='function'){throw new TypeError(FUNC_ERROR_TEXT);}var memoized=function(){var args=arguments,key=resolver?resolver.apply(this,args):args[0],cache=memoized.cache;if(cache.has(key)){return cache.get(key);}var result=func.apply(this,args);memoized.cache=cache.set(key,result)||cache;return result;};memoized.cache=new(memoize.Cache||MapCache)();return memoized;}// Expose `MapCache`.
   memoize.Cache=MapCache;/**
        * Creates a function that negates the result of the predicate `func`. The
        * `func` predicate is invoked with the `this` binding and arguments of the
@@ -16624,7 +15532,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.isObject(null);
        * // => false
-       */function isObject(value){var type=_typeof(value);return value!=null&&(type=='object'||type=='function');}/**
+       */function isObject(value){var type=typeof value;return value!=null&&(type=='object'||type=='function');}/**
        * Checks if `value` is object-like. A value is object-like if it's not `null`
        * and has a `typeof` result of "object".
        *
@@ -16647,7 +15555,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.isObjectLike(null);
        * // => false
-       */function isObjectLike(value){return value!=null&&_typeof(value)=='object';}/**
+       */function isObjectLike(value){return value!=null&&typeof value=='object';}/**
        * Checks if `value` is classified as a `Map` object.
        *
        * @static
@@ -16953,7 +15861,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.isSymbol('abc');
        * // => false
-       */function isSymbol(value){return _typeof(value)=='symbol'||isObjectLike(value)&&baseGetTag(value)==symbolTag;}/**
+       */function isSymbol(value){return typeof value=='symbol'||isObjectLike(value)&&baseGetTag(value)==symbolTag;}/**
        * Checks if `value` is classified as a typed array.
        *
        * @static
@@ -17178,7 +16086,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.toNumber('3.2');
        * // => 3.2
-       */function toNumber(value){if(typeof value=='number'){return value;}if(isSymbol(value)){return NAN;}if(isObject(value)){var other=typeof value.valueOf=='function'?value.valueOf():value;value=isObject(other)?other+'':other;}if(typeof value!='string'){return value===0?value:+value;}value=value.replace(reTrim,'');var isBinary=reIsBinary.test(value);return isBinary||reIsOctal.test(value)?freeParseInt(value.slice(2),isBinary?2:8):reIsBadHex.test(value)?NAN:+value;}/**
+       */function toNumber(value){if(typeof value=='number'){return value;}if(isSymbol(value)){return NAN;}if(isObject(value)){var other=typeof value.valueOf=='function'?value.valueOf():value;value=isObject(other)?other+'':other;}if(typeof value!='string'){return value===0?value:+value;}value=baseTrim(value);var isBinary=reIsBinary.test(value);return isBinary||reIsOctal.test(value)?freeParseInt(value.slice(2),isBinary?2:8):reIsBadHex.test(value)?NAN:+value;}/**
        * Converts `value` to a plain object flattening inherited enumerable string
        * keyed properties of `value` to own properties of the plain object.
        *
@@ -18879,7 +17787,9 @@ typeof navigator === "object" && (function (global, factory) {
   // order to produce the correct `offset` value.
   return match;});source+="';\n";// If `variable` is not specified wrap a with-statement around the generated
   // code to add the data object to the top of the scope chain.
-  var variable=hasOwnProperty.call(options,'variable')&&options.variable;if(!variable){source='with (obj) {\n'+source+'\n}\n';}// Cleanup code by stripping empty strings.
+  var variable=hasOwnProperty.call(options,'variable')&&options.variable;if(!variable){source='with (obj) {\n'+source+'\n}\n';}// Throw an error if a forbidden character was found in `variable`, to prevent
+  // potential command injection attacks.
+  else if(reForbiddenIdentifierChars.test(variable)){throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);}// Cleanup code by stripping empty strings.
   source=(isEvaluating?source.replace(reEmptyStringLeading,''):source).replace(reEmptyStringMiddle,'$1').replace(reEmptyStringTrailing,'$1;');// Frame code as the function body.
   source='function('+(variable||'obj')+') {\n'+(variable?'':'obj || (obj = {});\n')+"var __t, __p = ''"+(isEscaping?', __e = _.escape':'')+(isEvaluating?', __j = Array.prototype.join;\n'+"function print() { __p += __j.call(arguments, '') }\n":';\n')+source+'return __p\n}';var result=attempt(function(){return Function(importsKeys,sourceURL+'return '+source).apply(undefined$1,importsValues);});// Provide the compiled function's source by its `toString` method or
   // the `source` property as a convenience for inlining compiled templates.
@@ -18944,7 +17854,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.map(['  foo  ', '  bar  '], _.trim);
        * // => ['foo', 'bar']
-       */function trim(string,chars,guard){string=toString(string);if(string&&(guard||chars===undefined$1)){return string.replace(reTrim,'');}if(!string||!(chars=baseToString(chars))){return string;}var strSymbols=stringToArray(string),chrSymbols=stringToArray(chars),start=charsStartIndex(strSymbols,chrSymbols),end=charsEndIndex(strSymbols,chrSymbols)+1;return castSlice(strSymbols,start,end).join('');}/**
+       */function trim(string,chars,guard){string=toString(string);if(string&&(guard||chars===undefined$1)){return baseTrim(string);}if(!string||!(chars=baseToString(chars))){return string;}var strSymbols=stringToArray(string),chrSymbols=stringToArray(chars),start=charsStartIndex(strSymbols,chrSymbols),end=charsEndIndex(strSymbols,chrSymbols)+1;return castSlice(strSymbols,start,end).join('');}/**
        * Removes trailing whitespace or specified characters from `string`.
        *
        * @static
@@ -18962,7 +17872,7 @@ typeof navigator === "object" && (function (global, factory) {
        *
        * _.trimEnd('-_-abc-_-', '_-');
        * // => '-_-abc'
-       */function trimEnd(string,chars,guard){string=toString(string);if(string&&(guard||chars===undefined$1)){return string.replace(reTrimEnd,'');}if(!string||!(chars=baseToString(chars))){return string;}var strSymbols=stringToArray(string),end=charsEndIndex(strSymbols,stringToArray(chars))+1;return castSlice(strSymbols,0,end).join('');}/**
+       */function trimEnd(string,chars,guard){string=toString(string);if(string&&(guard||chars===undefined$1)){return string.slice(0,trimmedEndIndex(string)+1);}if(!string||!(chars=baseToString(chars))){return string;}var strSymbols=stringToArray(string),end=charsEndIndex(strSymbols,stringToArray(chars))+1;return castSlice(strSymbols,0,end).join('');}/**
        * Removes leading whitespace or specified characters from `string`.
        *
        * @static
@@ -20098,7 +19008,7 @@ typeof navigator === "object" && (function (global, factory) {
   arrayEach(['filter','map','takeWhile'],function(methodName,index){var type=index+1,isFilter=type==LAZY_FILTER_FLAG||type==LAZY_WHILE_FLAG;LazyWrapper.prototype[methodName]=function(iteratee){var result=this.clone();result.__iteratees__.push({'iteratee':getIteratee(iteratee,3),'type':type});result.__filtered__=result.__filtered__||isFilter;return result;};});// Add `LazyWrapper` methods for `_.head` and `_.last`.
   arrayEach(['head','last'],function(methodName,index){var takeName='take'+(index?'Right':'');LazyWrapper.prototype[methodName]=function(){return this[takeName](1).value()[0];};});// Add `LazyWrapper` methods for `_.initial` and `_.tail`.
   arrayEach(['initial','tail'],function(methodName,index){var dropName='drop'+(index?'':'Right');LazyWrapper.prototype[methodName]=function(){return this.__filtered__?new LazyWrapper(this):this[dropName](1);};});LazyWrapper.prototype.compact=function(){return this.filter(identity);};LazyWrapper.prototype.find=function(predicate){return this.filter(predicate).head();};LazyWrapper.prototype.findLast=function(predicate){return this.reverse().find(predicate);};LazyWrapper.prototype.invokeMap=baseRest(function(path,args){if(typeof path=='function'){return new LazyWrapper(this);}return this.map(function(value){return baseInvoke(value,path,args);});});LazyWrapper.prototype.reject=function(predicate){return this.filter(negate(getIteratee(predicate)));};LazyWrapper.prototype.slice=function(start,end){start=toInteger(start);var result=this;if(result.__filtered__&&(start>0||end<0)){return new LazyWrapper(result);}if(start<0){result=result.takeRight(-start);}else if(start){result=result.drop(start);}if(end!==undefined$1){end=toInteger(end);result=end<0?result.dropRight(-end):result.take(end-start);}return result;};LazyWrapper.prototype.takeRightWhile=function(predicate){return this.reverse().takeWhile(predicate).reverse();};LazyWrapper.prototype.toArray=function(){return this.take(MAX_ARRAY_LENGTH);};// Add `LazyWrapper` methods to `lodash.prototype`.
-  baseForOwn(LazyWrapper.prototype,function(func,methodName){var checkIteratee=/^(?:filter|find|map|reject)|While$/.test(methodName),isTaker=/^(?:head|last)$/.test(methodName),lodashFunc=lodash[isTaker?'take'+(methodName=='last'?'Right':''):methodName],retUnwrapped=isTaker||/^find/.test(methodName);if(!lodashFunc){return;}lodash.prototype[methodName]=function(){var value=this.__wrapped__,args=isTaker?[1]:arguments,isLazy=value instanceof LazyWrapper,iteratee=args[0],useLazy=isLazy||isArray(value);var interceptor=function interceptor(value){var result=lodashFunc.apply(lodash,arrayPush([value],args));return isTaker&&chainAll?result[0]:result;};if(useLazy&&checkIteratee&&typeof iteratee=='function'&&iteratee.length!=1){// Avoid lazy use if the iteratee has a "length" value other than `1`.
+  baseForOwn(LazyWrapper.prototype,function(func,methodName){var checkIteratee=/^(?:filter|find|map|reject)|While$/.test(methodName),isTaker=/^(?:head|last)$/.test(methodName),lodashFunc=lodash[isTaker?'take'+(methodName=='last'?'Right':''):methodName],retUnwrapped=isTaker||/^find/.test(methodName);if(!lodashFunc){return;}lodash.prototype[methodName]=function(){var value=this.__wrapped__,args=isTaker?[1]:arguments,isLazy=value instanceof LazyWrapper,iteratee=args[0],useLazy=isLazy||isArray(value);var interceptor=function(value){var result=lodashFunc.apply(lodash,arrayPush([value],args));return isTaker&&chainAll?result[0]:result;};if(useLazy&&checkIteratee&&typeof iteratee=='function'&&iteratee.length!=1){// Avoid lazy use if the iteratee has a "length" value other than `1`.
   isLazy=useLazy=false;}var chainAll=this.__chain__,isHybrid=!!this.__actions__.length,isUnwrapped=retUnwrapped&&!chainAll,onlyLazy=isLazy&&!isHybrid;if(!retUnwrapped&&useLazy){value=onlyLazy?value:new LazyWrapper(this);var result=func.apply(value,args);result.__actions__.push({'func':thru,'args':[interceptor],'thisArg':undefined$1});return new LodashWrapper(result,chainAll);}if(isUnwrapped&&onlyLazy){return func.apply(this,args);}result=this.thru(interceptor);return isUnwrapped?isTaker?result.value()[0]:result.value():result;};});// Add `Array` methods to `lodash.prototype`.
   arrayEach(['pop','push','shift','sort','splice','unshift'],function(methodName){var func=arrayProto[methodName],chainName=/^(?:push|sort|unshift)$/.test(methodName)?'tap':'thru',retUnwrapped=/^(?:pop|shift)$/.test(methodName);lodash.prototype[methodName]=function(){var args=arguments;if(retUnwrapped&&!this.__chain__){var value=this.value();return func.apply(isArray(value)?value:[],args);}return this[chainName](function(value){return func.apply(isArray(value)?value:[],args);});};});// Map minified method names to their real names.
   baseForOwn(LazyWrapper.prototype,function(func,methodName){var lodashFunc=lodash[methodName];if(lodashFunc){var key=lodashFunc.name+'';if(!hasOwnProperty.call(realNames,key)){realNames[key]=[];}realNames[key].push({'name':methodName,'func':lodashFunc});}});realNames[createHybrid(undefined$1,WRAP_BIND_KEY_FLAG).name]=[{'name':'wrapper','func':undefined$1}];// Add methods to `LazyWrapper`.
@@ -20110,12 +19020,6 @@ typeof navigator === "object" && (function (global, factory) {
   (freeModule.exports=_)._=_;// Export for CommonJS support.
   freeExports._=_;}else {// Export to the global object.
   root._=_;}}).call(commonjsGlobal);});
-
-  var source = {
-    // Add elements to HTML5 media (source, tracks, etc)
-    insertElements: function insertElements(type, attributes) {
-      var _this = this;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
   // ==========================================================================
   const source = {
@@ -20134,30 +19038,21 @@ typeof navigator === "object" && (function (global, factory) {
 
     // Update source
     // Sources are not checked for support so be careful
-<<<<<<< HEAD
-    change(input) {
-      if (!getDeep(input, 'sources.length')) {
-=======
-    change: function change(input, angle) {
-      var _this2 = this;
-
+    change(input, angle) {
       // Set the default source to be the first or only source
-      var currentInput = input.length ? input[0] : input; // If angle has been specified set the video angle to be this
+      let currentInput = input.length ? input[0] : input; // If angle has been specified set the video angle to be this
 
-      if (angle) currentInput = input.find(function (x) {
-        return x.angle === angle;
-      });
+      if (angle) currentInput = input.find(x => x.angle === angle);
 
       if (!getDeep(currentInput, 'sources.length') && !currentInput.length) {
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         this.debug.warn('Invalid source format');
         return;
       } // Store instance of the player to be loaded after changing source
 
 
-      var playerClone = lodash.cloneDeep(this);
+      const playerClone = lodash.cloneDeep(this);
 
-      var durationClone = this.duration; // Cancel current network requests
+      const durationClone = this.duration; // Cancel current network requests
 
       html5.cancelRequests.call(this); // Destroy instance and re-setup
 
@@ -20168,16 +19063,16 @@ typeof navigator === "object" && (function (global, factory) {
         removeElement(this.media);
         this.media = null; // Reset class name
 
-<<<<<<< HEAD
         if (is.element(this.elements.container)) {
           this.elements.container.removeAttribute('class');
-        } // Set the type and provider
+        } // Retrieve the list of sources and type
 
 
         const {
           sources,
           type
-        } = input;
+        } = currentInput; // Set the type and provider
+
         const [{
           provider = providers.html5,
           src
@@ -20185,26 +19080,6 @@ typeof navigator === "object" && (function (global, factory) {
         const tagName = provider === 'html5' ? type : 'div';
         const attributes = provider === 'html5' ? {} : {
           src
-=======
-        if (is$1.element(_this2.elements.container)) {
-          _this2.elements.container.removeAttribute('class');
-        } // Retrieve the list of sources and type
-
-
-        var _currentInput = currentInput,
-            sources = _currentInput.sources,
-            type = _currentInput.type; // Set the type and provider
-
-        var _sources = _slicedToArray(sources, 1),
-            _sources$ = _sources[0],
-            _sources$$provider = _sources$.provider,
-            provider = _sources$$provider === void 0 ? providers.html5 : _sources$$provider,
-            src = _sources$.src;
-
-        var tagName = provider === 'html5' ? type : 'div';
-        var attributes = provider === 'html5' ? {} : {
-          src: src
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
         };
         Object.assign(this, {
           provider,
@@ -20217,13 +19092,8 @@ typeof navigator === "object" && (function (global, factory) {
 
         this.elements.container.appendChild(this.media); // Autoplay the new source?
 
-<<<<<<< HEAD
-        if (is.boolean(input.autoplay)) {
-          this.config.autoplay = input.autoplay;
-=======
-        if (is$1.boolean(currentInput.autoplay)) {
-          _this2.config.autoplay = currentInput.autoplay;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        if (is.boolean(currentInput.autoplay)) {
+          this.config.autoplay = currentInput.autoplay;
         } // Set attributes for audio and video
 
 
@@ -20236,13 +19106,8 @@ typeof navigator === "object" && (function (global, factory) {
             this.media.setAttribute('autoplay', '');
           }
 
-<<<<<<< HEAD
-          if (!is.empty(input.poster)) {
-            this.poster = input.poster;
-=======
-          if (!is$1.empty(currentInput.poster)) {
-            _this2.poster = currentInput.poster;
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          if (!is.empty(currentInput.poster)) {
+            this.poster = currentInput.poster;
           }
 
           if (this.config.loop.active) {
@@ -20257,8 +19122,8 @@ typeof navigator === "object" && (function (global, factory) {
             this.media.setAttribute('playsinline', '');
           }
 
-          if (_this2.config.preload) {
-            _this2.media.setAttribute('preload', _this2.config.preload);
+          if (this.config.preload) {
+            this.media.setAttribute('preload', this.config.preload);
           }
         } // Restore class hook
 
@@ -20270,36 +19135,23 @@ typeof navigator === "object" && (function (global, factory) {
         } // Set video title
 
 
-<<<<<<< HEAD
-        this.config.title = input.title; // Set up from scratch
-=======
-        _this2.config.title = currentInput.title; // Current angle
+        this.config.title = currentInput.title; // Current angle
 
-        if (currentInput.angle) _this2.media.angle = currentInput.angle; // Store Input
+        if (currentInput.angle) this.media.angle = currentInput.angle; // Store Input
 
-        _this2.media.sources = input; // Set up from scratch
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        this.media.sources = input; // Set up from scratch
 
         media.setup.call(this); // HTML5 stuff
 
         if (this.isHTML5) {
           // Setup captions
-<<<<<<< HEAD
-          if (Object.keys(input).includes('tracks')) {
-            source.insertElements.call(this, 'track', input.tracks);
-=======
           if (Object.keys(currentInput).includes('tracks')) {
-            source.insertElements.call(_this2, 'track', currentInput.tracks);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+            source.insertElements.call(this, 'track', currentInput.tracks);
           }
         } // Set up sync points
 
 
-<<<<<<< HEAD
-        this.config.syncPoints = input.syncPoints; // If HTML5 or embed but not fully supported, setupInterface and call ready now
-=======
-        _this2.config.syncPoints = currentInput.syncPoints; // If HTML5 or embed but not fully supported, setupInterface and call ready now
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        this.config.syncPoints = currentInput.syncPoints; // If HTML5 or embed but not fully supported, setupInterface and call ready now
 
         if (this.isHTML5 || this.isEmbed && !this.supported.ui) {
           // Setup interface
@@ -20323,16 +19175,8 @@ typeof navigator === "object" && (function (global, factory) {
         } // Update previewThumbnails config & reload plugin
 
 
-<<<<<<< HEAD
-        if (!is.empty(input.previewThumbnails)) {
-          Object.assign(this.config.previewThumbnails, input.previewThumbnails); // Cleanup previewThumbnails plugin if it was loaded
-=======
-        if (!is$1.empty(currentInput.previewThumbnails)) {
-          Object.assign(_this2.config.previewThumbnails, currentInput.previewThumbnails); // Cleanup previewThumbnails plugin if it was loaded
-
-          if (_this2.previewThumbnails && _this2.previewThumbnails.loaded) {
-            _this2.previewThumbnails.destroy();
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+        if (!is.empty(currentInput.previewThumbnails)) {
+          Object.assign(this.config.previewThumbnails, currentInput.previewThumbnails); // Cleanup previewThumbnails plugin if it was loaded
 
           if (this.previewThumbnails && this.previewThumbnails.loaded) {
             this.previewThumbnails.destroy();
@@ -20352,15 +19196,9 @@ typeof navigator === "object" && (function (global, factory) {
         } // Create new instance if it is still enabled
 
 
-<<<<<<< HEAD
         if (this.config.editor.enabled) {
           this.editor = new Editor(this);
-=======
-        if (_this2.config.editor.enabled) {
-          _this2.editor = new Editor(_this2);
-
-          _this2.editor.loadConfig(playerClone, durationClone);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          this.editor.loadConfig(playerClone, durationClone);
         } // Create new instance of video markers
 
 
@@ -20370,15 +19208,9 @@ typeof navigator === "object" && (function (global, factory) {
         } // Create new instance if it is still enabled
 
 
-<<<<<<< HEAD
         if (this.config.markers.enabled) {
           this.markers = new Markers(this);
-=======
-        if (_this2.config.markers.enabled) {
-          _this2.markers = new Markers(_this2);
-
-          _this2.markers.loadConfig(playerClone);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          this.markers.loadConfig(playerClone);
         } // Create new instance of trim plugin
 
 
@@ -20388,15 +19220,9 @@ typeof navigator === "object" && (function (global, factory) {
         } // Create new instance if it is still enabled
 
 
-<<<<<<< HEAD
         if (this.config.trim.enabled) {
           this.trim = new Trim(this);
-=======
-        if (_this2.config.trim.enabled) {
-          _this2.trim = new Trim(_this2);
-
-          _this2.trim.loadConfig(playerClone);
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
+          this.trim.loadConfig(playerClone);
         } // Update trimming tool support
 
 
@@ -20456,35 +19282,9 @@ typeof navigator === "object" && (function (global, factory) {
         }
       });
 
-<<<<<<< HEAD
       _defineProperty$1(this, "restart", () => {
         this.currentTime = 0;
       });
-=======
-      this.elements = {
-        container: null,
-        fullscreen: null,
-        captions: null,
-        buttons: {},
-        display: {},
-        progress: {},
-        inputs: {},
-        menu: {
-          settings: {
-            popup: null,
-            menu: null,
-            panels: {},
-            buttons: {}
-          },
-          angleSelector: {
-            popup: null,
-            menu: null,
-            panels: {},
-            buttons: {}
-          }
-        }
-      }; // Captions
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       _defineProperty$1(this, "rewind", seekTime => {
         this.currentTime -= is.number(seekTime) ? seekTime : this.config.seekTime;
@@ -20521,7 +19321,9 @@ typeof navigator === "object" && (function (global, factory) {
           const hiding = toggleClass(this.elements.container, this.config.classNames.hideControls, force); // Close menu
 
           if (hiding && is.array(this.config.controls) && this.config.controls.includes('settings') && !is.empty(this.config.settings)) {
-            controls.toggleMenu.call(this, false);
+            const menuItem = this.elements.menu.angleSelector;
+            const button = this.elements.buttons.angleSelector;
+            controls.toggleMenu.call(this, false, menuItem, button);
           } // Trigger event on change
 
 
@@ -20580,7 +19382,9 @@ typeof navigator === "object" && (function (global, factory) {
             }
           } else {
             // Event
-            triggerEvent.call(this, this.elements.container, 'destroyed', true); // Unbind listeners
+            triggerEvent.call(this, this.elements.container, 'destroyed', true); // Cancel all network requests
+
+            html5.cancelRequests.call(this); // Unbind listeners
 
             unbindListeners.call(this); // Cancel current network requests
 
@@ -20678,11 +19482,19 @@ typeof navigator === "object" && (function (global, factory) {
         display: {},
         progress: {},
         inputs: {},
-        settings: {
-          popup: null,
-          menu: null,
-          panels: {},
-          buttons: {}
+        menu: {
+          settings: {
+            popup: null,
+            menu: null,
+            panels: {},
+            buttons: {}
+          },
+          angleSelector: {
+            popup: null,
+            menu: null,
+            panels: {},
+            buttons: {}
+          }
         }
       }; // Captions
 
@@ -21027,19 +19839,11 @@ typeof navigator === "object" && (function (global, factory) {
         buffered
       } = this.media; // YouTube / Vimeo return a float between 0-1
 
-<<<<<<< HEAD
       if (is.number(buffered)) {
         return buffered;
       } // HTML5
       // TODO: Handle buffered chunks of the media
       // (i.e. seek to another section buffers only that section)
-=======
-          if (hiding && is$1.array(this.config.controls) && this.config.controls.includes('settings') && !is$1.empty(this.config.settings)) {
-            var menuItem = this.elements.menu.angleSelector;
-            var button = this.elements.buttons.angleSelector;
-            controls.toggleMenu.call(this, false, menuItem, button);
-          } // Trigger event on change
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
 
       if (buffered && buffered.length && this.duration > 0) {
@@ -21090,17 +19894,6 @@ typeof navigator === "object" && (function (global, factory) {
         volume = this.storage.get('volume');
       } // Use config if all else fails
 
-<<<<<<< HEAD
-=======
-            if (is$1.function(callback)) {
-              callback();
-            }
-          } else {
-            // Event
-            triggerEvent.call(_this3, _this3.elements.container, 'destroyed', true); // Cancel all network requests
-
-            html5.cancelRequests.call(_this3); // Unbind listeners
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
       if (!is.number(volume)) {
         ({
@@ -21388,6 +20181,44 @@ typeof navigator === "object" && (function (global, factory) {
       return this.media.currentSrc;
     }
     /**
+     * Get list of avaiable sources
+     */
+
+
+    get sources() {
+      return this.media.sources;
+    }
+    /**
+     * Get current angle
+     */
+
+
+    get angle() {
+      return this.media.angle;
+    }
+    /**
+     * Set new media angle
+     * @param {Object} input - The new angle name (see docs)
+     */
+
+
+    set angle(input) {
+      const {
+        currentTime
+      } = this;
+      const currentMatchTime = videoToMatchTime(this.mediaFragment.getMediaTime(currentTime), this.config.syncPoints);
+      source.change.call(this, this.media.sources, input);
+      triggerEvent.call(this, this.media, 'angleChange', false, {
+        angle: input
+      });
+
+      if (this.config.matchTime && this.config.syncPoints) {
+        this.on('durationchange', () => {
+          if (this.duration) this.currentTime = matchToVideoTime(currentMatchTime, this.config.syncPoints);
+        });
+      }
+    }
+    /**
      * Get a download URL (either source or custom)
      */
 
@@ -21513,63 +20344,6 @@ typeof navigator === "object" && (function (global, factory) {
      * Get the current caption track index (-1 if disabled)
      */
 
-<<<<<<< HEAD
-=======
-    }, {
-      key: "source",
-      set: function set(input) {
-        source.change.call(this, input);
-      }
-      /**
-       * Get current source
-       */
-      ,
-      get: function get() {
-        return this.media.currentSrc;
-      }
-      /**
-       * Get list of avaiable sources
-       */
-
-    }, {
-      key: "sources",
-      get: function get() {
-        return this.media.sources;
-      }
-      /**
-       * Get current angle
-       */
-
-    }, {
-      key: "angle",
-      get: function get() {
-        return this.media.angle;
-      }
-      /**
-       * Set new media angle
-       * @param {Object} input - The new angle name (see docs)
-       */
-      ,
-      set: function set(input) {
-        var _this5 = this;
-
-        var currentTime = this.currentTime;
-        var currentMatchTime = videoToMatchTime(this.mediaFragment.getMediaTime(currentTime), this.config.syncPoints);
-        source.change.call(this, this.media.sources, input);
-        triggerEvent.call(this, this.media, 'angleChange', false, {
-          angle: input
-        });
-
-        if (this.config.matchTime && this.config.syncPoints) {
-          this.on('durationchange', function () {
-            if (_this5.duration) _this5.currentTime = matchToVideoTime(currentMatchTime, _this5.config.syncPoints);
-          });
-        }
-      }
-      /**
-       * Get a download URL (either source or custom)
-       */
->>>>>>> 013ac225626400ce8a7c87d5d84d075417a02f51
 
     get currentTrack() {
       const {
