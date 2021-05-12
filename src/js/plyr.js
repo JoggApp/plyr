@@ -1,6 +1,6 @@
 // ==========================================================================
 // Plyr
-// plyr.js v3.6.1
+// plyr.js v3.6.7
 // https://github.com/sampotts/plyr
 // License: The MIT License (MIT)
 // ==========================================================================
@@ -12,6 +12,7 @@ import { getProviderByUrl, providers, types } from './config/types';
 import Console from './console';
 import controls from './controls';
 import Fullscreen from './fullscreen';
+import html5 from './html5';
 import Listeners from './listeners';
 import media from './media';
 import MediaFragment from './mediaFragment';
@@ -32,7 +33,7 @@ import loadSprite from './utils/load-sprite';
 import { clamp } from './utils/numbers';
 import { cloneDeep, extend } from './utils/objects';
 import { silencePromise } from './utils/promise';
-import { getAspectRatio, reduceAspectRatio, setAspectRatio, validateRatio } from './utils/style';
+import { getAspectRatio, reduceAspectRatio, setAspectRatio, validateAspectRatio } from './utils/style';
 import { parseUrl } from './utils/urls';
 
 // Private properties
@@ -209,7 +210,7 @@ class Plyr {
         }
 
         // Unsupported or missing provider
-        if (is.empty(this.provider) || !Object.keys(providers).includes(this.provider)) {
+        if (is.empty(this.provider) || !Object.values(providers).includes(this.provider)) {
           this.debug.error('Setup failed: Invalid provider');
           return;
         }
@@ -370,7 +371,7 @@ class Plyr {
   /**
    * Play the media, or play the advertisement (if they are not blocked)
    */
-  play() {
+  play = () => {
     if (!is.function(this.media.play)) {
       return null;
     }
@@ -382,18 +383,18 @@ class Plyr {
 
     // Return the promise (for HTML5)
     return this.media.play();
-  }
+  };
 
   /**
    * Pause the media
    */
-  pause() {
+  pause = () => {
     if (!this.playing || !is.function(this.media.pause)) {
       return null;
     }
 
     return this.media.pause();
-  }
+  };
 
   /**
    * Get playing state
@@ -427,7 +428,7 @@ class Plyr {
    * Toggle playback based on current status
    * @param {Boolean} input
    */
-  togglePlay(input) {
+  togglePlay = input => {
     // Toggle based on current state if nothing passed
     const toggle = is.boolean(input) ? input : !this.playing;
 
@@ -436,42 +437,42 @@ class Plyr {
     }
 
     return this.pause();
-  }
+  };
 
   /**
    * Stop playback
    */
-  stop() {
+  stop = () => {
     if (this.isHTML5) {
       this.pause();
       this.restart();
     } else if (is.function(this.media.stop)) {
       this.media.stop();
     }
-  }
+  };
 
   /**
    * Restart playback
    */
-  restart() {
+  restart = () => {
     this.currentTime = 0;
-  }
+  };
 
   /**
    * Rewind
    * @param {Number} seekTime - how far to rewind in seconds. Defaults to the config.seekTime
    */
-  rewind(seekTime) {
+  rewind = seekTime => {
     this.currentTime -= is.number(seekTime) ? seekTime : this.config.seekTime;
-  }
+  };
 
   /**
    * Fast forward
    * @param {Number} seekTime - how far to fast forward in seconds. Defaults to the config.seekTime
    */
-  forward(seekTime) {
+  forward = seekTime => {
     this.currentTime += is.number(seekTime) ? seekTime : this.config.seekTime;
-  }
+  };
 
   /**
    * Rewind Frame
@@ -615,18 +616,18 @@ class Plyr {
    * Increase volume
    * @param {Boolean} step - How much to decrease by (between 0 and 1)
    */
-  increaseVolume(step) {
+  increaseVolume = step => {
     const volume = this.media.muted ? 0 : this.volume;
     this.volume = volume + (is.number(step) ? step : 0);
-  }
+  };
 
   /**
    * Decrease volume
    * @param {Boolean} step - How much to decrease by (between 0 and 1)
    */
-  decreaseVolume(step) {
+  decreaseVolume = step => {
     this.increaseVolume(-step);
-  }
+  };
 
   /**
    * Set muted state
@@ -949,12 +950,12 @@ class Plyr {
       return;
     }
 
-    if (!is.string(input) || !validateRatio(input)) {
+    if (!is.string(input) || !validateAspectRatio(input)) {
       this.debug.error(`Invalid aspect ratio specified (${input})`);
       return;
     }
 
-    this.config.ratio = input;
+    this.config.ratio = reduceAspectRatio(input);
 
     setAspectRatio.call(this);
   }
@@ -989,6 +990,10 @@ class Plyr {
    */
   set currentTrack(input) {
     captions.set.call(this, input, false);
+
+    if (input >= 1) {
+      captions.setup.call(this);
+    }
   }
 
   /**
@@ -1066,18 +1071,18 @@ class Plyr {
    * Trigger the airplay dialog
    * TODO: update player with state, support, enabled
    */
-  airplay() {
+  airplay = () => {
     // Show dialog if supported
     if (support.airplay) {
       this.media.webkitShowPlaybackTargetPicker();
     }
-  }
+  };
 
   /**
    * Toggle the player controls
    * @param {Boolean} [toggle] - Whether to show the controls
    */
-  toggleControls(toggle) {
+  toggleControls = toggle => {
     // Don't toggle if missing UI support or if it's audio
     if (this.supported.ui && !this.isAudio) {
       // Get state before change
@@ -1107,34 +1112,34 @@ class Plyr {
     }
 
     return false;
-  }
+  };
 
   /**
    * Add event listeners
    * @param {String} event - Event type
    * @param {Function} callback - Callback for when event occurs
    */
-  on(event, callback) {
+  on = (event, callback) => {
     on.call(this, this.elements.container, event, callback);
-  }
+  };
 
   /**
    * Add event listeners once
    * @param {String} event - Event type
    * @param {Function} callback - Callback for when event occurs
    */
-  once(event, callback) {
+  once = (event, callback) => {
     once.call(this, this.elements.container, event, callback);
-  }
+  };
 
   /**
    * Remove event listeners
    * @param {String} event - Event type
    * @param {Function} callback - Callback for when event occurs
    */
-  off(event, callback) {
+  off = (event, callback) => {
     off(this.elements.container, event, callback);
-  }
+  };
 
   /**
    * Destroy an instance
@@ -1143,7 +1148,7 @@ class Plyr {
    * @param {Function} callback - Callback for when destroy is complete
    * @param {Boolean} soft - Whether it's a soft destroy (for source changes etc)
    */
-  destroy(callback, soft = false) {
+  destroy = (callback, soft = false) => {
     if (!this.ready) {
       return;
     }
@@ -1182,6 +1187,9 @@ class Plyr {
 
         // Unbind listeners
         unbindListeners.call(this);
+
+        // Cancel current network requests
+        html5.cancelRequests.call(this);
 
         // Replace the container with the original element provided
         replaceElement(this.elements.original, this.elements.container);
@@ -1242,15 +1250,13 @@ class Plyr {
       // Vimeo does not always return
       setTimeout(done, 200);
     }
-  }
+  };
 
   /**
    * Check for support for a mime type (HTML5 only)
    * @param {String} type - Mime type
    */
-  supports(type) {
-    return support.mime.call(this, type);
-  }
+  supports = type => support.mime.call(this, type);
 
   /**
    * Check for support
