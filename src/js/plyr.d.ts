@@ -831,7 +831,7 @@ declare namespace Plyr {
     id: string;
     time: number;
     start: number;
-    duration: duration;
+    duration: number;
   }
 
   interface PlyrEvent extends CustomEvent {
