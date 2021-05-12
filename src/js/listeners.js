@@ -71,7 +71,31 @@ class Listeners {
       }
 
       // Which keycodes should we prevent default
-      const preventDefault = [32, 37, 38, 39, 40, 48, 49, 50, 51, 52, 53, 54, 56, 57, 67, 70, 73, 75, 76, 77, 79];
+      const preventDefault = [
+        32,
+        37,
+        38,
+        39,
+        40,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        56,
+        57,
+        67,
+        70,
+        73,
+        75,
+        76,
+        77,
+        79,
+        187,
+        189,
+      ];
 
       // If the code is found prevent default (e.g. prevent scrolling for arrows)
       if (preventDefault.includes(code)) {
@@ -90,6 +114,16 @@ class Listeners {
             // Arrow Back
             player.frameRewind();
             break;
+
+          // Plus key
+          case 187:
+            player.editor.setZoomByEvent(event);
+            break;
+          // Minus key
+          case 189:
+            player.editor.setZoomByEvent(event);
+            break;
+
           default:
             break;
         }
@@ -213,7 +247,11 @@ class Listeners {
 
   // Toggle menu
   toggleMenu(event) {
-    controls.toggleMenu.call(this.player, event);
+    const { menu } = this.player.elements;
+    const { buttons } = this.player.elements;
+
+    controls.toggleMenu.call(this.player, event, menu.settings, buttons.settings);
+    controls.toggleMenu.call(this.player, event, menu.angleSelector, buttons.angleSelector);
   }
 
   // Device is touch enabled
@@ -616,18 +654,18 @@ class Listeners {
     // Zoom Timeline
     this.bind(editor.elements.container.controls.zoomContainer.zoom, inputEvent, event => {
       if (editor.active) {
-        editor.setZoom(event);
+        editor.setZoomByEvent(event);
       }
     });
 
     // Zoom Out Control
     this.bind(editor.elements.container.controls.zoomContainer.zoomOut, 'click', event => {
-      editor.setZoom(event);
+      editor.setZoomByEvent(event);
     });
 
     // Zoom Out Control
     this.bind(editor.elements.container.controls.zoomContainer.zoomIn, 'click', event => {
-      editor.setZoom(event);
+      editor.setZoomByEvent(event);
     });
 
     // Zoom timeline
@@ -637,8 +675,8 @@ class Listeners {
       event => {
         event.preventDefault();
 
-        if (editor.active) {
-          editor.setZoom(event);
+        if (editor.active && this.player.config.editor.scrollToZoom) {
+          editor.setZoomByEvent(event);
         }
       },
       'editor',
@@ -841,7 +879,10 @@ class Listeners {
         event.stopPropagation();
         event.preventDefault();
 
-        controls.toggleMenu.call(player, event);
+        const menu = player.elements.menu.settings;
+        const button = player.elements.buttons.settings;
+
+        controls.toggleMenu.call(player, event, menu, button);
       },
       null,
       false,
@@ -874,18 +915,78 @@ class Listeners {
         event.stopPropagation();
 
         // Toggle menu
-        controls.toggleMenu.call(player, event);
+        const menu = player.elements.menu.settings;
+        const button = player.elements.buttons.settings;
+
+        controls.toggleMenu.call(player, event, menu, button);
       },
       null,
       false, // Can't be passive as we're preventing default
     );
 
     // Escape closes menu
-    this.bind(elements.settings.menu, 'keydown', event => {
+    this.bind(elements.menu.settings.menu, 'keydown', event => {
       if (event.which === 27) {
-        controls.toggleMenu.call(player, event);
+        const menu = player.elements.menu.settings;
+        const button = player.elements.buttons.settings;
+
+        controls.toggleMenu.call(player, event, menu, button);
       }
     });
+
+    // Angle Selector - click toggle
+    this.bind(
+      elements.buttons.angleSelector,
+      'click',
+      event => {
+        // Prevent the document click listener closing the menu
+        event.stopPropagation();
+        event.preventDefault();
+
+        const menuItem = player.elements.menu.angleSelector;
+        const button = player.elements.buttons.angleSelector;
+
+        controls.toggleMenu.call(player, event, menuItem, button);
+      },
+      null,
+      false,
+    ); // Can't be passive as we're preventing default
+
+    // Angle selector menu - keyboard toggle
+    // We have to bind to keyup otherwise Firefox triggers a click when a keydown event handler shifts focus
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+    this.bind(
+      elements.buttons.angleSelector,
+      'keyup',
+      event => {
+        const code = event.which;
+
+        // We only care about space and return
+        if (![13, 32].includes(code)) {
+          return;
+        }
+
+        // Because return triggers a click anyway, all we need to do is set focus
+        if (code === 13) {
+          controls.focusFirstMenuItem.call(player, null, true);
+          return;
+        }
+
+        // Prevent scroll
+        event.preventDefault();
+
+        // Prevent playing video (Firefox)
+        event.stopPropagation();
+
+        const menuItem = this.player.elements.menu.angleSelector;
+        const button = this.player.elements.buttons.angleSelector;
+
+        // Toggle menu
+        controls.toggleMenu.call(player, event, menuItem, button);
+      },
+      null,
+      false, // Can't be passive as we're preventing default
+    );
 
     // Set range input alternative "value", which matches the tooltip time (#954)
     this.bind(elements.inputs.seek, 'mousedown mousemove', event => {

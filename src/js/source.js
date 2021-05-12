@@ -2,6 +2,8 @@
 // Plyr source update
 // ==========================================================================
 
+import _ from 'lodash';
+
 import { providers } from './config/types';
 import html5 from './html5';
 import media from './media';
@@ -32,11 +34,21 @@ const source = {
 
   // Update source
   // Sources are not checked for support so be careful
-  change(input) {
-    if (!getDeep(input, 'sources.length')) {
+  change(input, angle) {
+    // Set the default source to be the first or only source
+    let currentInput = input.length ? input[0] : input;
+
+    // If angle has been specified set the video angle to be this
+    if (angle) currentInput = input.find(x => x.angle === angle);
+
+    if (!getDeep(currentInput, 'sources.length') && !currentInput.length) {
       this.debug.warn('Invalid source format');
       return;
     }
+
+    // Store instance of the player to be loaded after changing source
+    const playerClone = _.cloneDeep(this);
+    const durationClone = this.duration;
 
     // Cancel current network requests
     html5.cancelRequests.call(this);
@@ -57,8 +69,9 @@ const source = {
           this.elements.container.removeAttribute('class');
         }
 
+        // Retrieve the list of sources and type
+        const { sources, type } = currentInput;
         // Set the type and provider
-        const { sources, type } = input;
         const [{ provider = providers.html5, src }] = sources;
         const tagName = provider === 'html5' ? type : 'div';
         const attributes = provider === 'html5' ? {} : { src };
@@ -76,8 +89,8 @@ const source = {
         this.elements.container.appendChild(this.media);
 
         // Autoplay the new source?
-        if (is.boolean(input.autoplay)) {
-          this.config.autoplay = input.autoplay;
+        if (is.boolean(currentInput.autoplay)) {
+          this.config.autoplay = currentInput.autoplay;
         }
 
         // Set attributes for audio and video
@@ -88,8 +101,8 @@ const source = {
           if (this.config.autoplay) {
             this.media.setAttribute('autoplay', '');
           }
-          if (!is.empty(input.poster)) {
-            this.poster = input.poster;
+          if (!is.empty(currentInput.poster)) {
+            this.poster = currentInput.poster;
           }
           if (this.config.loop.active) {
             this.media.setAttribute('loop', '');
@@ -99,6 +112,9 @@ const source = {
           }
           if (this.config.playsinline) {
             this.media.setAttribute('playsinline', '');
+          }
+          if (this.config.preload) {
+            this.media.setAttribute('preload', this.config.preload);
           }
         }
 
@@ -111,7 +127,13 @@ const source = {
         }
 
         // Set video title
-        this.config.title = input.title;
+        this.config.title = currentInput.title;
+
+        // Current angle
+        if (currentInput.angle) this.media.angle = currentInput.angle;
+
+        // Store Input
+        this.media.sources = input;
 
         // Set up from scratch
         media.setup.call(this);
@@ -119,13 +141,13 @@ const source = {
         // HTML5 stuff
         if (this.isHTML5) {
           // Setup captions
-          if (Object.keys(input).includes('tracks')) {
-            source.insertElements.call(this, 'track', input.tracks);
+          if (Object.keys(currentInput).includes('tracks')) {
+            source.insertElements.call(this, 'track', currentInput.tracks);
           }
         }
 
         // Set up sync points
-        this.config.syncPoints = input.syncPoints;
+        this.config.syncPoints = currentInput.syncPoints;
 
         // If HTML5 or embed but not fully supported, setupInterface and call ready now
         if (this.isHTML5 || (this.isEmbed && !this.supported.ui)) {
@@ -150,8 +172,8 @@ const source = {
         }
 
         // Update previewThumbnails config & reload plugin
-        if (!is.empty(input.previewThumbnails)) {
-          Object.assign(this.config.previewThumbnails, input.previewThumbnails);
+        if (!is.empty(currentInput.previewThumbnails)) {
+          Object.assign(this.config.previewThumbnails, currentInput.previewThumbnails);
 
           // Cleanup previewThumbnails plugin if it was loaded
           if (this.previewThumbnails && this.previewThumbnails.loaded) {
@@ -165,7 +187,7 @@ const source = {
           }
         }
 
-        // Create new instance of trim plugin
+        // Create new instance of the editor plugin
         if (this.editor && this.editor.loaded) {
           this.editor.destroy();
           this.editor = null;
@@ -174,6 +196,7 @@ const source = {
         // Create new instance if it is still enabled
         if (this.config.editor.enabled) {
           this.editor = new Editor(this);
+          this.editor.loadConfig(playerClone, durationClone);
         }
 
         // Create new instance of video markers
@@ -185,6 +208,7 @@ const source = {
         // Create new instance if it is still enabled
         if (this.config.markers.enabled) {
           this.markers = new Markers(this);
+          this.markers.loadConfig(playerClone);
         }
 
         // Create new instance of trim plugin
@@ -196,6 +220,7 @@ const source = {
         // Create new instance if it is still enabled
         if (this.config.trim.enabled) {
           this.trim = new Trim(this);
+          this.trim.loadConfig(playerClone);
         }
 
         // Update trimming tool support

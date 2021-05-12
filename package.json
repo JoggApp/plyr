@@ -93,6 +93,7 @@
     "core-js": "^3.10.1",
     "custom-event-polyfill": "^1.0.7",
     "loadjs": "^4.2.0",
+    "lodash": "^4.17.20",
     "rangetouch": "^2.0.1",
     "url-polyfill": "^1.1.12"
   }

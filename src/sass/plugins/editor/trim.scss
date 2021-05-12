@@ -88,6 +88,10 @@ $plyr-trim-time-bottom-offset: var(--plyr-trim-time-bottom-offset, 1px);
       opacity: 1;
     }
 
+    &--always-show-timestamps {
+      opacity: 1;
+    }
+
     span {
       background-color: $plyr-trim-time-bg;
       border-radius: $plyr-trim-time-radius;

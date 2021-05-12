@@ -9,6 +9,7 @@ import i18n from '../../utils/i18n';
 import is from '../../utils/is';
 import { clamp } from '../../utils/numbers';
 import { extend } from '../../utils/objects';
+import { matchToVideoTime, videoToMatchTime } from '../../utils/time';
 
 class Trim {
   constructor(player) {
@@ -123,6 +124,9 @@ class Trim {
     }
     if (is.empty(this.elements.container.bar)) {
       this.createTrimTool();
+    }
+    if (this.config.zoom && this.config.zoom.enabled) {
+      this.setTimelineZoom();
     }
     toggleHidden(this.elements.container, false);
   }
@@ -288,14 +292,16 @@ class Trim {
 
   createThumbTime() {
     const { leftThumb, rightThumb } = this.elements.container.bar;
+    const { alwaysShowTimestamps } = this.config;
+    const { classNames } = this.player.config;
 
     // Create HTML element, parent+span: time text (e.g., 01:32:00)
     leftThumb.timeContainer = createElement('div', {
-      class: this.player.config.classNames.trim.timeContainer,
+      class: classNames.trim.timeContainer,
     });
 
     rightThumb.timeContainer = createElement('div', {
-      class: this.player.config.classNames.trim.timeContainer,
+      class: classNames.trim.timeContainer,
     });
 
     // Append the time element to the container
@@ -307,6 +313,10 @@ class Trim {
     // Append the time container to the bar
     leftThumb.appendChild(leftThumb.timeContainer);
     rightThumb.appendChild(rightThumb.timeContainer);
+
+    // Toggle whether to always show time stamps or just on hover
+    toggleClass(leftThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
+    toggleClass(rightThumb.timeContainer, classNames.trim.alwaysShowTimestamps, alwaysShowTimestamps);
   }
 
   setEditing(event) {
@@ -396,7 +406,7 @@ class Trim {
 
     // Store and convert the start percentage to time
     bar.style.left = `${percentage}%`;
-    if (maxTrimLength) this.setEndTime(rightThumbPos);
+    if (maxTrimLength) this.setEndTime(percentage + parseFloat(width));
     this.setStartTime(percentage);
     // Prevent the end time being before the start time
     if (this.startTime > this.endTime) this.setEndTime(percentage);
@@ -461,6 +471,11 @@ class Trim {
     element.timeContainer.classList.toggle(className, toggle);
   }
 
+  setTimelineZoom() {
+    const { preRoll, postRoll } = this.config.zoom;
+    this.player.editor.setZoomWindow(this.startTime - preRoll, this.endTime + postRoll);
+  }
+
   // Set the seektime to the start of the trim timeline, if the seektime is outside of the region.
   timeUpdate() {
     if (!this.active || !this.trimming || !this.player.playing || this.editing) {
@@ -519,6 +534,43 @@ class Trim {
 
     // Add styling hook to show button
     toggleClass(this.player.elements.container, this.player.config.classNames.trim.enabled, this.enabled);
+  }
+
+  // Load config after changing of source (only do this for sources which have sync points)
+  loadConfig(config) {
+    if (!config) return;
+
+    if (
+      !(this.player.config.syncPoints && this.player.config.syncPoints.length) ||
+      !(config.config.syncPoints && config.config.syncPoints.length)
+    )
+      return;
+
+    if (!config.trim.trimming) return;
+
+    this.enter();
+
+    if (config.config.trim.lowerBound > 0) {
+      const previousLowerBound = videoToMatchTime(config.config.trim.lowerBound, config.config.syncPoints);
+      this.config.lowerBound = matchToVideoTime(previousLowerBound, this.player.config.syncPoints);
+    }
+
+    if (config.config.trim.upperBound > 0) {
+      const previousUpperBound = videoToMatchTime(config.config.trim.upperBound, config.config.syncPoints);
+      this.config.upperBound = matchToVideoTime(previousUpperBound, this.player.config.syncPoints);
+    }
+
+    const previousStartTime = config.trim.elements.container.bar.leftThumb.getAttribute('aria-valuetext');
+    const previousEndTime = config.trim.elements.container.bar.rightThumb.getAttribute('aria-valuetext');
+
+    this.player.once('trimloaded', () => {
+      this.setTrimStart(
+        matchToVideoTime(previousStartTime, this.player.config.syncPoints) - this.player.mediaFragment.startTime,
+      );
+      this.setTrimEnd(
+        matchToVideoTime(previousEndTime, this.player.config.syncPoints) - this.player.mediaFragment.startTime,
+      );
+    });
   }
 
   destroy() {

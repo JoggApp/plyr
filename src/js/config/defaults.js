@@ -121,6 +121,7 @@ const defaults = {
     enabled: true, // Allow Editor?
     target: null, // Target Container for Editor (if no container is specified, video editor will be appended to the video container)
     maxZoom: 8, // Default max zoom level
+    scrollToZoom: false,
   },
 
   markers: {
@@ -136,6 +137,12 @@ const defaults = {
     lowerBound: -1, // Limit the start time of the trimming region in seconds
     upperBound: -1, // Limit the end time of the trimming region in seconds
     offsetContainer: false, // Offset the trimming container window, to center the window based on the current time
+    alwaysShowTimestamps: false, // By default thumb timestamps are only shown on hover, this will set them to always be displayed
+    zoom: {
+      enabled: false, // Zoom the editor timeline to the trim container
+      preRoll: 0, // Time in seconds to show before the trimming window
+      postRoll: 0, // Time in seconds to show after the trimming window
+    },
   },
 
   mediaFragment: {
@@ -178,6 +185,7 @@ const defaults = {
     'airplay',
     // 'download',
     // 'trim',
+    // 'angle-selector',
     'fullscreen',
   ],
   settings: ['captions', 'quality', 'speed'],
@@ -221,6 +229,7 @@ const defaults = {
     settings: 'Settings',
     pip: 'PIP',
     menuBack: 'Go back to previous menu',
+    angleSelector: 'Angle Selector',
     speed: 'Speed',
     normal: 'Normal',
     quality: 'Quality',
@@ -298,6 +307,7 @@ const defaults = {
     'loadstart',
     'loadeddata',
     'loadedmetadata',
+    'durationchange',
     'timeupdate',
     'volumechange',
     'play',
@@ -340,6 +350,9 @@ const defaults = {
 
     // Preview thumbnails
     'previewthumbnailsloaded',
+
+    // Angle
+    'angleChange',
 
     // Editor
     'entereditor',
@@ -385,6 +398,7 @@ const defaults = {
       pip: '[data-plyr="pip"]',
       airplay: '[data-plyr="airplay"]',
       settings: '[data-plyr="settings"]',
+      angleSelector: '[data-plyr="angle-selector"]',
       loop: '[data-plyr="loop"]',
     },
     inputs: {
@@ -477,6 +491,7 @@ const defaults = {
       rightThumb: 'plyr__trim-tool__thumb-right',
       timeContainer: 'plyr__trim-tool__time-container',
       timeContainerShown: 'plyr__trim-tool__time-container--is-shown',
+      alwaysShowTimestamps: 'plyr__trim-tool__time-container--always-show-timestamps',
     },
     fullscreen: {
       enabled: 'plyr--fullscreen-enabled',

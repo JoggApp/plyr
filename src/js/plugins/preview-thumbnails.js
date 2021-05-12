@@ -174,8 +174,12 @@ class PreviewThumbnails {
     if (src.startsWith('WEBVTT')) {
       await this.getThumbnail(src);
     } else {
-      const response = await fetch(src);
-      await this.getThumbnail(response, src);
+      try {
+        const response = await fetch(src);
+        await this.getThumbnail(response, src);
+      } catch {
+        this.player.debug.warn("Error retrieving VTT File")
+      }
     }
   }
 
