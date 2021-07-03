@@ -50,7 +50,7 @@ export function reduceAspectRatio(ratio) {
 
 // Calculate an aspect ratio
 export function getAspectRatio(input) {
-  const parse = (ratio) => (validateAspectRatio(ratio) ? ratio.split(':').map(Number) : null);
+  const parse = ratio => (validateAspectRatio(ratio) ? ratio.split(':').map(Number) : null);
   // Try provided ratio
   let ratio = parse(input);
 

@@ -178,7 +178,7 @@ class PreviewThumbnails {
         const response = await fetch(src);
         await this.getThumbnail(response, src);
       } catch {
-        this.player.debug.warn("Error retrieving VTT File")
+        this.player.debug.warn('Error retrieving VTT File');
       }
     }
   }

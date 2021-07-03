@@ -1,6 +1,6 @@
 // ==========================================================================
 // Plyr
-// plyr.js v3.6.7
+// plyr.js v3.6.8
 // https://github.com/sampotts/plyr
 // License: The MIT License (MIT)
 // ==========================================================================
@@ -1031,10 +1031,7 @@ class Plyr {
    */
   set currentTrack(input) {
     captions.set.call(this, input, false);
-
-    if (input >= 1) {
-      captions.setup.call(this);
-    }
+    captions.setup.call(this);
   }
 
   /**

@@ -20335,10 +20335,7 @@ typeof navigator === "object" && (function (global, factory) {
 
     set currentTrack(input) {
       captions.set.call(this, input, false);
-
-      if (input >= 1) {
-        captions.setup.call(this);
-      }
+      captions.setup.call(this);
     }
     /**
      * Get the current caption track index (-1 if disabled)
