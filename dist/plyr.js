@@ -3181,9 +3181,11 @@ typeof navigator === "object" && (function (global, factory) {
         meta,
         currentTrackNode
       } = this.captions;
-      const languageExists = Boolean(tracks.find(track => track.language === language)); // Handle tracks (add event listener and "pseudo"-default)
+      const languageExists = Boolean(tracks.find(track => track.language.toLowerCase() === language));
+      if (!tracks.length) return;
 
       if (this.isHTML5 && this.isVideo) {
+        // Handle tracks (add event listener and "pseudo"-default)
         tracks.filter(track => !meta.get(track)).forEach(track => {
           this.debug.log('Track added', track); // Attempt to store if the original dom element was "default"
 
@@ -3272,7 +3274,7 @@ typeof navigator === "object" && (function (global, factory) {
 
 
       setTimeout(() => {
-        if (active && this.captions.toggled) {
+        if (active && this.captions.toggled && this.captions.currentTrackNode) {
           this.captions.currentTrackNode.mode = 'hidden';
         }
       });
@@ -3371,7 +3373,7 @@ typeof navigator === "object" && (function (global, factory) {
       const sorted = Array.from(tracks).sort((a, b) => sortIsDefault(b) - sortIsDefault(a));
       let track;
       languages.every(language => {
-        track = sorted.find(t => t.language === language);
+        track = sorted.find(t => t.language.toLowerCase() === language);
         return !track; // Break iteration if there is a match
       }); // If no match is found but is required, get first
 
@@ -9461,7 +9463,7 @@ typeof navigator === "object" && (function (global, factory) {
           const response = await fetch(src);
           await this.getThumbnail(response, src);
         } catch {
-          this.player.debug.warn("Error retrieving VTT File");
+          this.player.debug.warn('Error retrieving VTT File');
         }
       }
     } // Process thumbnail
@@ -20335,7 +20337,10 @@ typeof navigator === "object" && (function (global, factory) {
 
     set currentTrack(input) {
       captions.set.call(this, input, false);
-      captions.setup.call(this);
+
+      if (input > -1) {
+        captions.setup();
+      }
     }
     /**
      * Get the current caption track index (-1 if disabled)

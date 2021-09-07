@@ -3175,9 +3175,11 @@ const captions = {
       meta,
       currentTrackNode
     } = this.captions;
-    const languageExists = Boolean(tracks.find(track => track.language === language)); // Handle tracks (add event listener and "pseudo"-default)
+    const languageExists = Boolean(tracks.find(track => track.language.toLowerCase() === language));
+    if (!tracks.length) return;
 
     if (this.isHTML5 && this.isVideo) {
+      // Handle tracks (add event listener and "pseudo"-default)
       tracks.filter(track => !meta.get(track)).forEach(track => {
         this.debug.log('Track added', track); // Attempt to store if the original dom element was "default"
 
@@ -3266,7 +3268,7 @@ const captions = {
 
 
     setTimeout(() => {
-      if (active && this.captions.toggled) {
+      if (active && this.captions.toggled && this.captions.currentTrackNode) {
         this.captions.currentTrackNode.mode = 'hidden';
       }
     });
@@ -3365,7 +3367,7 @@ const captions = {
     const sorted = Array.from(tracks).sort((a, b) => sortIsDefault(b) - sortIsDefault(a));
     let track;
     languages.every(language => {
-      track = sorted.find(t => t.language === language);
+      track = sorted.find(t => t.language.toLowerCase() === language);
       return !track; // Break iteration if there is a match
     }); // If no match is found but is required, get first
 
@@ -9455,7 +9457,7 @@ class PreviewThumbnails {
         const response = await fetch(src);
         await this.getThumbnail(response, src);
       } catch {
-        this.player.debug.warn("Error retrieving VTT File");
+        this.player.debug.warn('Error retrieving VTT File');
       }
     }
   } // Process thumbnail
@@ -20329,7 +20331,10 @@ class Plyr {
 
   set currentTrack(input) {
     captions.set.call(this, input, false);
-    captions.setup.call(this);
+
+    if (input > -1) {
+      captions.setup();
+    }
   }
   /**
    * Get the current caption track index (-1 if disabled)
