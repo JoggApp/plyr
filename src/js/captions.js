@@ -118,11 +118,15 @@ const captions = {
   update() {
     const tracks = captions.getTracks.call(this, true);
     // Get the wanted language
-    const { active, language, meta, currentTrackNode } = this.captions;
-    const languageExists = Boolean(tracks.find(track => track.language === language));
 
-    // Handle tracks (add event listener and "pseudo"-default)
+    const { active, language, meta, currentTrackNode } = this.captions;
+
+    const languageExists = Boolean(tracks.find(track => track.language.toLowerCase() === language));
+
+    if (!tracks.length) return;
+
     if (this.isHTML5 && this.isVideo) {
+      // Handle tracks (add event listener and "pseudo"-default)
       tracks
         .filter(track => !meta.get(track))
         .forEach(track => {
@@ -221,7 +225,7 @@ const captions = {
     // Wait for the call stack to clear before setting mode='hidden'
     // on the active track - forcing the browser to download it
     setTimeout(() => {
-      if (active && this.captions.toggled) {
+      if (active && this.captions.toggled && this.captions.currentTrackNode) {
         this.captions.currentTrackNode.mode = 'hidden';
       }
     });
@@ -321,7 +325,7 @@ const captions = {
     let track;
 
     languages.every(language => {
-      track = sorted.find(t => t.language === language);
+      track = sorted.find(t => t.language.toLowerCase() === language);
       return !track; // Break iteration if there is a match
     });
 

@@ -1031,7 +1031,10 @@ class Plyr {
    */
   set currentTrack(input) {
     captions.set.call(this, input, false);
-    captions.setup.call(this);
+
+    if (input > -1) {
+      captions.setup();
+    }
   }
 
   /**
